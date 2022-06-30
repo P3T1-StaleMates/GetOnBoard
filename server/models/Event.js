@@ -6,6 +6,7 @@ const eventSchema = new Schema({
         required: true,
         trim: true,
     },
+    // Array of Players
     date: {
         type: Date,
         required: true,

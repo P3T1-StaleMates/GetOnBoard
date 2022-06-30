@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-
+// Change to player
 const userSchema = new Schema({
   name: {
     type: String,
