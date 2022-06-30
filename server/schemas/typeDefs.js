@@ -17,7 +17,7 @@ const typeDefs = gql`
 	type Event {
 		_id: ID!
 		name: String
-		date: Int
+		date: String
 		game: Game
 		winner: User
 	}
@@ -62,6 +62,9 @@ type Query {
 
 type Mutation {
 	addUser(name: String!, username: String!, email: String!, password: String!): User
+	addEvent(name: String!, game: String!): Event
+	addGame(name: String!, description: String, genre: String, image: String, minPlayer: Int, maxPlayer: Int, averageTime: Int)
+	removeEvent(eventId: ID!): Event
 }
 `;
 
