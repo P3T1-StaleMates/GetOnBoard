@@ -10,8 +10,8 @@ const postSchema = new Schema({
     trim: true,
   },
   postAuthor: {
-    type: Schema.Types.ObjectId,
-    ref: 'Player',
+    type: String,
+    required: true,
   },
   createdAt: {
     type: Date,
@@ -27,8 +27,8 @@ const postSchema = new Schema({
         maxlength: 280,
       },
       commentAuthor: {
-        type: Schema.Types.ObjectId,
-        ref: 'Player',
+        type: String,
+        required: true,
       },
       createdAt: {
         type: Date,

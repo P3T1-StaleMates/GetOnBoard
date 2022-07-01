@@ -17,9 +17,11 @@ const typeDefs = gql`
 	type Event {
 		_id: ID!
 		name: String
+		players: [Player]
+		location: String
 		date: String
 		game: Game
-		winner: Player
+		winner: [Player]
 	}
 
 	type Game {
@@ -36,20 +38,34 @@ const typeDefs = gql`
 	type Group {
 		_id: ID!
 		name: String
-		members: [Player] #check models
+		admin: Player
+		members: [Player]
 		events: [Event]
 	}
 
 	type Post {
 		_id: ID!
 		postText: String!
-		postAuther: Player
+		postAuthor: String!
 		createdAt: String
+		comments: [Comment]!
 	}
 
+	type Comment {
+    	_id: ID
+    	commentText: String
+    	commentAuthor: String
+    	createdAt: String
+  	}
+
+	type Auth {
+    	token: ID!
+    	user: Player
+  	}
+
 type Query {
-	users: [Player]
-	user(userId: ID!): Player
+	players: [Player]
+	player(playerId: ID!): Player
 	events: [Event]
 	event(eventId: ID!): Event
 	groups: [Group]
@@ -61,10 +77,27 @@ type Query {
 }
 
 type Mutation {
-	addUser(name: String!, username: String!, email: String!, password: String!): Player
-	addEvent(name: String!, game: String!): Event
+	#Player Mutations
+	addPlayer(name: String!, username: String!, email: String!, password: String!): Player
+	#updatePlayer(): Player
 	addGame(name: String!, description: String, genre: String, image: String, minPlayer: Int, maxPlayer: Int, averageTime: Int): Player
-	removeEvent(eventId: ID!): Event
+	#removeGame(): Player
+	
+	#Event Mutations
+	createEvent(name: String!, game: String!, location: String!, date: String!): Event
+	#deleteEvent(eventId: ID!): Event
+	#updateEventWinner(): Event
+	
+	#Group mutations
+	createGroup(name: String!, admin: String!, members: [String]!, events: [String]): Group
+	#addGroupMember(): Group
+	#deleteGroup(): Group
+	#updateGroup(): Group
+	#removeGroupMember(): Group
+	#updateGroupAdmin(): Group
+
+
+	
 }
 `;
 
