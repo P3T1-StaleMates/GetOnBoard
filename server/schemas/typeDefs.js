@@ -1,8 +1,8 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-	type User {
-		_id: ID!
+	type Player {
+		_id: ID
 		name: String
 		username: String
 		email: String
@@ -10,16 +10,18 @@ const typeDefs = gql`
 		ownedGames: [Game]
 		events: [Event]
 		groups: [Group]
-		friends: [User]
+		friends: [Player]
 		posts: [Post]
 	}
 
 	type Event {
 		_id: ID!
 		name: String
+		players: [Player]
+		location: String
 		date: String
 		game: Game
-		winner: User
+		winner: [Player]
 	}
 
 	type Game {
@@ -36,35 +38,64 @@ const typeDefs = gql`
 	type Group {
 		_id: ID!
 		name: String
-		members: [User] #check models
+		admin: Player
+		members: [Player]
 		events: [Event]
 	}
 
 	type Post {
 		_id: ID!
 		postText: String!
-		postAuther: User
+		postAuthor: String!
 		createdAt: String
+		comments: [Comment]!
 	}
 
+	type Comment {
+    	_id: ID
+    	commentText: String
+    	commentAuthor: String
+    	createdAt: String
+  	}
+
+	type Auth {
+    	token: ID!
+    	player: Player
+  	}
+
 type Query {
-	users: [User]
-	user(userId: ID!): User
-	events: [Event]
-	event(eventId: ID!): Event
+	players: [Player]
+	player(username: String!): Player
+	me(_id: ID!): Player
 	groups: [Group]
 	group(groupId: ID!): Group
-	games: [Game]
-	game(gameId: ID!): Game
 	posts: [Post]
 	post(postId: ID!): Post
 }
 
 type Mutation {
-	addUser(name: String!, username: String!, email: String!, password: String!): User
-	addEvent(name: String!, game: String!): Event
-	addGame(name: String!, description: String, genre: String, image: String, minPlayer: Int, maxPlayer: Int, averageTime: Int)
-	removeEvent(eventId: ID!): Event
+	#Player Mutations
+	addPlayer(name: String!, username: String!, email: String!, password: String!): Auth
+	login(email: String!, password: String!): Auth
+	updatePlayer(id: ID! name: String, username: String, email: String, password: String): Player
+	addGame(name: String!, description: String, genre: String, image: String, minPlayer: Int, maxPlayer: Int, averageTime: Int): Player
+	#removeGame(): Player
+	
+	#Event Mutations
+	createEvent(name: String!, game: String!, location: String!, date: String!): Event
+	#deleteEvent(eventId: ID!): Event
+	#updateEventWinner(): Event
+	
+	#Group mutations
+	createGroup(name: String!, admin: String!, members: [String]!, events: [String]): Group
+	#addGroupMember(): Group
+	#deleteGroup(_id: ID!): Group
+	#updateGroup(): Group
+	#removeGroupMember(): Group
+	#updateGroupAdmin(): Group
+
+
+	
 }
 `;
 
