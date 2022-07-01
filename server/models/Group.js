@@ -11,7 +11,7 @@ const groupSchema = new Schema({
     members: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Event',
+            ref: 'User',
         },
     ],
     // A group can have many events
@@ -26,6 +26,8 @@ const groupSchema = new Schema({
     //     default: "defaultTheme",
     // },
 });
+
+// Virtual property of games owned by the group
 
 const Group = model('Group', groupSchema);
 
