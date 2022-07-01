@@ -77,7 +77,7 @@ playerSchema.pre('save', async function (next) {
 
 // Compare the incoming password with the hashed password
 playerSchema.methods.isCorrectPassword = async function (password) {
-  await bcrypt.compare(password, this.password);
+  return await bcrypt.compare(password, this.password);
 };
 
 const Player = model('Player', playerSchema);
