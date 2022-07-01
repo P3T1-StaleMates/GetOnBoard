@@ -78,14 +78,15 @@ type Mutation {
 	addPlayer(name: String!, username: String!, email: String!, password: String!): Auth
 	login(email: String!, password: String!): Auth
 	updatePlayer(id: ID! name: String, username: String, email: String, password: String): Player
+	# Stuck on this one.
 	addGame(name: String!, description: String, genre: String, image: String, minPlayer: Int, maxPlayer: Int, averageTime: Int): Player
-	#removeGame(): Player
-	
+	removeGame(gameId: ID!): Player
+
 	#Event Mutations
 	createEvent(name: String!, game: String!, location: String!, date: String!): Event
 	#deleteEvent(eventId: ID!): Event
 	#updateEventWinner(): Event
-	
+
 	#Group mutations
 	createGroup(name: String!, admin: String!, members: [String]!, events: [String]): Group
 	#addGroupMember(): Group
@@ -95,7 +96,7 @@ type Mutation {
 	#updateGroupAdmin(): Group
 
 
-	
+
 }
 `;
 

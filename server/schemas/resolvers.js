@@ -29,22 +29,6 @@ const resolvers = {
     },
 
     Mutation: {
-        addPlayer: async (parent, { name, username, email, password }) => {
-            const player = await Player.create({ name, username, email, password });
-            const token = signToken(player);
-            return { token, player };
-        },
-
-        updatePlayer: async (parent, args, context) => {
-
-            // Enable once context can be interpreted
-            if (context.player.username) {
-                return await Player.findByIdAndUpdate(context.player._id, args, { new: true });
-            }
-
-            throw new AuthenticationError('Not logged in');
-        },
-
         login: async (parent, { email, password }) => {
             const player = await Player.findOne({ email });
 
@@ -63,14 +47,41 @@ const resolvers = {
             return { token, player };
         },
 
-        addGame: async (parent, args, context) => {
-
-            const game = new Game({ args })
-
-            const updatedPlayer = await Player.findByIdAndUpdate(context.player._id, { $push: { ownedGames: game } }, { new: true });
-
-            return {game, updatedPlayer};
+        addPlayer: async (parent, { name, username, email, password }) => {
+            const player = await Player.create({ name, username, email, password });
+            const token = signToken(player);
+            return { token, player };
         },
+
+        updatePlayer: async (parent, args, context) => {
+
+            if (context.player.username) {
+                return await Player.findByIdAndUpdate(context.player._id, args, { new: true });
+            }
+
+            throw new AuthenticationError('Not logged in');
+        },
+
+        addGame: async (parent, {name, description, genre, image, minPlayer, maxPlayer, averageTime}, context) => {
+
+            const game = await Game.create({name, description, genre, image, minPlayer, maxPlayer, averageTime});
+            console.log(game);
+
+            const updatedPlayer = await Player.findByIdAndUpdate(context.player._id, { $addToSet: { ownedGames: game } });
+
+            console.log(updatedPlayer)
+            // returns updated player but all game info is null, console log of game shows all game information being displayed.
+            return updatedPlayer;
+        },
+
+        removeGame: async (parent, { gameId }, context) => {
+            console.log(gameId)
+
+            const updatedPlayer = await Player.findByIdAndUpdate(context.player._id, { $pull: { ownedGames: gameId } });
+
+            console.log(updatedPlayer)
+            return updatedPlayer;
+          },
 
     },
 }
