@@ -10,9 +10,8 @@ const postSchema = new Schema({
     trim: true,
   },
   postAuthor: {
-    type: String,
-    required: true,
-    trim: true,
+    type: Schema.Types.ObjectId,
+    ref: 'Player',
   },
   createdAt: {
     type: Date,
