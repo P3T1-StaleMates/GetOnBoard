@@ -27,8 +27,8 @@ const postSchema = new Schema({
         maxlength: 280,
       },
       commentAuthor: {
-        type: String,
-        required: true,
+        type: Schema.Types.ObjectId,
+        ref: 'Player',
       },
       createdAt: {
         type: Date,
