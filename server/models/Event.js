@@ -13,6 +13,11 @@ const eventSchema = new Schema({
             ref: 'Player',
         },
     ],
+    location : {
+        type: String,
+        required: true,
+    },
+    // Need to convert to 
     date: {
         type: Date,
         required: true,
