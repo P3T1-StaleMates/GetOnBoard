@@ -1,9 +1,9 @@
 import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
+import Navbar from './components/Global/Navbar'
 import Home from './pages/Home';
-import Header from './components/Header';
-import Footer from './components/Footer';
+// import Footer from './components/Global/Footer';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -13,12 +13,11 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="flex-column justify-flex-start min-100-vh">
-        <Header />
-        <div className="container">
+      <div>
+        <Navbar />
+        {/* Render conditionally? home if logged out, dashboard if logged in */}
           <Home />
-        </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </ApolloProvider>
   );
