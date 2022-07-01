@@ -7,6 +7,12 @@ const eventSchema = new Schema({
         trim: true,
     },
     // Array of Players
+    players: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Player',
+        },
+    ],
     date: {
         type: Date,
         required: true,
@@ -20,7 +26,7 @@ const eventSchema = new Schema({
     winner: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'User',
+            ref: 'Player',
         },
     ],
 });

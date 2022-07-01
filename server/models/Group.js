@@ -11,7 +11,7 @@ const groupSchema = new Schema({
     members: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'User',
+            ref: 'Player',
         },
     ],
     // A group can have many events
