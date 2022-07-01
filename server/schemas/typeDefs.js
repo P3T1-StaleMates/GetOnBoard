@@ -1,7 +1,7 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-	type User {
+	type Player {
 		_id: ID!
 		name: String
 		username: String
@@ -10,7 +10,7 @@ const typeDefs = gql`
 		ownedGames: [Game]
 		events: [Event]
 		groups: [Group]
-		friends: [User]
+		friends: [Player]
 		posts: [Post]
 	}
 
@@ -19,7 +19,7 @@ const typeDefs = gql`
 		name: String
 		date: String
 		game: Game
-		winner: User
+		winner: Player
 	}
 
 	type Game {
@@ -36,20 +36,20 @@ const typeDefs = gql`
 	type Group {
 		_id: ID!
 		name: String
-		members: [User] #check models
+		members: [Player] #check models
 		events: [Event]
 	}
 
 	type Post {
 		_id: ID!
 		postText: String!
-		postAuther: User
+		postAuther: Player
 		createdAt: String
 	}
 
 type Query {
-	users: [User]
-	user(userId: ID!): User
+	users: [Player]
+	user(userId: ID!): Player
 	events: [Event]
 	event(eventId: ID!): Event
 	groups: [Group]
@@ -61,9 +61,9 @@ type Query {
 }
 
 type Mutation {
-	addUser(name: String!, username: String!, email: String!, password: String!): User
+	addUser(name: String!, username: String!, email: String!, password: String!): Player
 	addEvent(name: String!, game: String!): Event
-	addGame(name: String!, description: String, genre: String, image: String, minPlayer: Int, maxPlayer: Int, averageTime: Int)
+	addGame(name: String!, description: String, genre: String, image: String, minPlayer: Int, maxPlayer: Int, averageTime: Int): Player
 	removeEvent(eventId: ID!): Event
 }
 `;
