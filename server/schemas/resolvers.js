@@ -94,12 +94,10 @@ const resolvers = {
 
                 const newEvent = await (await (await Event.create({ ...args, owner: context.player._id })).populate("game")).populate("owner");
                 console.log(newEvent);
+                // Add back in if events array returns to Player model.
+                // const updatedPlayer = await Player.findByIdAndUpdate(context.player._id, { $addToSet: { events: newEvent } }, { new: true }).populate("events");
 
-                const updatedPlayer = await Player.findByIdAndUpdate(context.player._id, { $addToSet: { events: newEvent } }, { new: true }).populate("events");
-
-                console.log(updatedPlayer)
-                // returns updated player but all game info is null, console log of game shows all game information being displayed.
-                // Just needed to populate the ownedGames array
+                // console.log(updatedPlayer)
                 return newEvent;
             }
             throw new AuthenticationError('Not logged in');
