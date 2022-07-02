@@ -108,7 +108,9 @@ const resolvers = {
             let admin = await Player.findById(context.player._id)
             let members = []
             members.push(admin)
-            return Group.create({ name, admin, members});
+            let newGroup = await Group.create({ name, admin, members});
+            let updatedPlayer = await Player.findByIdAndUpdate(context.player._id, {$addToSet : {groups : newGroup}}, {new: true}).populate("groups")
+            return {newGroup, updatedPlayer};
         },
 
         addGroupMember: async (parent, {playerId, groupId}) => {
