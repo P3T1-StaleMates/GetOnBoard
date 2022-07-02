@@ -6,7 +6,7 @@ const resolvers = {
     Query: {
         // Get all Players
         players: async () => {
-            return Player.find();
+            return Player.find().populate("ownedGames").populate("groups");
         },
         // Get a single player's information (to look up friends by username)
         player: async (parent, { username }) => {
@@ -21,7 +21,7 @@ const resolvers = {
         },
         // Used to see all groups on site
         groups: async () => {
-            return Group.find();
+            return Group.find().populate("members").populate("admin");
         },
         // Used to find a specific group (like a user's group)
         group: async (parent, { groupId }) => {
@@ -65,28 +65,20 @@ const resolvers = {
         },
         // Used to add a new game to a Player's collection of games
         addGame: async (parent, { name, description, genre, image, minPlayer, maxPlayer, averageTime }, context) => {
-            console.log(context.player)
+
             if (context.player) {
 
                 const game = await Game.create({ name, description, genre, image, minPlayer, maxPlayer, averageTime });
-                console.log(game);
 
-                const updatedPlayer = await Player.findByIdAndUpdate(context.player._id, { $addToSet: { ownedGames: game } }, { new: true }).populate("ownedGames");
-
-                console.log(updatedPlayer)
-                // returns updated player but all game info is null, console log of game shows all game information being displayed.
-                // Just needed to populate the ownedGames array
-                return updatedPlayer;
+                return Player.findByIdAndUpdate(context.player._id, { $addToSet: { ownedGames: game } }, { new: true }).populate("ownedGames");
             }
             throw new AuthenticationError('Not logged in');
         },
         // Used to remove a board game from a Player's collection
         removeGame: async (parent, { gameId }, context) => {
-            console.log(gameId)
 
             const updatedPlayer = await Player.findByIdAndUpdate(context.player._id, { $pull: { ownedGames: gameId } }, { new: true }).populate("ownedGames");
 
-            console.log(updatedPlayer)
             return updatedPlayer;
         },
         // Used to create a new event if logged in. Args contain only event information
@@ -111,10 +103,9 @@ const resolvers = {
             }
             throw new AuthenticationError('Not logged in');
         },
+
         createGroup: async(parent, { name }, context) => {
-            console.log(context.player)
             let admin = await Player.findById(context.player._id)
-            console.log(admin)
             let members = []
             members.push(admin)
             return Group.create({ name, admin, members});
@@ -124,46 +115,41 @@ const resolvers = {
             let addedPlayer = await Player.findById(playerId)
             console.log(addedPlayer)
 
-            let updatedGroup = Group.findByIdAndUpdate(groupId, { $addToSet: { members: addedPlayer } }, { new: true })
-            console.log('here', updatedGroup)
-            return updatedGroup;
+            return Group.findByIdAndUpdate(groupId, { $addToSet: { members: addedPlayer } }, { new: true }).populate("members")
         },
 
         removeGroupMember: async (parent, { playerId, groupId }, context) => {
             let targetGroup = await Group.findById(groupId)
-            console.log(context.player);
             if (targetGroup.admin._id == context.player._id) {
-                let removedPlayer = Player.findById(playerId)
-                targetGroup.members.pop(removedPlayer)
-                return targetGroup
+
+                return Group.findOneAndUpdate({ _id: groupId }, { $pull: { members: playerId }}, { new: true }).populate("members")
+
             }
             throw new AuthenticationError('You are not the admin of this group. Please refer to an admin for group deletion.');
         },
 
         deleteGroup: async (parent, { _id }, context) => {
-            let targetGroup = await Group.findById(_Id)
+            let targetGroup = await Group.findById(_id)
             if (targetGroup.admin._id == context.player._id) {
                 return Group.findByIdAndDelete(_id)
             }
             throw new AuthenticationError('You are not the admin of this group. Please refer to an admin for player removal.');
         },
 
-        updateGroup: async (parent, {_id, name}, context) => {
-            let targetGroup = await Group.findById(_id)
-            console.log(context.player);
+        updateGroup: async (parent, args, context) => {
+            let targetGroup = await Group.findById(args._id)
             if (targetGroup.admin._id == context.player._id) {
 
-                return Group.findOneAndUpdate(_id, name, { new: true })
+                return Group.findOneAndUpdate(args._id, args, { new: true })
             }
             throw new AuthenticationError('You are not the admin of this group. Please refer to an admin for group deletion.');
         },
 
         updateGroupAdmin: async (parent, {groupId, playerId}, context) => {
             let targetGroup = await Group.findById(groupId)
-            console.log(context.player);
             if (targetGroup.admin._id == context.player._id) {
-                let newAdmin = Player.findById(playerId)
-                return Group.findOneAndUpdate(groupId, {admin: newAdmin}, { new: true })
+
+                return Group.findOneAndUpdate(groupId, {admin: playerId}, { new: true }).populate("members").populate("admin")
             }
             throw new AuthenticationError('You are not the admin of this group. Please refer to an admin for group deletion.');
         },

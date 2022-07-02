@@ -70,7 +70,7 @@ type Query {
 	player(username: String!): Player
 	me(_id: ID!): Player
 	groups: [Group]
-	group(groupId: ID!): Group
+	group(_id: ID!): Group
 	posts: [Post]
 	post(postId: ID!): Post
 }
@@ -81,7 +81,7 @@ type Mutation {
 	login(email: String!, password: String!): Auth
 	updatePlayer(id: ID! name: String, username: String, email: String, password: String): Player
 	# Stuck on this one.
-	addGame(name: String!, description: String, genre: String, image: String, minPlayer: Int, maxPlayer: Int, averageTime: Int): Player
+	addGame(name: String!, description: String, genre: String, image: String, minPlayer: Int!, maxPlayer: Int!, averageTime: Int!): Player
 	removeGame(gameId: ID!): Player
 
 	#Event Mutations
