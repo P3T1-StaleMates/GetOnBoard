@@ -109,7 +109,7 @@ const resolvers = {
             let members = []
             members.push(admin)
             let newGroup = await Group.create({ name, admin, members});
-            let updatedPlayer = await Player.findByIdAndUpdate(context.player._id, {$addToSet : {groups : newGroup}}, {new: true}).populate("groups")
+            let updatedPlayer = await Player.findByIdAndUpdate(context.player._id, {$addToSet : {groups : newGroup._id}}, {new: true}).populate("groups");
             return {newGroup, updatedPlayer};
         },
 
@@ -117,7 +117,7 @@ const resolvers = {
             let addedPlayer = await Player.findById(playerId)
             console.log(addedPlayer)
 
-            return Group.findByIdAndUpdate(groupId, { $addToSet: { members: addedPlayer } }, { new: true }).populate("members")
+            return Group.findByIdAndUpdate(groupId, { $addToSet: { members: addedPlayer } }, { new: true }).populate("members").populate("admin")
         },
 
         removeGroupMember: async (parent, { playerId, groupId }, context) => {
