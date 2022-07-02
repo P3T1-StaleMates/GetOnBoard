@@ -32,12 +32,12 @@ const playerSchema = new Schema({
     },
   ],
   // A user can have many events
-  events: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Event',
-    },
-  ],
+  // events: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: 'Event',
+  //   },
+  // ],
   // A user can belong to many groups
   groups: [
     {

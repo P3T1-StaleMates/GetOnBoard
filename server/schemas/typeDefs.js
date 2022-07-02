@@ -8,7 +8,8 @@ const typeDefs = gql`
 		email: String
 		password: String
 		ownedGames: [Game]
-		events: [Event]
+		# Might not need this reference if this information is all self contained in Event
+		#events: [Event]
 		groups: [Group]
 		friends: [Player]
 		posts: [Post]
@@ -16,6 +17,7 @@ const typeDefs = gql`
 
 	type Event {
 		_id: ID!
+		owner: Player
 		name: String
 		players: [Player]
 		location: String
@@ -84,7 +86,7 @@ type Mutation {
 
 	#Event Mutations
 	createEvent(name: String!, game: String!, location: String!, date: String!): Event
-	#deleteEvent(eventId: ID!): Event
+	deleteEvent(eventId: ID!): Event
 	#updateEventWinner(): Event
 
 	#Group mutations

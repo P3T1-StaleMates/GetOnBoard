@@ -1,6 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const eventSchema = new Schema({
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'Player',
+    },
     name: {
         type: String,
         required: true,
@@ -13,7 +17,7 @@ const eventSchema = new Schema({
             ref: 'Player',
         },
     ],
-    location : {
+    location: {
         type: String,
         required: true,
     },
