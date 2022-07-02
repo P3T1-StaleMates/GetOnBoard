@@ -92,7 +92,7 @@ const resolvers = {
         createEvent: async (parent, args, context) => {
             if (context.player) {
 
-                const newEvent = await (await Event.create({ ...args })).populate("game");
+                const newEvent = await (await (await Event.create({ ...args, owner: context.player._id })).populate("game")).populate("owner");
                 console.log(newEvent);
 
                 const updatedPlayer = await Player.findByIdAndUpdate(context.player._id, { $addToSet: { events: newEvent } }, { new: true }).populate("events");
@@ -104,14 +104,11 @@ const resolvers = {
             }
             throw new AuthenticationError('Not logged in');
         },
-        // Used to remove an event from a Player's events collection and overall
+        // Used to delete a player's events. Only allow this to happen on the front end for events where playher is the owner.
         deleteEvent: async (parent, { eventId }, context) => {
             if (context.player) {
 
-                const updatedPlayer = await Player.findByIdAndUpdate(context.player._id, { $pull: { event: eventId } }, { new: true }).populate("events");
-
-                console.log(updatedPlayer)
-                return updatedPlayer;
+                return await Event.findByIdAndDelete(eventId);
             }
             throw new AuthenticationError('Not logged in');
         },
