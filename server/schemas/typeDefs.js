@@ -90,12 +90,12 @@ type Mutation {
 	#updateEventWinner(): Event
 
 	#Group mutations
-	createGroup(name: String!, admin: String!, members: [String]!, events: [String]): Group
-	#addGroupMember(): Group
-	#deleteGroup(_id: ID!): Group
-	#updateGroup(): Group
-	#removeGroupMember(): Group
-	#updateGroupAdmin(): Group
+	createGroup(name: String!): Group
+	addGroupMember(playerId: ID!, groupId: ID!): Group
+	removeGroupMember(groupId: ID!, playerId: ID!): Group
+	deleteGroup(_id: ID!): Group
+	updateGroup(_id: ID!, name: String!): Group
+	updateGroupAdmin(groupId: ID!, playerId: ID!): Group
 
 
 
