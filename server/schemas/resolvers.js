@@ -26,7 +26,21 @@ const resolvers = {
         // Used to find a specific group (like a user's group)
         group: async (parent, { groupId }) => {
             return Group.findOne({ _id: groupId }).populate('groupGames');
-        }
+        },
+        // Used to find events I own
+        ownedEvents: async (parent, args, context) => {
+            if (context.player._id) {
+                return await Event.find({ owner: context.player._id }).populate("game").populate("owner").populate("players");
+            }
+            throw new AuthenticationError('Not logged in')
+        },
+        // Used to find events I belong to
+        myEvents: async (parent, args, context) => {
+            if (context.player._id) {
+                return await Event.find({ players: {_id: context.player._id} }).populate("game").populate("owner").populate("players");
+            }
+            throw new AuthenticationError('Not logged in')
+        },
     },
 
     Mutation: {
@@ -82,10 +96,11 @@ const resolvers = {
             return updatedPlayer;
         },
         // Used to create a new event if logged in. Args contain only event information
+        // Should probably split args up in to name, game, location, date, and players
         createEvent: async (parent, args, context) => {
             if (context.player) {
 
-                const newEvent = await (await (await Event.create({ ...args, owner: context.player._id })).populate("game")).populate("owner");
+                const newEvent = await Event.create({ ...args, owner: context.player._id }).populate("game").populate("owner");
                 console.log(newEvent);
                 // Add back in if events array returns to Player model.
                 // const updatedPlayer = await Player.findByIdAndUpdate(context.player._id, { $addToSet: { events: newEvent } }, { new: true }).populate("events");
@@ -104,16 +119,16 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
 
-        createGroup: async(parent, { name }, context) => {
+        createGroup: async (parent, { name }, context) => {
             let admin = await Player.findById(context.player._id)
             let members = []
             members.push(admin)
-            let newGroup = await Group.create({ name, admin, members});
-            let updatedPlayer = await Player.findByIdAndUpdate(context.player._id, {$addToSet : {groups : newGroup._id}}, {new: true}).populate("groups");
-            return {newGroup, updatedPlayer};
+            let newGroup = await Group.create({ name, admin, members });
+            let updatedPlayer = await Player.findByIdAndUpdate(context.player._id, { $addToSet: { groups: newGroup._id } }, { new: true }).populate("groups");
+            return { newGroup, updatedPlayer };
         },
 
-        addGroupMember: async (parent, {playerId, groupId}) => {
+        addGroupMember: async (parent, { playerId, groupId }) => {
             let addedPlayer = await Player.findById(playerId)
             console.log(addedPlayer)
 
@@ -124,7 +139,7 @@ const resolvers = {
             let targetGroup = await Group.findById(groupId)
             if (targetGroup.admin._id == context.player._id) {
 
-                return Group.findOneAndUpdate({ _id: groupId }, { $pull: { members: playerId }}, { new: true }).populate("members")
+                return Group.findOneAndUpdate({ _id: groupId }, { $pull: { members: playerId } }, { new: true }).populate("members")
 
             }
             throw new AuthenticationError('You are not the admin of this group. Please refer to an admin for group deletion.');
@@ -147,11 +162,11 @@ const resolvers = {
             throw new AuthenticationError('You are not the admin of this group. Please refer to an admin for group deletion.');
         },
 
-        updateGroupAdmin: async (parent, {groupId, playerId}, context) => {
+        updateGroupAdmin: async (parent, { groupId, playerId }, context) => {
             let targetGroup = await Group.findById(groupId)
             if (targetGroup.admin._id == context.player._id) {
 
-                return Group.findOneAndUpdate(groupId, {admin: playerId}, { new: true }).populate("members").populate("admin")
+                return Group.findOneAndUpdate(groupId, { admin: playerId }, { new: true }).populate("members").populate("admin")
             }
             throw new AuthenticationError('You are not the admin of this group. Please refer to an admin for group deletion.');
         },
