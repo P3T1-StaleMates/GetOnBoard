@@ -1,0 +1,68 @@
+/* ====Universal Style==== */
+* {
+    font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* =====Fonts and Styles====*/
+h1 {
+    font-weight: 900; 
+}
+h2,
+h3,
+h4,
+h5{
+    font-weight: bold;
+}
+h6 {
+    line-height: 2em;
+}
+main{
+    background-color: white;
+    background-position: center;
+    border-radius: 30px;
+    
+}
+
+.mrl-20{
+margin-right: 4%;
+margin-left: 4%;
+}
+.background-img{
+    background-image: url("/assets/images/green-hill.jpg");
+    height: 800px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+
+.card{
+    border-radius: 30px;
+}
+
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  .bg-cream{
+    background-color: #e8d7c9;
+    opacity:40%;
+  }
+.btn{
+    background-color: #a9e800;
+    border-radius: 20px;
+    height: 4em;
+    font-weight: bold;
+}
+
+
+.logo{
+    width: 200px;
+}
