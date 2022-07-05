@@ -124,7 +124,7 @@ const resolvers = {
 
                 const winner = await Player.findById(winnerId)
 
-                return await Event.findByIdAndUpdate(eventId, { $addToSet: { winner: winner } });
+                return await Event.findByIdAndUpdate(eventId, { $addToSet: { winner: winner } }, { new: true });
             }
             throw new AuthenticationError('Not logged in');
         },
