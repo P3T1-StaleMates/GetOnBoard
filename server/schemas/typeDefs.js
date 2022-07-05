@@ -89,7 +89,7 @@ type Mutation {
 	#Event Mutations
 	createEvent(name: String!, game: String!, location: String!, date: String!): Event
 	deleteEvent(eventId: ID!): Event
-	#addEventWinner(): Event
+	addEventWinner(eventId: ID!, winnerId: ID!): Event
 
 	#Group mutations
 	createGroup(name: String!): Group
