@@ -8,7 +8,8 @@ const typeDefs = gql`
 		email: String
 		password: String
 		ownedGames: [Game]
-		events: [Event]
+		# Might not need this reference if this information is all self contained in Event
+		#events: [Event]
 		groups: [Group]
 		friends: [Player]
 		posts: [Post]
@@ -16,6 +17,7 @@ const typeDefs = gql`
 
 	type Event {
 		_id: ID!
+		owner: Player
 		name: String
 		players: [Player]
 		location: String
@@ -68,9 +70,11 @@ type Query {
 	player(username: String!): Player
 	me(_id: ID!): Player
 	groups: [Group]
-	group(groupId: ID!): Group
+	group(_id: ID!): Group
 	posts: [Post]
 	post(postId: ID!): Post
+	ownedEvents: [Event]
+	myEvents: [Event]
 }
 
 type Mutation {
@@ -78,24 +82,23 @@ type Mutation {
 	addPlayer(name: String!, username: String!, email: String!, password: String!): Auth
 	login(email: String!, password: String!): Auth
 	updatePlayer(id: ID! name: String, username: String, email: String, password: String): Player
-	addGame(name: String!, description: String, genre: String, image: String, minPlayer: Int, maxPlayer: Int, averageTime: Int): Player
-	#removeGame(): Player
-	
+	# Stuck on this one.
+	addGame(name: String!, description: String, genre: String, image: String, minPlayer: Int!, maxPlayer: Int!, averageTime: Int!): Player
+	removeGame(gameId: ID!): Player
+
 	#Event Mutations
 	createEvent(name: String!, game: String!, location: String!, date: String!): Event
-	#deleteEvent(eventId: ID!): Event
-	#updateEventWinner(): Event
-	
+	deleteEvent(eventId: ID!): Event
+	addEventWinner(eventId: ID!, winnerId: ID!): Event
+
 	#Group mutations
-	createGroup(name: String!, admin: String!, members: [String]!, events: [String]): Group
-	#addGroupMember(): Group
-	#deleteGroup(_id: ID!): Group
-	#updateGroup(): Group
-	#removeGroupMember(): Group
-	#updateGroupAdmin(): Group
+	createGroup(name: String!): Group
+	addGroupMember(playerId: ID!, groupId: ID!): Group
+	removeGroupMember(groupId: ID!, playerId: ID!): Group
+	deleteGroup(_id: ID!): Group
+	updateGroup(_id: ID!, name: String!): Group
+	updateGroupAdmin(groupId: ID!, playerId: ID!): Group
 
-
-	
 }
 `;
 

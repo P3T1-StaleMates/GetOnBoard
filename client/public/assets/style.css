@@ -31,7 +31,7 @@ margin-right: 4%;
 margin-left: 4%;
 }
 .background-img{
-    background-image: url("/src/assets/links/green hill.jpg");
+    background-image: url("/assets/images/green-hill.jpg");
     height: 800px;
     background-position: center;
     background-repeat: no-repeat;
