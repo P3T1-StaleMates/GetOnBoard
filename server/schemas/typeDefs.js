@@ -73,6 +73,8 @@ type Query {
 	group(_id: ID!): Group
 	posts: [Post]
 	post(postId: ID!): Post
+	ownedEvents: [Event]
+	myEvents: [Event]
 }
 
 type Mutation {
@@ -87,7 +89,7 @@ type Mutation {
 	#Event Mutations
 	createEvent(name: String!, game: String!, location: String!, date: String!): Event
 	deleteEvent(eventId: ID!): Event
-	#updateEventWinner(): Event
+	#addEventWinner(): Event
 
 	#Group mutations
 	createGroup(name: String!): Group
@@ -96,8 +98,6 @@ type Mutation {
 	deleteGroup(_id: ID!): Group
 	updateGroup(_id: ID!, name: String!): Group
 	updateGroupAdmin(groupId: ID!, playerId: ID!): Group
-
-
 
 }
 `;
