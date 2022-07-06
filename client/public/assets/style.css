@@ -4,65 +4,111 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-}
-
-/* =====Fonts and Styles====*/
-h1 {
-    font-weight: 900; 
-}
-h2,
-h3,
-h4,
-h5{
-    font-weight: bold;
-}
-h6 {
-    line-height: 2em;
-}
-main{
+  }
+  
+  main {
     background-color: white;
     background-position: center;
     border-radius: 30px;
-    
-}
-
-.mrl-20{
-margin-right: 4%;
-margin-left: 4%;
-}
-.background-img{
-    background-image: url("/assets/images/green-hill.jpg");
-    height: 800px;
+  }
+  /* =====Fonts and Styles====*/
+  h1 {
+    font-weight: 900;
+  }
+  h2,
+  h3,
+  h4,
+  h5 {
+    color: black;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  h6 {
+    line-height: 2em;
+  }
+  .nav-link {
+     color: black; 
+  }
+  .nav-link:hover {
+      color: #a9e800; 
+   }
+   
+  /* ===Margins=== */
+  .mrl-20 {
+    margin-right: 4%;
+    margin-left: 4%;
+  }
+  /* ====positions=== */
+  
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+  
+  /* ===Padding=== */
+  .padding-40 {
+    padding: 40px;
+  }
+  
+  .padding-top-20 {
+      padding-top: 20px;
+  }
+  .padding-top-40 {
+      padding-top: 40px;
+  }
+  
+  .padding-top-60 {
+    padding-top: 60px;
+  }
+  
+  .padding-top-280 {
+      padding-top: 280px;
+    }
+  /*==== images===== */
+  .icon {
+    border-radius: 50%;
+    width: 80px;
+    float: left;
+  }
+  .logo {
+    width: 100%;
+  }
+  
+  .background-img {
+    background-image: url("/src/assets/links/green hill.jpg");
+    height: 900px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
   }
   
-
-.card{
-    border-radius: 30px;
-}
-
-.center{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-  }
-
-  .bg-cream{
+  /* ====background==== */
+  .bg-cream {
     background-color: #e8d7c9;
-    opacity:40%;
+    opacity: 40%;
+    background-position: center;
+    border-radius: 30px;
+    height: 800px;
+    margin: 2%;
   }
-.btn{
+  
+  /* ===buttons=== */
+  .btn-green {
     background-color: #a9e800;
     border-radius: 20px;
     height: 4em;
     font-weight: bold;
-}
-
-
-.logo{
-    width: 200px;
-}
+  }
+  .btn-clear {
+    padding: 20px;
+    border-radius: 20px;
+    height: 4em;
+    font-weight: 400;
+    border-style: solid;
+    border-width: 0.25px;
+    background-color: transparent;
+  }
+  
