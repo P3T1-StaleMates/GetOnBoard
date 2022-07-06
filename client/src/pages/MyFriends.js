@@ -12,7 +12,6 @@ const Profile = () => {
   const { loading, data } = useQuery(userParam ? QUERY_PLAYER : QUERY_ME, {
     variables: { username: userParam },
   });
-  console.log(args)
   console.log(loading)
 
   console.log(data)
