@@ -39,12 +39,12 @@ const playerSchema = new Schema({
   //   },
   // ],
   // A user can belong to many groups
-  groups: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Group',
-    },
-  ],
+  // groups: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: 'Group',
+  //   },
+  // ],
   // A user can have many friends
   friends: [
     {

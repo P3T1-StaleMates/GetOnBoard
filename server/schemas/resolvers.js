@@ -15,7 +15,7 @@ const resolvers = {
         // Get my information(if logged in)
         me: async (parent, args, context) => {
             if (context.player._id) {
-                return Player.findById(context.player._id).populate("ownedGames").populate("friends").populate("groups");
+                return Player.findById(context.player._id).populate("ownedGames").populate("friends");
             }
             throw new AuthenticationError('Not logged in')
         },
@@ -25,7 +25,14 @@ const resolvers = {
         },
         // Used to find a specific group (like a user's group)
         group: async (parent, { groupId }) => {
-            return Group.findOne({ _id: groupId }).populate('groupGames');
+            return Group.findOne({ _id: groupId }).populate('groupGames').populate("events");
+        },
+        // Pulls my group information in an array
+        myGroups: async (parent, args, context) => {
+            if (context.player._id) {
+                return Group.find({ members: { _id: context.player._id } }).populate("members").populate("events");
+            }
+            throw new AuthenticationError('Not logged in')
         },
         // Used to find events I own
         ownedEvents: async (parent, args, context) => {
@@ -97,24 +104,29 @@ const resolvers = {
         },
         // Used to create a new event if logged in. Args contain only event information
         // Should probably split args up in to name, game, location, date, and players
-        createEvent: async (parent, args, context) => {
+        createEvent: async (parent, {name, gameId, location, date, groupId}, context) => {
             if (context.player) {
+                const game = await Game.findById(gameId);
+                const owner = await Player.findById(context.player._id);
+                const group = await Group.findById(groupId).populate("members");
+                let players = group.members;
 
-                const newEvent = await Event.create({ ...args, owner: context.player._id }).populate("game").populate("owner");
+                const newEvent = await Event.create({ name, location, date, owner, game, players });
                 console.log(newEvent);
-                // Add back in if events array returns to Player model.
-                // const updatedPlayer = await Player.findByIdAndUpdate(context.player._id, { $addToSet: { events: newEvent } }, { new: true }).populate("events");
 
-                // console.log(updatedPlayer)
+                const updatedGroup = await Group.findByIdAndUpdate(groupId, { $addToSet: { events: newEvent } }, { new: true });
+                console.log(updatedGroup);
                 return newEvent;
             }
             throw new AuthenticationError('Not logged in');
         },
         // Used to delete a player's events. Only allow this to happen on the front end for events where playher is the owner.
-        deleteEvent: async (parent, { eventId }, context) => {
+        deleteEvent: async (parent, { eventId, groupId }, context) => {
             if (context.player) {
 
-                return await Event.findByIdAndDelete(eventId).populate("winner");
+                await Group.findByIdAndUpdate(groupId, { $pull: { events: eventId } }, { new: true });
+
+                return await Event.findByIdAndDelete(eventId);
             }
             throw new AuthenticationError('Not logged in');
         },
@@ -124,7 +136,7 @@ const resolvers = {
 
                 const winner = await Player.findById(winnerId)
 
-                return await Event.findByIdAndUpdate(eventId, { $addToSet: { winner: winner } }, { new: true });
+                return await Event.findByIdAndUpdate(eventId, { $addToSet: { winner } }, { new: true }).populate("winner");
             }
             throw new AuthenticationError('Not logged in');
         },
@@ -133,9 +145,9 @@ const resolvers = {
             let admin = await Player.findById(context.player._id)
             let members = []
             members.push(admin)
-            let newGroup = await Group.create({ name, admin, members });
-            let updatedPlayer = await Player.findByIdAndUpdate(context.player._id, { $addToSet: { groups: newGroup._id } }, { new: true }).populate("groups");
-            return { newGroup, updatedPlayer };
+            let newGroup = await Group.create({ name, admin, members })
+            // let updatedPlayer = await Player.findByIdAndUpdate(context.player._id, { $addToSet: { groups: newGroup } }, { new: true }).populate("groups");
+            return newGroup;
         },
 
         addGroupMember: async (parent, { playerId, groupId }) => {
