@@ -48,6 +48,10 @@ const resolvers = {
             }
             throw new AuthenticationError('Not logged in')
         },
+        // Used to find Games in the database by name
+        games: async (parent, {name}) => {
+            return await Game.findOne({ name });
+        }
     },
 
     Mutation: {
@@ -88,9 +92,10 @@ const resolvers = {
         addGame: async (parent, { name, description, genre, image, minPlayer, maxPlayer, averageTime }, context) => {
 
             if (context.player) {
-
-                const game = await Game.create({ name, description, genre, image, minPlayer, maxPlayer, averageTime });
-
+                let game = await Game.findOne({ name });
+                if(!game) {
+                    game = await Game.create({ name, description, genre, image, minPlayer, maxPlayer, averageTime });
+                }
                 return Player.findByIdAndUpdate(context.player._id, { $addToSet: { ownedGames: game } }, { new: true }).populate("ownedGames");
             }
             throw new AuthenticationError('Not logged in');
