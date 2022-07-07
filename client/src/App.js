@@ -1,61 +1,58 @@
 import React from "react";
 import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
+    ApolloClient,
+    InMemoryCache,
+    ApolloProvider,
+    createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Global/Navbar";
-import Home from "./pages/Home";
+// import Home from "./pages/Home";
 // import Login from "./pages/Login";
 
-
-
-
 const httpLink = createHttpLink({
-  uri: "/graphql",
+    uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
-  const token = localStorage.getItem("id_token");
-  // return the headers to the context so httpLink can read them
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : "",
-    },
-  };
+    // get the authentication token from local storage if it exists
+    const token = localStorage.getItem("id_token");
+    // return the headers to the context so httpLink can read them
+    return {
+        headers: {
+            ...headers,
+            authorization: token ? `Bearer ${token}` : "",
+        },
+    };
 });
 
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache(),
 });
 
 function App() {
-  return (
-    <ApolloProvider client={client}>
-      <Navbar />
-      <div>
-        <Router>
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          {/* <Route path="/about" element={<Dashboard />} />
+    return (
+        <ApolloProvider client={client}>
+            <Navbar />
+            <div>
+                <Router>
+                    <Routes>
+                        {/* <Route path="/" element={<Dashboard />} /> */}
+                        {/* <Route path="/about" element={<Dashboard />} />
           <Route path="/portfolio" element={<GroupDashboard />} />
           <Route path="/resume" element={<MyFriends />} />
           <Route path="/contact" element={<MyGames />} />
           <Route path="/contact" element={<MyGroups />} /> */}
-        </Routes>
-        </Router>
-      </div>
-   
-        {/* <Footer /> */}
-    </ApolloProvider>
-  );
+                    </Routes>
+                </Router>
+            </div>
+
+            {/* <Footer /> */}
+        </ApolloProvider>
+    );
 }
 
 export default App;

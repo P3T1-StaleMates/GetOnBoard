@@ -10,7 +10,7 @@ const typeDefs = gql`
 		ownedGames: [Game]
 		# Might not need this reference if this information is all self contained in Event
 		#events: [Event]
-		groups: [Group]
+		#groups: [Group]
 		friends: [Player]
 		posts: [Post]
 	}
@@ -68,9 +68,10 @@ const typeDefs = gql`
 type Query {
 	players: [Player]
 	player(username: String!): Player
-	me(_id: ID!): Player
+	me: Player
 	groups: [Group]
 	group(_id: ID!): Group
+	myGroups: [Group]
 	posts: [Post]
 	post(postId: ID!): Post
 	ownedEvents: [Event]
@@ -82,13 +83,13 @@ type Mutation {
 	addPlayer(name: String!, username: String!, email: String!, password: String!): Auth
 	login(email: String!, password: String!): Auth
 	updatePlayer(id: ID! name: String, username: String, email: String, password: String): Player
-	# Stuck on this one.
+	# Game Mutations
 	addGame(name: String!, description: String, genre: String, image: String, minPlayer: Int!, maxPlayer: Int!, averageTime: Int!): Player
 	removeGame(gameId: ID!): Player
 
 	#Event Mutations
-	createEvent(name: String!, game: String!, location: String!, date: String!): Event
-	deleteEvent(eventId: ID!): Event
+	createEvent(name: String!, gameId: ID!, location: String!, date: String!, groupId: ID!): Event
+	deleteEvent(eventId: ID!, groupId: ID!): Event
 	addEventWinner(eventId: ID!, winnerId: ID!): Event
 
 	#Group mutations
