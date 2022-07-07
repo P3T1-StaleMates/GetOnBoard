@@ -13,6 +13,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Global/Navbar";
 import Dashboard from "./pages/Dashboard";
 import Footer from "./components/Global/Footer";
+import Login from "./pages/Login"
+import Signup from "./pages/Signup"
 // import Login from "./pages/Login";
 
 const httpLink = createHttpLink({
@@ -48,7 +50,9 @@ function App() {
               <div className="col-8">
                 <div className="bg-cream">
                   <Routes>
-                    <Route path="/" element={<Dashboard />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
                     {/* <Route path="/about" element={<Dashboard />} />
           <Route path="/portfolio" element={<GroupDashboard />} />
           <Route path="/resume" element={<MyFriends />} />
