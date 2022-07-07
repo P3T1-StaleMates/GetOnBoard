@@ -55,9 +55,9 @@ const Home = () => {
         
           <div className="container">
             <div className="row">
-              <div className="col"> <PlayerCard/></div>
-              <div className="col">cards</div>
-              <div className="col">cards</div>
+              <div className="col"> <GameCard/></div>
+              <div className="col"><GameCard/></div>
+              <div className="col"><GameCard/></div>
             </div>
             <div className="row">
               <div className="col-8">large-card</div>
