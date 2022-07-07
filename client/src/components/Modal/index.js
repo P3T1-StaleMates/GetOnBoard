@@ -1,4 +1,5 @@
-function Modal(props) {
+export function Modal(props) {
+
     return (
       <Modal
         {...props}
@@ -42,5 +43,3 @@ function Modal(props) {
 //       </>
 //     );
 //   }
-  
-  render(<App />);6
