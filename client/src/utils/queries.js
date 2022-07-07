@@ -128,3 +128,18 @@ export const QUERY_GROUP = gql`
   }
 }
 `;
+
+export const QUERY_GAMES = gql`
+  query Games($name: String!) {
+    games(name: $name) {
+      name
+      description
+      genre
+      image
+      minPlayer
+      maxPlayer
+      averageTime
+      _id
+  }
+}
+`;

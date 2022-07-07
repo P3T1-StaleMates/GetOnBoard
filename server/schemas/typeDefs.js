@@ -76,6 +76,7 @@ type Query {
 	post(postId: ID!): Post
 	ownedEvents: [Event]
 	myEvents: [Event]
+	games(name: String!): [Game]
 }
 
 type Mutation {
