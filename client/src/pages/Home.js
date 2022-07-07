@@ -1,174 +1,96 @@
 import React from "react";
 import GameCard from "../components/Cards/GameCard";
 
+
 const Home = () => {
     return (
         <main className="bg-white mt-5 mb-5 mrl-20">
-            <div className="container">
-                <img
-                    href="#"
-                    className="brand-logo logo"
-                    src="assets/images/Get-on-Board.png"
-                />
-                <button type="button" className="btn">
-                    Log Out
-                </button>
+
+  <div className="container">
+    <div className="row">
+      <div className="col-2">
+ 
+        <img
+        href="#"
+            className="brand-logo padding-top-20 logo"
+            src="assets/images/Get-on-Board.png"
+          />
+          <ul className="nav flex-column padding-top-60">
+            <li className="nav-item">
+              <a className="nav-link active" href="#">My Dashboard</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link active" href="#">My Friends</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">My Games</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">Schedule Meet Up</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link active" href="#">About</a>
+            </li>
+          </ul>
+          <div className="padding-top-280">
+          <button type="button" className=" btn-clear center">Log Out</button>
+        </div>
+        </div>
+      
+
+<div className="col-8">
+        <div className="bg-cream">
+        <section className="padding-40">
+          <h5>Hello, John Doe!</h5>
+          <p>Welcome back let's Get on Board</p>
+        </section>
+
+        <section>
+        
+          <div className="container">
+            <div className="row">
+              <div className="col">cards</div>
+              <div className="col">cards</div>
+              <div className="col">cards</div>
             </div>
-            <div className="container">
-                <div className="mt-5">
-                    <h5>Hello, John Doe!</h5>
-                    <p>Welcome back let's Get on Board</p>
-                </div>
-                <div className="row">
-                    <div className="col ">
-                        <div className="container ">
-                            <div className="row align-items-center">
-                                <div className="col">
-                                  <GameCard title="game title" players="2" timeLength="30 min" imgUrl="/assets/images/youreonmute.jpg"/>
-                                    {/* <div
-                                        className="card"
-                                        style={{ width: "15rem" }}
-                                    >
-                                        <img
-                                            src="/assets/images/youreonmute.jpg"
-                                            className="card-img-top"
-                                            alt="..."
-                                        />
-                                        <div className="card-body">
-                                            <h5 className="card-title">
-                                                Game Title
-                                            </h5>
-                                            <p className="card-text">
-                                                2 Player - 10 min Game
-                                            </p>
-                                            <a href="#"></a>
-                                        </div>
-                                    </div> */}
-                                </div>
-                                <div className="col">
-                                    <div
-                                        className="card"
-                                        style={{ width: "15rem" }}
-                                    >
-                                        <img
-                                            src="/assets/images/youreonmute.jpg"
-                                            className="card-img-top"
-                                            alt="..."
-                                        />
-                                        <div className="card-body">
-                                            <h5 className="card-title">
-                                                Game Title
-                                            </h5>
-                                            <p className="card-text">
-                                                2 Player - 10 min Game
-                                            </p>
-                                            <a href="#"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col">
-                                    <div
-                                        className="card"
-                                        style={{ width: "15rem" }}
-                                    >
-                                        <img
-                                            src="/assets/images/youreonmute.jpg"
-                                            className="card-img-top"
-                                            alt="..."
-                                        />
-                                        <div className="card-body">
-                                            <h5 className="card-title">
-                                                Game Title
-                                            </h5>
-                                            <p className="card-text">
-                                                2 Player - 10 min Game
-                                            </p>
-                                            <a href="#"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* <!-- end of cards --> */}
-
-                            <div className="row align-items-center">
-                                <div className="col">
-                                    <div
-                                        className="card"
-                                        style={{ width: "15rem" }}
-                                    >
-                                        <img
-                                            src="/assets/images/youreonmute.jpg"
-                                            className="card-img-top"
-                                            alt="..."
-                                        />
-                                        <div className="card-body">
-                                            <h5 className="card-title">
-                                                Game Title
-                                            </h5>
-                                            <p className="card-text">
-                                                2 Player - 10 min Game
-                                            </p>
-                                            <a href="#"></a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col">
-                                    <div
-                                        className="card"
-                                        style={{ width: "15rem" }}
-                                    >
-                                        <img
-                                            src="/assets/images/youreonmute.jpg"
-                                            className="card-img-top"
-                                            alt="..."
-                                        />
-                                        <div className="card-body">
-                                            <h5 className="card-title">
-                                                Game Title
-                                            </h5>
-                                            <p className="card-text">
-                                                2 Player - 10 min Game
-                                            </p>
-                                            <a href="#"></a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* <!-- solo card --> */}
-                                <div className="col">
-                                    <div
-                                        className="card"
-                                        style={{ width: "15rem" }}
-                                    >
-                                        <img
-                                            src="/assets/images/dice-and-pawns.jpg"
-                                            className="card-img-top"
-                                            alt="..."
-                                        />
-                                        <div className="card-body">
-                                            <h5 className="card-title">
-                                                LET'S <br /> EXPLORE!
-                                            </h5>
-                                            <p className="card-text">
-                                                Find and add more games
-                                            </p>
-                                            <button
-                                                type="button"
-                                                className="btn center"
-                                            >
-                                                EXPLORE
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div className="row">
+              <div className="col-8">large-card</div>
+              <div className="col-4">small-card</div>
             </div>
-        </main>
+          </div>
+          
+        </section>
+        </div>
+      </div>
+
+ 
+  
+
+  
+
+      <div className="col-2">
+       
+        <div className="container">
+          <div className="row">
+            <section>
+            <div className="col"><img className="icon" src="assets/images/man-icon.png" alt="Avatar"/><h3 className="padding-top-20">John Doe</h3>
+            </div>
+            </section>
+
+       
+          </div>
+          <div className="row">
+            <div className="col"><h3 className="padding-top-40">PUT AD HERE</h3>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+
+</div>
+    </main>
     );
 };
 
