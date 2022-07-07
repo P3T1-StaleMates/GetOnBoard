@@ -2,34 +2,34 @@
 
 const Navbar = () => {
   return (
-    <div>
-      <div>
-        {/* logo goes here */}
-        <p>
-          Get On Board
-        </p>
-        <p>
-          Streamline your boardgame night!
-        </p>
-
-        {/* these links should render conditionally */}
-        <ul>
-          {/* Not logged in */}
-          <li> Log In </li>
-          <li> About </li>
-
-          {/* Logged In */}
-
-          <li> My Dashboard </li>
-          <li> My Games </li>
-          <li> My Friends </li>
-          <li> Groups </li>
-          <li> Events </li>
-          <li> Log Out </li>
-
-        </ul>
-      </div>
-    </div>
+    <div className="col-2">
+ 
+        <img
+        href="#"
+            className="brand-logo padding-top-20 logo"
+            src="assets/images/Get-on-Board.png"
+          />
+          <ul className="nav flex-column padding-top-60">
+            <li className="nav-item">
+              <a className="nav-link active" href="#">My Dashboard</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link active" href="#">My Friends</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">My Games</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">Schedule Meet Up</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link active" href="#">About</a>
+            </li>
+          </ul>
+          <div className="padding-top-280">
+          <button type="button" className=" btn-clear center">Log Out</button>
+        </div>
+        </div>
   );
 };
 
