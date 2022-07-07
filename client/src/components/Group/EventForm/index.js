@@ -1,4 +1,4 @@
-// small form component to add more players to an event
+// small form component to create an event
 
 const EventForm = () => {
     return

@@ -14,8 +14,8 @@ const GameCard = (props) => {
                 alt="description"
             />
             <div className="card-body">
-                <h5 className="card-title">{title}</h5>
-                <p className="card-text">{`#ofplayers:${players} gamelength: ${timeLength}`}</p>
+                <h5 className="card-title">Title of game: {title}</h5>
+                <p className="card-text">{`#ofplayers: ${players} Gamelength: ${timeLength}`}</p>
                 {/* <a href="#"></a> */}
             </div>
         </div>
