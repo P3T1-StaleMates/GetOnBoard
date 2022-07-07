@@ -2,7 +2,6 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/P3T1-StaleMates/GetOnBoard)
 ![GitHub top language](https://img.shields.io/github/languages/top/P3T1-StaleMates/GetOnBoard)
 
-
 ## Description
 
 Boardgame night web application
@@ -28,7 +27,7 @@ Forthcoming
 
 ## Contact
 
-The members of StaleMates - 
+The members of StaleMates -
 
 Jesse Comeau - [github.com/JesseComeau](https://github.com/JesseComeau)  
 Miguel Escobar - [github.com/mae2136](https://github.com/mae2136)  
@@ -37,7 +36,7 @@ Lea Linnea - [github.com/lealinnea](https://github.com/lealinnea)
 
 ## License
 
- Copyright (C) StaleMates 2022
+Copyright (C) StaleMates 2022
 
 The owner of this project has not selected a license.
 
