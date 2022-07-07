@@ -41,8 +41,9 @@ const Home = () => {
 <div className="col-8">
         <div className="bg-cream">
         <section className="padding-40">
-          <h5>Hello, John Doe!</h5>
+        <div className="col"><img className="icon" src="/assets/images/man-icon.jpg" alt="Avatar"/><h5>Hello, John Doe!</h5>
           <p>Welcome back let's Get on Board</p>
+          </div>
         </section>
 
         <section>
@@ -73,9 +74,9 @@ const Home = () => {
         <div className="container">
           <div className="row">
             <section>
-            <div className="col"><img className="icon" src="assets/images/man-icon.png" alt="Avatar"/><h3 className="padding-top-20">John Doe</h3>
-            </div>
+          
             </section>
+           
 
        
           </div>
