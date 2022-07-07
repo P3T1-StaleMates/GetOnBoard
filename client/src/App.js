@@ -9,7 +9,7 @@ import { setContext } from "@apollo/client/link/context";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Global/Navbar";
-// import Home from "./pages/Home";
+import Home from "./pages/Home";
 // import Login from "./pages/Login";
 
 const httpLink = createHttpLink({
@@ -36,11 +36,11 @@ const client = new ApolloClient({
 function App() {
     return (
         <ApolloProvider client={client}>
-            <Navbar />
+          
             <div>
                 <Router>
                     <Routes>
-                        {/* <Route path="/" element={<Dashboard />} /> */}
+                        <Route path="/" element={<Home />} />
                         {/* <Route path="/about" element={<Dashboard />} />
           <Route path="/portfolio" element={<GroupDashboard />} />
           <Route path="/resume" element={<MyFriends />} />
