@@ -1,4 +1,3 @@
-
 // card component for games
 
 const GameCard = (props) => {
