@@ -1,5 +1,7 @@
 import React from "react";
 import GameCard from "../components/Cards/GameCard";
+import PlayerCard from "../components/Cards/PlayerCard";
+import EventCard from "../components/Cards/EventCard";
 
 
 const Home = () => {
@@ -41,8 +43,11 @@ const Home = () => {
 <div className="col-8">
         <div className="bg-cream">
         <section className="padding-40">
-        <div className="col"><img className="icon" src="/assets/images/man-icon.jpg" alt="Avatar"/><h5>Hello, John Doe!</h5>
+        <div className="col"><img className="icon" src="/assets/images/man-icon.jpg" alt="Avatar"/>
+          <div>
+          <h5>Hello, John Doe!</h5>
           <p>Welcome back let's Get on Board</p>
+          </div>
           </div>
         </section>
 
@@ -50,7 +55,7 @@ const Home = () => {
         
           <div className="container">
             <div className="row">
-              <div className="col">cards</div>
+              <div className="col"> <PlayerCard/></div>
               <div className="col">cards</div>
               <div className="col">cards</div>
             </div>

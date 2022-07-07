@@ -38,6 +38,7 @@
     margin-right: 4%;
     margin-left: 4%;
   }
+ 
   /* ====positions=== */
   
   .center {
@@ -87,8 +88,7 @@
   
   /* ====background==== */
   .bg-cream {
-    background-color: #e8d7c9;
-    opacity: 40%;
+    background-color: rgba(232,215,201,0.6);
     background-position: center;
     border-radius: 30px;
     height: 800px;

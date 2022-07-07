@@ -87,8 +87,7 @@ h6 {
 
 /* ====background==== */
 .bg-cream {
-  background-color: #e8d7c9;
-  opacity: 40%;
+  background-color: 	232	215	201 .9;
   background-position: center;
   border-radius: 30px;
   height: 800px;
