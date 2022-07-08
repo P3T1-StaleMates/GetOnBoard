@@ -49,26 +49,23 @@ export const QUERY_PLAYER = gql`
 `;
 
 export const QUERY_ME = gql`
-  query me($id: ID!) {
-  me(_id: $id) {
+  query Me {
+  me {
     _id
     name
-    username
-    email
-    password
     ownedGames {
       _id
       name
       description
       genre
-    }
-    groups {
-      _id
-      name
+      image
+      minPlayer
+      maxPlayer
+      averageTime
     }
     friends {
-      _id
       name
+      username
     }
   }
 }
