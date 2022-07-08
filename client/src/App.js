@@ -19,6 +19,7 @@ import MyFriends from "./pages/MyFriends"
 import MyGames from "./pages/MyGames"
 import MyGroups from "./pages/MyGroups"
 import GroupDashboard from "./pages/GroupDashboard"
+import About from "./pages/About"
 // import Login from "./pages/Login";
 
 const httpLink = createHttpLink({
@@ -61,7 +62,7 @@ function App() {
                     <Route path="/myfriends" element={<MyGroups />} />
                     <Route path="/mygames" element={<MyGames />} />
                     <Route path="/groupdashboard" element={<GroupDashboard />} />
-
+                    <Route path="/about" element={<About />} />
                   </Routes>
                 </div>
               </div>
