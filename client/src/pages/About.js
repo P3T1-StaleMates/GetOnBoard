@@ -1,6 +1,6 @@
 import GameCard from "../components/Cards/GameCard";
 
-const MyGroups = () => {
+const About = () => {
     return(
         <>
          <section className="padding-40">
@@ -30,4 +30,4 @@ const MyGroups = () => {
     )
 }
 
-export default MyGroups
+export default About
