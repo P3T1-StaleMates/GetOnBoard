@@ -7,6 +7,7 @@ const EventCard = (props) => {
 
     return (
         <div className="card mb-3">
+
             <div className="row g-0">
                 <div className="col-md-2">{/* does something go here? */}</div>
                 <div className="col-md-8">

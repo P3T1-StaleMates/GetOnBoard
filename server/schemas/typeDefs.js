@@ -28,10 +28,10 @@ const typeDefs = gql`
 
 	type Game {
 		_id: ID!
-		name: String
+		title: String
 		description: String
 		genre: String
-		image: String
+		imageUrl: String
 		minPlayer: Int
 		maxPlayer: Int
 		averageTime: Int
@@ -76,7 +76,7 @@ type Query {
 	post(postId: ID!): Post
 	ownedEvents: [Event]
 	myEvents: [Event]
-	games(name: String!): [Game]
+	games(title: String!): [Game]
 }
 
 type Mutation {
@@ -84,8 +84,10 @@ type Mutation {
 	addPlayer(name: String!, username: String!, email: String!, password: String!): Auth
 	login(email: String!, password: String!): Auth
 	updatePlayer(id: ID! name: String, username: String, email: String, password: String): Player
+	addFriend(id: ID!): Player
+	removeFriend(id: ID!): Player
 	# Game Mutations
-	addGame(name: String!, description: String, genre: String, image: String, minPlayer: Int!, maxPlayer: Int!, averageTime: Int!): Player
+	addGame(title: String!, description: String, genre: String, imageUrl: String, minPlayer: Int!, maxPlayer: Int!, averageTime: Int!): Player
 	removeGame(gameId: ID!): Player
 
 	#Event Mutations
