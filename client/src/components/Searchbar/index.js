@@ -28,7 +28,7 @@ const SearchBar = () => {
         } else {
             setGameData(game);
         }
-        
+
         handleShow();
     };
 
@@ -38,18 +38,19 @@ const SearchBar = () => {
         setSearchTerm(value);
     };
 
-    if(show) {
-        return <Modal gameData={gameData}/>;
-    }
-
     return (
-        <form className="m-2" onSubmit={handleFormSubmit}>
-            <label>
-                Board Game Search:
-                <input type="text" name='searchText' placeholder="Catan" value={searchTerm} onChange={handleChange} />
-            </label>
-            <input type="submit" value="Submit" />
-        </form>
+        <>
+            <form className="m-2" onSubmit={handleFormSubmit}>
+                <label>
+                    Board Game Search:
+                    <input type="text" name='searchText' placeholder="Catan" value={searchTerm} onChange={handleChange} />
+                </label>
+                <input type="submit" value="Submit" />
+            </form>
+            {/* {if (show) {
+                <Modal gameData={gameData} />;
+            }} */}
+        </>
     );
 };
 
