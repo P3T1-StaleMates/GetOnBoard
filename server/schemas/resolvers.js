@@ -6,7 +6,7 @@ const resolvers = {
     Query: {
         // Get all Players
         players: async () => {
-            return Player.find().populate("ownedGames").populate("groups");
+            return Player.find().populate("ownedGames").populate("friends");
         },
         // Get a single player's information (to look up friends by username)
         player: async (parent, { username }) => {
@@ -88,13 +88,32 @@ const resolvers = {
 
             throw new AuthenticationError('Not logged in');
         },
-        // Used to add a new game to a Player's collection of games
-        addGame: async (parent, { name, description, genre, image, minPlayer, maxPlayer, averageTime }, context) => {
+        // Used to add a friend to a player
+        addFriend: async (parent, args, context) => {
 
             if (context.player) {
-                let game = await Game.findOne({ name });
+                console.log(args)
+                let addedFriend = await Player.findById(args.id);
+                console.log(addedFriend)
+                return Player.findByIdAndUpdate(context.player._id, { $addToSet: { friends: addedFriend } }, { new: true }).populate("friends");
+            }
+            throw new AuthenticationError('Not logged in');
+        },
+        removeFriend: async (parent, args, context) => {
+
+            if (context.player) {
+
+                return Player.findByIdAndUpdate(context.player._id, { $pull: { friends: args.id } }, { new: true }).populate("friends");
+            }
+            throw new AuthenticationError('Not logged in');
+        },
+        // Used to add a new game to a Player's collection of games
+        addGame: async (parent, { title, description, genre, imageUrl, minPlayer, maxPlayer, averageTime }, context) => {
+
+            if (context.player) {
+                let game = await Game.findOne({ title });
                 if(!game) {
-                    game = await Game.create({ name, description, genre, image, minPlayer, maxPlayer, averageTime });
+                    game = await Game.create({ title, description, genre, imageUrl, minPlayer, maxPlayer, averageTime });
                 }
                 return Player.findByIdAndUpdate(context.player._id, { $addToSet: { ownedGames: game } }, { new: true }).populate("ownedGames");
             }
