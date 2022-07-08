@@ -16,6 +16,8 @@ import Footer from "./components/Global/Footer";
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import MyFriends from "./pages/MyFriends"
+import MyGames from "./pages/MyGames"
+import GroupDashboard from "./pages/GroupDashboard"
 // import Login from "./pages/Login";
 
 const httpLink = createHttpLink({
@@ -55,11 +57,9 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/myfriends" element={<MyFriends />} />
-                    {/* <Route path="/about" element={<Dashboard />} />
-          <Route path="/portfolio" element={<GroupDashboard />} />
-          <Route path="/resume" element={<MyFriends />} />
-          <Route path="/contact" element={<MyGames />} />
-          <Route path="/contact" element={<MyGroups />} /> */}
+                    <Route path="/mygames" element={<MyGames />} />
+                    <Route path="/groupdashboard" element={<GroupDashboard />} />
+                
                   </Routes>
                 </div>
               </div>
