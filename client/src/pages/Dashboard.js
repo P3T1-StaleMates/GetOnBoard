@@ -1,6 +1,6 @@
 import GameCard from "../components/Cards/GameCard";
-import PlayerCard from "../components/Cards/PlayerCard";
-import EventCard from "../components/Cards/EventCard";// user dashboard - holds other displays inside
+// import PlayerCard from "../components/Cards/PlayerCard";
+// import EventCard from "../components/Cards/EventCard";// user dashboard - holds other displays inside
 
 const PlayerDash = () => {
     return(
