@@ -9,6 +9,7 @@ const Navbar = () => {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
+    window.location.assign('/');
   };
   return (
     <div className="col-2">
@@ -26,6 +27,9 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <Link className="nav-link active" to="/myfriends">My Friends</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link active" to="/mygroups">My Groups</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/mygames">My Games</Link>
