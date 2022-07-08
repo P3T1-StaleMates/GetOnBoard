@@ -47,9 +47,11 @@ const SearchBar = () => {
                 </label>
                 <input type="submit" value="Submit" />
             </form>
-            {/* {if (show) {
-                <Modal gameData={gameData} />;
-            }} */}
+            {() => {
+                if(show) {
+                    return <Modal gameData={gameData} handleClose={handleClose} />
+                }
+            }}
         </>
     );
 };
