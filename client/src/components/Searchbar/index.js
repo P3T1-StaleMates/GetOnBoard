@@ -18,13 +18,14 @@ const SearchBar = () => {
         event.preventDefault();
 
         const { loading, data } = useQuery(QUERY_GAMES, {
-            variables: { name: searchTerm },
+            variables: { title: searchTerm },
         });
         const game = data.games;
 
         if (game === null) {
-            const data = gameSearch(searchTerm);
-            setGameData(data);
+            const newGameData = gameSearch(searchTerm);
+            
+            setGameData(newGameData);
         } else {
             setGameData(game);
         }
@@ -45,13 +46,9 @@ const SearchBar = () => {
                     Board Game Search:
                     <input type="text" name='searchText' placeholder="Catan" value={searchTerm} onChange={handleChange} />
                 </label>
-                <input type="submit" value="Submit" />
+                <button type="submit" class="btn btn-primary" value="Submit" />
             </form>
-            {() => {
-                if(show) {
-                    return <Modal gameData={gameData} handleClose={handleClose} />
-                }
-            }}
+            {show ? <Modal gameData={gameData} handleClose={handleClose} /> : <div></div>}
         </>
     );
 };
