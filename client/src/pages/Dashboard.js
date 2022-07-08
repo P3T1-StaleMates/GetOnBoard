@@ -1,4 +1,5 @@
 import GameCard from "../components/Cards/GameCard";
+import CardContainer from "../components/Cards/CardContainer";
 // import PlayerCard from "../components/Cards/PlayerCard";
 // import EventCard from "../components/Cards/EventCard";// user dashboard - holds other displays inside
 
@@ -22,8 +23,8 @@ const PlayerDash = () => {
               <div className="col"><GameCard/></div>
             </div>
             <div className="row">
-              <div className="col-8">large-card</div>
-              <div className="col-4">small-card</div>
+              <div className="col-8"><CardContainer/></div>
+              <div className="col-4"><GameCard/></div>
             </div>
           </div>
         </section>
