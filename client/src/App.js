@@ -65,7 +65,7 @@ function App() {
               </div>
 
               <div className="col-2">
-               <Footer/>
+                <Footer/>
               </div>
             </div>
           </div>

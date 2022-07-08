@@ -3,19 +3,14 @@
 const GameCard = (props) => {
     // needs to display game information
 
-    const { title, players, timeLength, imgUrl } = props;
+    const { _id, title, imageUrl, averageTime, minPlayer, maxPlayer } = props;
 
     return (
-        <div className="card" style={{ width: "15rem" }}>
-            <img
-                src={imgUrl}
-                className="card-img-top"
-                alt="description"
-            />
+        <div className="card" key={_id} style={{ width: "15rem" }}>
+            <img src={imageUrl} className="card-img-top" alt="description" />
             <div className="card-body">
                 <h5 className="card-title">Title of game: {title}</h5>
-                <p className="card-text">{`#ofplayers: ${players} Gamelength: ${timeLength}`}</p>
-                {/* <a href="#"></a> */}
+                <p className="card-text">{`#ofplayers: ${`${minPlayer} - ${maxPlayer}`} Gamelength: ${averageTime}`}</p>
             </div>
         </div>
     );
