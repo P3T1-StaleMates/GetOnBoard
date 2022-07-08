@@ -38,7 +38,7 @@ const Navbar = () => {
               <Link className="nav-link" to="/createevent">Schedule Meet Up</Link>
             </li> */}
             <li className="nav-item">
-              <Link className="nav-link active" to="/abouttheteam">About</Link>
+              <Link className="nav-link active" to="/about">About</Link>
             </li>
           </ul>
           <div className="padding-top-280">

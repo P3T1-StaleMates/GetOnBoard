@@ -17,6 +17,7 @@ import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import MyFriends from "./pages/MyFriends"
 import MyGames from "./pages/MyGames"
+import MyGroups from "./pages/MyGroups"
 import GroupDashboard from "./pages/GroupDashboard"
 // import Login from "./pages/Login";
 
@@ -57,9 +58,10 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/myfriends" element={<MyFriends />} />
+                    <Route path="/myfriends" element={<MyGroups />} />
                     <Route path="/mygames" element={<MyGames />} />
                     <Route path="/groupdashboard" element={<GroupDashboard />} />
-                
+
                   </Routes>
                 </div>
               </div>
