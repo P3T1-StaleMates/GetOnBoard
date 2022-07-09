@@ -102,15 +102,13 @@ const resolvers = {
         },
 
         // Used to remove a friend from a user and susbequent removal from the recipient end.
-        removeFriend: async (parent, args, context) => {
+        removeFriend: async (parent, {id}, context) => {
 
             if (context.player) {
 
-                console.log(args)
+                let removedFriend = await Player.findByIdAndUpdate(id, { $pull: { friends: context.player._id } }, { new: true });
 
-                let removedFriend = await Player.findByIdAndUpdate(args.id, { $pull: { friends: context.player._id } }, { new: true });
-
-                return Player.findByIdAndUpdate(context.player._id, { $pull: { friends: args.id } }, { new: true }).populate("friends");
+                return Player.findByIdAndUpdate(context.player._id, { $pull: { friends: id } }, { new: true }).populate("friends");
             }
             throw new AuthenticationError('Not logged in');
         },

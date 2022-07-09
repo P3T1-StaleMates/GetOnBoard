@@ -23,13 +23,11 @@ const AddFriend = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        // console.log(formState);
+
         try {
             const { data } = await addFriend({
                 variables: { ...formState }
             })
-
-            console.log(data)
 
 
             Auth.login(data.login.token);
@@ -56,7 +54,7 @@ const AddFriend = () => {
 
             {error && (
                 <div className="my-3 p-3 bg-danger text-white">
-                    {error.message}
+                    Unable to locate a user by this username.
                 </div>
             )}
         </>

@@ -9,23 +9,17 @@ import Auth from '../../../utils/auth'
 const PlayerCard = (props) => {
     // needs to display player information
     const { username } = props.info;
-    console.log("props", props)
 
-    const [removeFriend, { error, data }] = useMutation(REMOVE_FRIEND);
+    const [removeFriend, { error  }] = useMutation(REMOVE_FRIEND);
 
-    const handleFriendDelete = async (event) => {
-        event.preventDefault();
+    const removeFriendId = props.info._id
 
-        const removedFriend=props.info._id
-
+    const handleFriendDelete = async () => {
         try {
           const { data } = await removeFriend({
-            variables: { removedFriend },
-          });
+            variables: { removeFriendId },
+        });
 
-          console.log(data)
-
-          Auth.login(data.addProfile.token);
         } catch (e) {
           console.error(e);
         }
@@ -48,7 +42,7 @@ const PlayerCard = (props) => {
             </div>
             {error && (
                 <div className="my-3 p-3 bg-danger text-white">
-                    {error.message}
+                    Unable to locate a user with that username.
                 </div>
             )}
         </>
