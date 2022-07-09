@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_FRIEND } from '../../utils/mutations'
-
+import "./AddFriend.css" 
 import Auth from '../../utils/auth';
 
 const AddFriend = () => {
@@ -35,8 +35,15 @@ const AddFriend = () => {
     }
 
     return (
-        <>
-            <form className="d-flex" onSubmit={handleFormSubmit}>
+
+        <div className="card card-height"style={{ width: '15rem' }}>
+            
+          <img
+            className="head-img center"
+            src="/assets/images/man-icon.jpg"
+            alt="Avatar"
+          />
+         <form className="d-flex" onSubmit={handleFormSubmit}>
                 <label >Add a Friend: </label>
                 <input
                     name="username"
@@ -46,17 +53,17 @@ const AddFriend = () => {
                     aria-label="Search"
                     value={formState.username}
                     onChange={handleChange}
-                />
-                <button variant="outline-success">Add</button>
-            </form>
-
-            {error && (
+                /><br></br>
+            <button className='btn-green' variant="outline-success">Add</button>
+        </form>
+        
+         {error && (
                 <div className="my-3 p-3 bg-danger text-white">
                     Unable to locate a user by this username.
                 </div>
             )}
-        </>
-    )
+        </div>
+
 }
 
 export default AddFriend;
