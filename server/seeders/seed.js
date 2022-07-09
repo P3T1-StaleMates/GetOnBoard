@@ -6,6 +6,9 @@ const gameSeeds = require('./gameSeeds.json');
 db.once('open', async () => {
   try {
 
+    await Player.deleteMany({});
+    await Game.deleteMany({});
+
     let playerIds = []
 
     for (let i = 0; i < playerSeeds.length; i++) {
