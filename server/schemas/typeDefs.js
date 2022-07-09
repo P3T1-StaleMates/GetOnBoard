@@ -84,7 +84,7 @@ type Mutation {
 	addPlayer(name: String!, username: String!, email: String!, password: String!): Auth
 	login(email: String!, password: String!): Auth
 	updatePlayer(id: ID! name: String, username: String, email: String, password: String): Player
-	addFriend(id: ID!): Player
+	addFriend(username: String!): Player
 	removeFriend(id: ID!): Player
 	# Game Mutations
 	addGame(title: String!, description: String, genre: String, imageUrl: String, minPlayer: Int!, maxPlayer: Int!, averageTime: Int!): Player
