@@ -76,6 +76,7 @@ type Query {
 	post(postId: ID!): Post
 	ownedEvents: [Event]
 	myEvents: [Event]
+	event(eventId: ID!): Event
 	games(title: String!): [Game]
 }
 

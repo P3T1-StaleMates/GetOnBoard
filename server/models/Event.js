@@ -50,14 +50,10 @@ const eventSchema = new Schema(
     }
 );
 
-eventSchema.virtual('groupGames').get(function () {
-    let groupGames = [];
-    this.players.forEach(ownedGames => {
-        for (let i = 0; i < ownedGames.length; i++) {
-            groupGames.push(ownedGames[i])
-        }
-    });
-    return groupGames
+eventSchema.virtual('groupGames', {
+    ref: "Player",
+    localField: '_id',
+    foreignField: "ownedGames"
 })
 
 const Event = model('Event', eventSchema);
