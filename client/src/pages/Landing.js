@@ -1,3 +1,5 @@
+import Signup from "./Signup"
+
 const Landing = () => {
     return <div>
 
@@ -5,6 +7,8 @@ const Landing = () => {
         <br />
 
         Streamline your game nights!
+
+        <Signup />
     </div>
 }
 
