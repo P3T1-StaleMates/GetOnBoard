@@ -1,0 +1,24 @@
+form{
+text-align: center;
+/* margin-top: 10rem; */
+
+}
+.card-height{
+height: 300px;
+}
+
+
+.btn-green {
+    text-align: center;
+    background-color: #a9e800;
+    border-radius: 20px;
+    height: 4rem;
+    width: 12rem;
+    border: none;
+    font-weight: bold;
+  }
+
+  .head-img{
+      width: 70%;
+      
+  }
