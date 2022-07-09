@@ -7,7 +7,7 @@ import CardContainer from "../components/Cards/CardContainer";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 
-const PlayerDash = () => {
+const Dashboard = () => {
     const { loading, data } = useQuery(QUERY_ME);
     if (loading) {
         return <div>Loading...</div>;
@@ -53,4 +53,4 @@ const PlayerDash = () => {
     );
 };
 
-export default PlayerDash;
+export default Dashboard;
