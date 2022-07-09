@@ -29,7 +29,7 @@ const Navbar = () => {
               <Link className="nav-link active" to="/MyFriends">My Friends</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link active" to="MyGroups">My Groups</Link>
+              <Link className="nav-link active" to="/MyGroups">My Groups</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/MyGames">My Games</Link>
