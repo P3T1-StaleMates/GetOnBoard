@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 import Modal from "../Modal";
 import { gameSearch } from "../../utils/gameSearch";
@@ -14,8 +13,9 @@ const SearchBar = () => {
     const handleShow = () => setShow(true);
     const [gameData, setGameData] = useState("")
 
-    // const handleFormSubmit = async (event) => {
-    //     event.preventDefault();
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+        console.log("Hello World")
 
     //     const { loading, data } = useQuery(QUERY_GAMES, {
     //         variables: { title: searchTerm },
@@ -35,8 +35,8 @@ const SearchBar = () => {
     //         setGameData(game);
     //     }
 
-    //     handleShow();
-    // };
+        handleShow();
+    };
 
     const handleChange = (event) => {
         const { value } = event.target;
@@ -46,7 +46,7 @@ const SearchBar = () => {
 
     return (
         <>
-            <form className="m-2 seachbar " onSubmit={()=> {console.log("Hello World")}}>
+            <form className="m-2 seachbar " onSubmit={handleFormSubmit}>
                 <label>
                     Board Game Search:
                     <input type="text" name='searchText' placeholder="Catan" value={searchTerm} onChange={handleChange} />

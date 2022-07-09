@@ -2,6 +2,7 @@ import GameCard from "../Cards/GameCard"
 
 const Modal = ({ gameData, handleClose }) => {
   // ADD_GAME mutation goes here
+  console.log("HandleClose: ", handleClose);
 
   return (
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -14,14 +15,15 @@ const Modal = ({ gameData, handleClose }) => {
             </button>
           </div>
           <div class="modal-body">
-            {gameData.forEach((game, index) => {
-              <GameCard name={game.name} description={game.description} imageUrl={game.imageUrl} index={index} averageTime={game.averageTime} minPlayers={game.minPlayers} maxPlayers={game.maxPlayers}/>
-              // Add button to add game to ownedGames for player using mutation
+            {gameData.map((game) => {
+              <div key={game.title}>
+                <GameCard game={gameData}/>
+                <button type="button" class="btn btn-primary">Save Game</button>
+              </div>
             })}
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal" onSubmit={handleClose}>Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
