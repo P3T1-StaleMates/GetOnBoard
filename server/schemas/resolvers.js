@@ -49,8 +49,8 @@ const resolvers = {
             throw new AuthenticationError('Not logged in')
         },
         // Used to find Games in the database by name
-        games: async (parent, { name }) => {
-            return await Game.findOne({ name });
+        games: async (parent, { title }) => {
+            return await Game.find({ title });
         }
     },
 

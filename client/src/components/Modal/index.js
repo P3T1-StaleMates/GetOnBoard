@@ -1,4 +1,4 @@
-import { GameCard } from "../Cards/GameCard"
+import GameCard from "../Cards/GameCard"
 
 const Modal = ({ gameData, handleClose }) => {
   // ADD_GAME mutation goes here

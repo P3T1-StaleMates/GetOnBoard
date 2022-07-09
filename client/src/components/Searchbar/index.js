@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
-import { Modal } from "../Modal";
+import Modal from "../Modal";
 import { gameSearch } from "../../utils/gameSearch";
-
+import "./SearchBar.css"
 import { QUERY_GAMES } from "../../utils/queries";
 
 const SearchBar = () => {
@@ -12,23 +12,23 @@ const SearchBar = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const [gameData, setGameData] = useState({})
+    const [gameData, setGameData] = useState("")
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
-        const { loading, data } = useQuery(QUERY_GAMES, {
-            variables: { title: searchTerm },
-        });
-        const game = data.games;
+        // const { loading, data } = useQuery(QUERY_GAMES, {
+        //     variables: { title: searchTerm },
+        // });
+        // const game = data.games;
 
-        if (game === null) {
+        // if (game === null) {
             const newGameData = gameSearch(searchTerm);
             
             setGameData(newGameData);
-        } else {
-            setGameData(game);
-        }
+        // } else {
+        //     setGameData(game);
+        // }
 
         handleShow();
     };
@@ -41,12 +41,12 @@ const SearchBar = () => {
 
     return (
         <>
-            <form className="m-2" onSubmit={handleFormSubmit}>
+            <form className="m-2 seachbar " onSubmit={handleFormSubmit}>
                 <label>
                     Board Game Search:
                     <input type="text" name='searchText' placeholder="Catan" value={searchTerm} onChange={handleChange} />
                 </label>
-                <button type="submit" class="btn btn-primary" value="Submit" />
+                <button type="submit" className=" btn-green " value="Submit">Search</button>
             </form>
             {show ? <Modal gameData={gameData} handleClose={handleClose} /> : <div></div>}
         </>

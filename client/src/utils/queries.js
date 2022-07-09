@@ -127,8 +127,8 @@ export const QUERY_GROUP = gql`
 `;
 
 export const QUERY_GAMES = gql`
-  query Games($name: String!) {
-    games(name: $name) {
+  query Games($title: String!) {
+    games(title: $title) {
       title
       description
       genre
