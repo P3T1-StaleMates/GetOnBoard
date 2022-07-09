@@ -57,14 +57,14 @@ function App() {
                 <div className="bg-cream">
                   <Routes>
                     <Route path="/" element={<Landing />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<Signup />} />
-                    <Route path="/myfriends" element={<MyFriends />} />
+                    <Route path="/Dashboard" element={<Dashboard />} />
+                    <Route path="/Login" element={<Login />} />
+                    <Route path="/Signup" element={<Signup />} />
+                    <Route path="/Myfriends" element={<MyFriends />} />
                     {/* <Route path="/myfriends" element={<MyGroups />} /> */}
-                    <Route path="/mygames" element={<MyGames />} />
+                    <Route path="/Mygames" element={<MyGames />} />
                     {/* <Route path="/groupdashboard" element={<GroupDashboard />} /> */}
-                    <Route path="/about" element={<About />} />
+                    <Route path="/About" element={<About />} />
                   </Routes>
                 </div>
               </div>
