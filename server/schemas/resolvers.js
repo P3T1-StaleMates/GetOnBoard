@@ -44,7 +44,14 @@ const resolvers = {
         // Used to find events I belong to
         myEvents: async (parent, args, context) => {
             if (context.player._id) {
-                return await Event.find({ players: { _id: context.player._id } }).populate("game").populate("owner").populate("players");
+                return await Event.find({ players: { _id: context.player._id } }).populate("eventGames").populate("owner").populate("players");
+            }
+            throw new AuthenticationError('Not logged in')
+        },
+        // Used to grab a single event's information to display (for updateEventGame)
+        event: async (parent, {eventId}, context) => {
+            if (context.player._id) {
+                return await Event.findById(eventId).populate("eventGames").populate("owner").populate("players").populate({path: "groupGames"}).populate("winner");
             }
             throw new AuthenticationError('Not logged in')
         },
