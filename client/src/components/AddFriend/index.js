@@ -35,7 +35,7 @@ const AddFriend = () => {
 
     return (
         <form className="d-flex">
-            <label for="addFriend">Add a Friend: </label>
+            <label >Add a Friend: </label>
             <input
                 name="username"
                 type="search"
