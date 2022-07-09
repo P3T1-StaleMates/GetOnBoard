@@ -15,14 +15,8 @@ const About = () => {
         <section>
           <div className="container">
             <div className="row">
-              <div className="col"> <GameCard/></div>
-              <div className="col"><GameCard/></div>
-              <div className="col"><GameCard/></div>
             </div>
             <div className="row">
-            <div className="col"> <GameCard/></div>
-              <div className="col"><GameCard/></div>
-              <div className="col"><GameCard/></div>
             </div>
           </div>
         </section>
