@@ -1,4 +1,4 @@
-const TallCard = (props) => {
+const AddFriend = (props) => {
     // needs to display game information
 
     const { title, players, timeLength, imgUrl } = props;
@@ -23,4 +23,4 @@ const TallCard = (props) => {
     );
 };
 
-export default TallCard;
+export default AddFriend;
