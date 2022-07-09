@@ -64,6 +64,7 @@ export const QUERY_ME = gql`
       averageTime
     }
     friends {
+      _id
       name
       username
     }
