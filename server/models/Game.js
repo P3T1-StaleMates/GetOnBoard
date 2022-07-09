@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const gameSchema = new Schema({
-  name: {
+  title: {
     type: String,
     required: true,
     trim: true,
@@ -12,7 +12,7 @@ const gameSchema = new Schema({
   genre: {
     type: String,
   },
-  image: {
+  imageUrl: {
     type: String,
   },
   minPlayer: {

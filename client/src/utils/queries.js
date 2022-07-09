@@ -8,7 +8,7 @@ export const QUERY_PLAYERS = gql`
     username
     ownedGames {
       _id
-      name
+      title
     }
     groups {
       _id
@@ -32,7 +32,7 @@ export const QUERY_PLAYER = gql`
     password
     ownedGames {
       _id
-      name
+      title
       description
       genre
     }
@@ -55,10 +55,10 @@ export const QUERY_ME = gql`
     name
     ownedGames {
       _id
-      name
+      title
       description
       genre
-      image
+      imageUrl
       minPlayer
       maxPlayer
       averageTime
@@ -86,7 +86,7 @@ export const QUERY_GROUPS = gql`
       name
       ownedGames {
         _id
-        name
+        title
       }
     }
   }
@@ -129,10 +129,10 @@ export const QUERY_GROUP = gql`
 export const QUERY_GAMES = gql`
   query Games($name: String!) {
     games(name: $name) {
-      name
+      title
       description
       genre
-      image
+      imageUrl
       minPlayer
       maxPlayer
       averageTime
