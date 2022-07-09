@@ -106,6 +106,8 @@ const resolvers = {
 
             if (context.player) {
 
+                let removedFriend = await Player.findByIdAndUpdate(args.id, { $pull: { friends: context.player._id } }, { new: true });
+
                 return Player.findByIdAndUpdate(context.player._id, { $pull: { friends: args.id } }, { new: true }).populate("friends");
             }
             throw new AuthenticationError('Not logged in');
