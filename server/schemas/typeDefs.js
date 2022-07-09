@@ -91,8 +91,8 @@ type Mutation {
 	removeGame(gameId: ID!): Player
 
 	#Event Mutations
-	createEvent(name: String!, gameId: ID!, location: String!, date: String!, groupId: ID!, players: [String]!): Event
-	deleteEvent(eventId: ID!, groupId: ID!): Event
+	createEvent(name: String!, gameId: ID!, location: String!, date: String!, groupId: ID, players: [String]!): Event
+	deleteEvent(eventId: ID!, groupId: ID): Event
 	addEventWinner(eventId: ID!, winnerId: ID!): Event
 
 	#Group mutations
