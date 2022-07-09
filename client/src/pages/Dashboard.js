@@ -38,13 +38,13 @@ const PlayerDash = () => {
               <section>
           <div className="container">
             <div className="row">
-              <div className="col"> <GameCard/></div>
+              {/* <div className="col"> <GameCard/></div>
               <div className="col"><GameCard/></div>
-              <div className="col"><GameCard/></div>
+              <div className="col"><GameCard/></div> */}
             </div>
             <div className="row">
               <div className="col-8"><CardContainer/></div>
-              <div className="col-4"><GameCard/></div>
+              {/* <div className="col-4"><GameCard/></div> */}
             </div>
           </div>
         </section>
