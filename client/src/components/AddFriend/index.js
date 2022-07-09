@@ -29,8 +29,6 @@ const AddFriend = () => {
                 variables: { ...formState }
             })
 
-
-            Auth.login(data.login.token);
         } catch (error) {
             console.error(error)
         }
