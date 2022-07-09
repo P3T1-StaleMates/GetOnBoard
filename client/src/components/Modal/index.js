@@ -1,46 +1,32 @@
-function Modal(props) {
-    return (
-      <Modal
-        {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Search Results
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <h4>Centered Modal</h4>
-          <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.
-          </p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
-      </Modal>
-    );
-  }
-  
-//   function App() {
-//     const [modalShow, setModalShow] = React.useState(false);
-  
-//     return (
-//       <>
-//         <Button variant="primary" onClick={() => setModalShow(true)}>
-//           Launch vertically centered modal
-//         </Button>
-  
-//         <MyVerticallyCenteredModal
-//           show={modalShow}
-//           onHide={() => setModalShow(false)}
-//         />
-//       </>
-//     );
-//   }
-  
-  render(<App />);6
+import GameCard from "../Cards/GameCard"
+
+const Modal = ({ gameData, handleClose }) => {
+  // ADD_GAME mutation goes here
+
+  return (
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            {gameData.forEach((game, index) => {
+              <GameCard name={game.name} description={game.description} imageUrl={game.imageUrl} index={index} averageTime={game.averageTime} minPlayers={game.minPlayers} maxPlayers={game.maxPlayers}/>
+              // Add button to add game to ownedGames for player using mutation
+            })}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onSubmit={handleClose}>Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Modal

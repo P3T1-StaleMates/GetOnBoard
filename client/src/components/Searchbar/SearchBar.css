@@ -1,0 +1,10 @@
+.seachbar{
+    border-radius: 30px;
+}
+
+.btn-green {
+    background-color: #a9e800;
+    border-radius: 20px;
+    height: 4em;
+    font-weight: bold;
+  }

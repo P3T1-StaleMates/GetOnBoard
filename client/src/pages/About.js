@@ -1,6 +1,6 @@
 import GameCard from "../components/Cards/GameCard";
 
-const MyGroups = () => {
+const About = () => {
     return(
         <>
          <section className="padding-40">
@@ -15,14 +15,8 @@ const MyGroups = () => {
         <section>
           <div className="container">
             <div className="row">
-              <div className="col"> <GameCard/></div>
-              <div className="col"><GameCard/></div>
-              <div className="col"><GameCard/></div>
             </div>
             <div className="row">
-            <div className="col"> <GameCard/></div>
-              <div className="col"><GameCard/></div>
-              <div className="col"><GameCard/></div>
             </div>
           </div>
         </section>
@@ -30,4 +24,4 @@ const MyGroups = () => {
     )
 }
 
-export default MyGroups
+export default About

@@ -8,7 +8,7 @@ export const QUERY_PLAYERS = gql`
     username
     ownedGames {
       _id
-      name
+      title
     }
     groups {
       _id
@@ -32,7 +32,7 @@ export const QUERY_PLAYER = gql`
     password
     ownedGames {
       _id
-      name
+      title
       description
       genre
     }
@@ -49,26 +49,24 @@ export const QUERY_PLAYER = gql`
 `;
 
 export const QUERY_ME = gql`
-  query me($id: ID!) {
-  me(_id: $id) {
+  query Me {
+  me {
     _id
     name
-    username
-    email
-    password
     ownedGames {
       _id
-      name
+      title
       description
       genre
-    }
-    groups {
-      _id
-      name
+      imageUrl
+      minPlayer
+      maxPlayer
+      averageTime
     }
     friends {
       _id
       name
+      username
     }
   }
 }
@@ -89,7 +87,7 @@ export const QUERY_GROUPS = gql`
       name
       ownedGames {
         _id
-        name
+        title
       }
     }
   }
@@ -130,12 +128,12 @@ export const QUERY_GROUP = gql`
 `;
 
 export const QUERY_GAMES = gql`
-  query Games($name: String!) {
-    games(name: $name) {
-      name
+  query Games($title: String!) {
+    games(title: $title) {
+      title
       description
       genre
-      image
+      imageUrl
       minPlayer
       maxPlayer
       averageTime

@@ -1,21 +1,14 @@
+import "./GameCard.css"
 // card component for games
 
-const GameCard = (props) => {
-    // needs to display game information
-
-    const { title, players, timeLength, imgUrl } = props;
+const GameCard = ({ game }) => {
 
     return (
         <div className="card" style={{ width: "15rem" }}>
-            <img
-                src={imgUrl}
-                className="card-img-top"
-                alt="description"
-            />
+            <img src={game.imageUrl} className="card-img-top" alt="description" />
             <div className="card-body">
-                <h5 className="card-title">Title of game: {title}</h5>
-                <p className="card-text">{`#ofplayers: ${players} Gamelength: ${timeLength}`}</p>
-                {/* <a href="#"></a> */}
+                <h5 className="card-title">Title of game: {game.title}</h5>
+                <p className="card-text">{`#ofplayers: ${`${game.minPlayer} - ${game.maxPlayer}`} Gamelength: ${game.averageTime}`}</p>
             </div>
         </div>
     );

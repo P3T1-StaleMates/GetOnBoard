@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
 const Login = (props) => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const navigate = useNavigate();
+
+  const [formState, setFormState] = useState({ name: '', username: '', email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN);
 
   // update state based on form input changes
@@ -35,9 +37,13 @@ const Login = (props) => {
 
     // clear form values
     setFormState({
+      name: '',
+      username: '',
       email: '',
       password: '',
     });
+
+    navigate('/dashboard');
   };
 
   return (
@@ -49,7 +55,7 @@ const Login = (props) => {
             {data ? (
               <p>
                 Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
+                <Link to="/dashboard">back to the homepage.</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>

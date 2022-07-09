@@ -16,17 +16,17 @@ export const ADD_PLAYER = gql`
 `;
 
 export const LOGIN = gql`
-mutation Login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-        token
-        player {
-            _id
-            name
-            username
-            email
+    mutation Login($email: String!, $password: String!) {
+        login(email: $email, password: $password) {
+            token
+            player {
+                _id
+                name
+                username
+                email
+            }
         }
     }
-}
 `;
 
 export const UPDATE_PLAYER = gql`
@@ -42,18 +42,18 @@ export const UPDATE_PLAYER = gql`
 `;
 
 export const ADD_GAME = gql`
-    mutation AddGame($name: String!, $minPlayer: Int!, $maxPlayer: Int!, $averageTime: Int!, $description: String, $genre: String, $image: String) {
-        addGame(name: $name, minPlayer: $minPlayer, maxPlayer: $maxPlayer, averageTime: $averageTime, description: $description, genre: $genre, image: $image) {
+    mutation AddGame($title: String!, $minPlayer: Int!, $maxPlayer: Int!, $averageTime: Int!, $description: String, $genre: String, $imageUrl: String) {
+        addGame(title: $title, minPlayer: $minPlayer, maxPlayer: $maxPlayer, averageTime: $averageTime, description: $description, genre: $genre, imageUrl: $imageUrl) {
             _id
             name
             username
             ownedGames {
                 _id
-                name
+                title
                 description
                 genre
                 minPlayer
-                image
+                imageUrl
                 maxPlayer
                 averageTime
             }
@@ -69,7 +69,7 @@ export const REMOVE_GAME = gql`
             username
             ownedGames {
             _id
-            name
+            title
             }
         }
     }
@@ -93,7 +93,7 @@ export const CREATE_EVENT = gql`
             date
             game {
             _id
-            name
+            title
             }
         }
     }
@@ -185,3 +185,27 @@ export const UPDATE_GROUP_ADMIN = gql`
         }
     }
 `;
+
+export const ADD_FRIEND = gql`
+mutation AddFriend($addFriendId: ID!) {
+  addFriend(id: $addFriendId) {
+    _id
+    name
+    friends {
+      _id
+      name
+    }
+  }
+}`;
+
+export const REMOVE_FRIEND = gql`
+mutation RemoveFriend($removeFriendId: ID!) {
+  removeFriend(id: $removeFriendId) {
+    _id
+    name
+    friends {
+      _id
+      name
+    }
+  }
+}`;

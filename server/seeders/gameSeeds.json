@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Cones of Dunshire",
+    "minPlayer": 3,
+    "maxPlayer": 5,
+    "averageTime": 60
+  },
+  {
+    "title": "Catan",
+    "minPlayer": 3,
+    "maxPlayer": 5,
+    "averageTime": 60
+  },
+  {
+    "title": "Warhammer 40k",
+    "minPlayer": 2,
+    "maxPlayer": 6,
+    "averageTime": 120
+  }
+]

@@ -13,6 +13,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Global/Navbar";
 import Dashboard from "./pages/Dashboard";
 import Footer from "./components/Global/Footer";
+import Landing from "./pages/Landing";
+import Login from "./pages/Login"
+import Signup from "./pages/Signup"
+import MyFriends from "./pages/MyFriends"
+import MyGames from "./pages/MyGames"
+import MyGroups from "./pages/MyGroups"
+import GroupDashboard from "./pages/GroupDashboard"
+import About from "./pages/About"
 // import Login from "./pages/Login";
 
 const httpLink = createHttpLink({
@@ -48,18 +56,21 @@ function App() {
               <div className="col-8">
                 <div className="bg-cream">
                   <Routes>
-                    <Route path="/" element={<Dashboard />} />
-                    {/* <Route path="/about" element={<Dashboard />} />
-          <Route path="/portfolio" element={<GroupDashboard />} />
-          <Route path="/resume" element={<MyFriends />} />
-          <Route path="/contact" element={<MyGames />} />
-          <Route path="/contact" element={<MyGroups />} /> */}
+                    <Route path="/" element={<Landing />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/myfriends" element={<MyFriends />} />
+                    <Route path="/myfriends" element={<MyGroups />} />
+                    <Route path="/mygames" element={<MyGames />} />
+                    <Route path="/groupdashboard" element={<GroupDashboard />} />
+                    <Route path="/about" element={<About />} />
                   </Routes>
                 </div>
               </div>
 
               <div className="col-2">
-               <Footer/>
+                <Footer/>
               </div>
             </div>
           </div>
