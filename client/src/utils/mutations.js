@@ -76,27 +76,26 @@ export const REMOVE_GAME = gql`
 `;
 
 export const CREATE_EVENT = gql`
-    mutation CreateEvent($name: String!, $game: String!, $location: String!, $date: String!) {
-        createEvent(name: $name, game: $game, location: $location, date: $date) {
-            _id
-            owner {
-            _id
-            name
-            username
-            }
-            name
-            players {
-            _id
-            name
-            }
-            location
-            date
-            game {
-            _id
-            title
-            }
-        }
+    mutation CreateEvent($eventName: String!, $location: String!, $date: String!, $players: [ID]!) {
+  createEvent(eventName: $eventName, location: $location, date: $date, players: $players) {
+    _id
+    owner {
+      _id
+      name
+      username
+      email
     }
+    location
+    date
+    eventName
+    players {
+      _id
+      name
+      username
+      email
+    }
+  }
+}
 `;
 
 export const DELETE_EVENT = gql `
@@ -187,8 +186,8 @@ export const UPDATE_GROUP_ADMIN = gql`
 `;
 
 export const ADD_FRIEND = gql`
-mutation AddFriend($addFriendId: ID!) {
-  addFriend(id: $addFriendId) {
+mutation AddFriend($username: String!) {
+  addFriend(username: $username) {
     _id
     name
     friends {

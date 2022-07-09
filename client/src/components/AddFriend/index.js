@@ -6,34 +6,36 @@ import "./AddFriend.css"
 import Auth from '../../utils/auth';
 
 const AddFriend = () => {
-    const [formState, setFormState] = useState({ username: ''});
+    const [formState, setFormState] = useState({
+        username: ''
+    });
+
     const [addFriend, { error, data }] = useMutation(ADD_FRIEND);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-    
+
         setFormState({
             ...formState,
             [name]: value,
         });
-        };
+    };
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState);
+
         try {
-            const {data} = await addFriend({
+            const { data } = await addFriend({
                 variables: { ...formState }
             })
 
-            
-        Auth.login(data.login.token);
-        } catch (e) {
-            console.error(e)
+        } catch (error) {
+            console.error(error)
         }
     }
 
     return (
+
         <div className="card card-height"style={{ width: '15rem' }}>
             
           <img
@@ -41,19 +43,27 @@ const AddFriend = () => {
             src="/assets/images/man-icon.jpg"
             alt="Avatar"
           />
-        <form>
-            <label >Add a Friend: </label>
-            <input
-                name="username"
-                type="search"
-                placeholder="Player Username"
-                className="me-2"
-                aria-label="Search"
-            /><br></br>
+         <form className="d-flex" onSubmit={handleFormSubmit}>
+                <label >Add a Friend: </label>
+                <input
+                    name="username"
+                    type="search"
+                    placeholder="Player Username"
+                    className="me-2"
+                    aria-label="Search"
+                    value={formState.username}
+                    onChange={handleChange}
+                /><br></br>
             <button className='btn-green' variant="outline-success">Add</button>
         </form>
+        
+         {error && (
+                <div className="my-3 p-3 bg-danger text-white">
+                    Unable to locate a user by this username.
+                </div>
+            )}
         </div>
-    )
+
 }
 
 export default AddFriend;
