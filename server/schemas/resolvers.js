@@ -49,9 +49,17 @@ const resolvers = {
             throw new AuthenticationError('Not logged in')
         },
         // Used to grab a single event's information to display (for updateEventGame)
-        event: async (parent, {eventId}, context) => {
-            if (context.player._id) {
-                return await Event.findById(eventId).populate("eventGames").populate("owner").populate("players").populate({path: "groupGames"}).populate("winner");
+        event: async (parent, { eventId }, context) => {
+            if (context.player) {
+                return await Event.findById(eventId).populate("eventGames").populate("owner").populate("players").populate("groupGames").populate("winner").populate(
+                    {
+                        path: "players",
+                        populate: {
+                            path: "ownedGames",
+                            model: "Game"
+                        }
+                    }
+                );
             }
             throw new AuthenticationError('Not logged in')
         },

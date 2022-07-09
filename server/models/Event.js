@@ -50,6 +50,13 @@ const eventSchema = new Schema(
     }
 );
 
+eventSchema.virtual("groupGames").get(function () {
+    // this.players.forEach(ownedGames => {
+        
+    // });
+    return this.players[4].ownedGames;
+})
+
 eventSchema.virtual('groupGames', {
     ref: "Player",
     localField: '_id',

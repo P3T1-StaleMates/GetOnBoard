@@ -141,3 +141,59 @@ export const QUERY_GAMES = gql`
   }
 }
 `;
+
+export const QUERY_EVENT = gql`
+query Event($eventId: ID!) {
+  event(eventId: $eventId) {
+    _id
+    owner {
+      name
+      username
+      email
+      _id
+    }
+    eventName
+    location
+    date
+    players {
+      name
+      username
+      email
+      _id
+      ownedGames {
+        _id
+        title
+        description
+        minPlayer
+        maxPlayer
+        imageUrl
+        averageTime
+      }
+    }
+    eventGames {
+      _id
+      title
+      description
+      imageUrl
+      minPlayer
+      maxPlayer
+      averageTime
+    }
+    winner {
+      _id
+      name
+      username
+      email
+    }
+    groupGames {
+      _id
+      title
+      minPlayer
+      maxPlayer
+      imageUrl
+      averageTime
+      description
+    }
+  }
+}
+`;

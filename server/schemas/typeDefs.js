@@ -24,6 +24,7 @@ const typeDefs = gql`
 		date: String
 		eventGames: [Game]
 		winner: [Player]
+		groupGames: [Game]
 	}
 
 	type Game {
