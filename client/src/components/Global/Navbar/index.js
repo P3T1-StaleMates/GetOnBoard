@@ -23,22 +23,22 @@ const Navbar = () => {
         <>
           <ul className="nav flex-column padding-top-60">
             <li className="nav-item">
-              <Link className="nav-link active" to={`/dashboard`}>My Dashboard</Link>
+              <Link className="nav-link active" to="/Dashboard">My Dashboard</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link active" to="/myfriends">My Friends</Link>
+              <Link className="nav-link active" to="/MyFriends">My Friends</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link active" to="/mygroups">My Groups</Link>
+              <Link className="nav-link active" to="MyGroups">My Groups</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/mygames">My Games</Link>
+              <Link className="nav-link" to="/MyGames">My Games</Link>
             </li>
             {/* <li className="nav-item">
               <Link className="nav-link" to="/createevent">Schedule Meet Up</Link>
             </li> */}
             <li className="nav-item">
-              <Link className="nav-link active" to="/abouttheteam">About</Link>
+              <Link className="nav-link active" to="/About">About</Link>
             </li>
           </ul>
           <div className="padding-top-280">

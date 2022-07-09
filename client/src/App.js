@@ -13,6 +13,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Global/Navbar";
 import Dashboard from "./pages/Dashboard";
 import Footer from "./components/Global/Footer";
+import Landing from "./pages/Landing";
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import MyFriends from "./pages/MyFriends"
@@ -53,6 +54,7 @@ function App() {
               <div className="col-8">
                 <div className="bg-cream">
                   <Routes>
+                    <Route path="/" element={<Landing />} />
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
