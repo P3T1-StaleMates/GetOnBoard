@@ -92,7 +92,7 @@ const resolvers = {
         addFriend: async (parent, args, context) => {
 
             if (context.player) {
-                
+
                 let addedFriend = await Player.findById(args.id);
                 let addedFriend2 = await Player.findById(context.player._id)
                 console.log(addedFriend)
@@ -133,9 +133,9 @@ const resolvers = {
         },
         // Used to create a new event if logged in. Args contain only event information
         // Should probably split args up in to name, game, location, date, and players
-        createEvent: async (parent, { name, gameId, location, date, groupId, players }, context) => {
+        createEvent: async (parent, { eventName, location, date, players }, context) => {
             if (context.player) {
-                const game = await Game.findById(gameId);
+                // const game = await Game.findById(gameId);
                 const owner = await Player.findById(context.player._id);
                 // const group = await Group.findById(groupId).populate("members");
                 // let players = group.members;
@@ -144,12 +144,21 @@ const resolvers = {
                 //     players.push(await Player.findById(invitedPlayers[i]));                    
                 // };
 
-                const newEvent = await Event.create({ name, location, date, owner, game }, { $addToSet: [players] });
+                players.push(context.player._id);
+
+                const newEvent = await (await Event.create({ eventName, location, date, owner, players })).populate("players");
                 console.log(newEvent);
 
-                const updatedGroup = await Group.findByIdAndUpdate(groupId, { $addToSet: { events: newEvent } }, { new: true });
-                console.log(updatedGroup);
+                // const updatedGroup = await Group.findByIdAndUpdate(groupId, { $addToSet: { events: newEvent } }, { new: true });
+                // console.log(updatedGroup);
                 return newEvent;
+            }
+            throw new AuthenticationError('Not logged in');
+        },
+        // Used to add a list of games to an existing event
+        updateEventGame: async (parent, { eventId, eventGames }, context) => {
+            if (context.player) {
+                return await Event.findByIdAndUpdate(eventId, { $addToSet: [eventGames] });
             }
             throw new AuthenticationError('Not logged in');
         },
