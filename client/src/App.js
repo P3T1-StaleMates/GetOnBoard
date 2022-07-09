@@ -18,6 +18,7 @@ import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import MyFriends from "./pages/MyFriends"
 import MyGames from "./pages/MyGames"
+import MyEvents from "./pages/MyEvents"
 // import MyGroups from "./pages/MyGroups"
 // import GroupDashboard from "./pages/GroupDashboard"
 import About from "./pages/About"
@@ -60,10 +61,10 @@ function App() {
                     <Route path="/Dashboard" element={<Dashboard />} />
                     <Route path="/Login" element={<Login />} />
                     <Route path="/Signup" element={<Signup />} />
-                    <Route path="/Myfriends" element={<MyFriends />} />
+                    <Route path="/MyFriends" element={<MyFriends />} />
                     {/* <Route path="/myfriends" element={<MyGroups />} /> */}
-                    <Route path="/Mygames" element={<MyGames />} />
-                    {/* <Route path="/groupdashboard" element={<GroupDashboard />} /> */}
+                    <Route path="/MyGames" element={<MyGames />} />
+                    <Route path="/MyEvents" element={<MyEvents />} />
                     <Route path="/About" element={<About />} />
                   </Routes>
                 </div>
