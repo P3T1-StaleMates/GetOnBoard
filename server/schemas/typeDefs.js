@@ -18,11 +18,11 @@ const typeDefs = gql`
 	type Event {
 		_id: ID!
 		owner: Player
-		name: String
+		eventName: String
 		players: [Player]
 		location: String
 		date: String
-		game: Game
+		eventGames: [Game]
 		winner: [Player]
 	}
 
@@ -91,7 +91,13 @@ type Mutation {
 	removeGame(gameId: ID!): Player
 
 	#Event Mutations
-	createEvent(name: String!, gameId: ID!, location: String!, date: String!, groupId: ID, players: [String]!): Event
+	createEvent(
+		eventName: String!, 
+		location: String!,
+		date: String!,
+		players: [ID]!
+		): Event
+	updateEventGame(eventID: ID!, eventGames: [String]): Event
 	deleteEvent(eventId: ID!, groupId: ID): Event
 	addEventWinner(eventId: ID!, winnerId: ID!): Event
 
