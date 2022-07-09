@@ -92,9 +92,12 @@ const resolvers = {
         addFriend: async (parent, args, context) => {
 
             if (context.player) {
-                console.log(args)
+                
                 let addedFriend = await Player.findById(args.id);
+                let addedFriend2 = await Player.findById(context.player._id)
                 console.log(addedFriend)
+                let updatedFriend = await Player.findByIdAndUpdate(args.id, { $addToSet: { friends: addedFriend2 } }, { new: true }).populate("friends")
+                console.log(updatedFriend)
                 return Player.findByIdAndUpdate(context.player._id, { $addToSet: { friends: addedFriend } }, { new: true }).populate("friends");
             }
             throw new AuthenticationError('Not logged in');
@@ -102,6 +105,8 @@ const resolvers = {
         removeFriend: async (parent, args, context) => {
 
             if (context.player) {
+
+                let removedFriend = await Player.findByIdAndUpdate(args.id, { $pull: { friends: context.player._id } }, { new: true });
 
                 return Player.findByIdAndUpdate(context.player._id, { $pull: { friends: args.id } }, { new: true }).populate("friends");
             }

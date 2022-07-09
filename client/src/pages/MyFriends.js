@@ -1,4 +1,7 @@
-import React from 'react';
+import PlayerCard from "../components/Cards/PlayerCard"
+import AddFriend from "../components/AddFriend"
+
+
 import { Redirect, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
@@ -9,14 +12,25 @@ import Auth from '../utils/auth';
 const Profile = () => {
 	const { username: userParam } = useParams();
 
+	// const [addFriend, { error, frienddata }] = useMutation(ADD_FRIEND);
+
 	const { loading, data } = useQuery(userParam ? QUERY_PLAYER : QUERY_ME, {
 		variables: { username: userParam },
 	});
-	console.log(loading)
 
-	console.log(data)
+	console.log(loading)
+	if (loading) {
+		return <div>Loading...</div>;
+    }
+	
+	console.log("data", data)
+	const { friends } = data.me
+	console.log("friends", friends)
 
 	const user = data?.me || data?.user || {};
+
+	// Will use if we get to the point of displaying other users profiles.
+
 	// redirect to personal profile page if username is yours
 	//   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
 	//     return <Redirect to="/me" />;
@@ -42,23 +56,17 @@ const Profile = () => {
 					<div>
 						<h5>My Friends</h5>
 						<p>Check out all your friends!</p>
+						<AddFriend />
 					</div>
 				</div>
 			</section>
 			<div>
 				<div className="flex-row justify-center mb-3">
 
-					<div className="col-12 col-md-10 mb-5">
-
-					</div>
-					{!userParam && (
-						<div
-							className="col-12 col-md-10 mb-3 p-3"
-							style={{ border: '1px dotted #1a1a1a' }}
-						>
-
-						</div>
-					)}
+					{/* <div className="col-12 col-md-10 mb-5"> */}
+						{friends.map(friend => <PlayerCard key={friend._id} info={friend} />)}
+					{/* </div> */}
+		
 				</div>
 			</div>
 		</>

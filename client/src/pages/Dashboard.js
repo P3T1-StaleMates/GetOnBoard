@@ -16,7 +16,7 @@ const PlayerDash = () => {
     console.log("data", data);
 
     const { name, ownedGames /*friends*/ } = data.me;
-    const { game1 } = ownedGames;
+    // const { game1 } = ownedGames;
 
     return (
         <>
