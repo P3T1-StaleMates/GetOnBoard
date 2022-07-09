@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_FRIEND } from '../../utils/mutations'
-
+import "./AddFriend.css" 
 import Auth from '../../utils/auth';
 
 const AddFriend = () => {
@@ -34,7 +34,14 @@ const AddFriend = () => {
     }
 
     return (
-        <form className="d-flex">
+        <div className="card card-height"style={{ width: '15rem' }}>
+            
+          <img
+            className="head-img center"
+            src="/assets/images/man-icon.jpg"
+            alt="Avatar"
+          />
+        <form>
             <label >Add a Friend: </label>
             <input
                 name="username"
@@ -42,9 +49,10 @@ const AddFriend = () => {
                 placeholder="Player Username"
                 className="me-2"
                 aria-label="Search"
-            />
-            <button variant="outline-success">Add</button>
+            /><br></br>
+            <button className='btn-green' variant="outline-success">Add</button>
         </form>
+        </div>
     )
 }
 

@@ -55,13 +55,18 @@ const Dashboard = () => {
 
           <div className="row">
             <div className="col-8">
+              <section>
               <CardContainer />
+              </section>
+            </div>
+          <div className="col-2">
+            <section>
+            <AddFriend />
+            </section>
             </div>
           </div>
-          <div className="row">
-            <AddFriend />
           </div>
-        </div>
+      
       </section>
     </>
   );
