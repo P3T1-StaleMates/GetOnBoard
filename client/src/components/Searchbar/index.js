@@ -46,7 +46,7 @@ const SearchBar = () => {
 
     return (
         <>
-            <form className="m-2 seachbar " onSubmit={handleFormSubmit}>
+            <form className="m-2 seachbar " onSubmit={()=> {console.log("Hello World")}}>
                 <label>
                     Board Game Search:
                     <input type="text" name='searchText' placeholder="Catan" value={searchTerm} onChange={handleChange} />
