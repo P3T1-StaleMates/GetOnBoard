@@ -1,5 +1,5 @@
 import GameCard from "../components/Cards/GameCard";
-import Searchbar from "../components/Searchbar";
+// import Searchbar from "../components/Searchbar";
 import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_ME } from "../utils/queries";
 
@@ -22,7 +22,7 @@ const MyGames = () => {
             <p>Welcome, view all groups</p>
           </div>
         </div>
-        <Searchbar />
+        {/* <Searchbar /> */}
       </section>
 
       <section>
