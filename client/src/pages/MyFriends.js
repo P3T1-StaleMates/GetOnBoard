@@ -12,20 +12,19 @@ import Auth from '../utils/auth';
 const Profile = () => {
 	const { username: userParam } = useParams();
 
-	// const [addFriend, { error, frienddata }] = useMutation(ADD_FRIEND);
 
 	const { loading, data } = useQuery(userParam ? QUERY_PLAYER : QUERY_ME, {
 		variables: { username: userParam },
 	});
 
-	console.log(loading)
+	// console.log(loading)
 	if (loading) {
 		return <div>Loading...</div>;
     }
-	
-	console.log("data", data)
+
+	// console.log("data", data)
 	const { friends } = data.me
-	console.log("friends", friends)
+	// console.log("friends", friends)
 
 	const user = data?.me || data?.user || {};
 
@@ -66,7 +65,7 @@ const Profile = () => {
 					{/* <div className="col-12 col-md-10 mb-5"> */}
 						{friends.map(friend => <PlayerCard key={friend._id} info={friend} />)}
 					{/* </div> */}
-		
+
 				</div>
 			</div>
 		</>

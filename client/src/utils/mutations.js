@@ -187,8 +187,8 @@ export const UPDATE_GROUP_ADMIN = gql`
 `;
 
 export const ADD_FRIEND = gql`
-mutation AddFriend($addFriendId: ID!) {
-  addFriend(id: $addFriendId) {
+mutation AddFriend($username: String!) {
+  addFriend(username: $username) {
     _id
     name
     friends {
