@@ -198,6 +198,7 @@ const resolvers = {
                 }));
                 // Proof it works and maps an array of game documents
                 console.log(games);
+                // Adding to the event by eventId returns null, for some reason.
                 return await Event.findByIdAndUpdate(eventId, { $addToSet: { eventGames: games } }, { new: true }).populate("eventGames");
             }
             throw new AuthenticationError('Not logged in');
