@@ -58,7 +58,7 @@ eventSchema.virtual("groupGames").get(function () {
             groupGames.push(game);
         })
     });
-    console.log("Group Games: ", groupGames);
+    // console.log("Group Games: ", groupGames);
     return groupGames;
 })
 // This is needed for the virtual above. Otherwise, it breaks the query.
