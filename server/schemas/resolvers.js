@@ -10,7 +10,7 @@ const resolvers = {
         },
         // Get a single player's information (to look up friends by username)
         player: async (parent, { username }) => {
-            return Player.findOne({ username }).populate("friends");
+            return Player.findOne({ username }).populate("friends").populate("ownedGames");
         },
         // Get my information(if logged in)
         me: async (parent, args, context) => {
@@ -37,21 +37,45 @@ const resolvers = {
         // Used to find events I own
         ownedEvents: async (parent, args, context) => {
             if (context.player._id) {
-                return await Event.find({ owner: context.player._id }).populate("game").populate("owner").populate("players");
+                return await Event.find({ owner: context.player._id }).populate("eventGames").populate("owner").populate("groupGames").populate("winner").populate(
+                    {
+                        path: "players",
+                        populate: {
+                            path: "ownedGames",
+                            model: "Game"
+                        }
+                    }
+                );
             }
             throw new AuthenticationError('Not logged in')
         },
         // Used to find events I belong to
         myEvents: async (parent, args, context) => {
             if (context.player._id) {
-                return await Event.find({ players: { _id: context.player._id } }).populate("eventGames").populate("owner").populate("players");
+                return await Event.find({ players: { _id: context.player._id } }).populate("eventGames").populate("owner").populate("groupGames").populate("winner").populate(
+                    {
+                        path: "players",
+                        populate: {
+                            path: "ownedGames",
+                            model: "Game"
+                        }
+                    }
+                );
             }
             throw new AuthenticationError('Not logged in')
         },
         // Used to grab a single event's information to display (for updateEventGame)
-        event: async (parent, {eventId}, context) => {
-            if (context.player._id) {
-                return await Event.findById(eventId).populate("eventGames").populate("owner").populate("players").populate({path: "groupGames"}).populate("winner");
+        event: async (parent, { eventId }, context) => {
+            if (context.player) {
+                return await Event.findById(eventId).populate("eventGames").populate("owner").populate("groupGames").populate("winner").populate(
+                    {
+                        path: "players",
+                        populate: {
+                            path: "ownedGames",
+                            model: "Game"
+                        }
+                    }
+                );
             }
             throw new AuthenticationError('Not logged in')
         },
@@ -90,18 +114,18 @@ const resolvers = {
         updatePlayer: async (parent, args, context) => {
 
             if (context.player.username) {
-                return await Player.findByIdAndUpdate(context.player._id, args, { new: true });
+                return await Player.findByIdAndUpdate(context.player._id, { ...args }, { new: true });
             }
 
             throw new AuthenticationError('Not logged in');
         },
         // Used to add a friend to a player, and recipirocating the friend on the recipient end.
-        addFriend: async (parent, {username}, context) => {
+        addFriend: async (parent, { username }, context) => {
 
             if (context.player) {
 
 
-                let addedFriend = await Player.findOne({username});
+                let addedFriend = await Player.findOne({ username });
                 let reciprocatedFriend = await Player.findById(context.player._id)
                 let updatedFriend = await Player.findByIdAndUpdate(addedFriend._id, { $addToSet: { friends: reciprocatedFriend } })
                 return Player.findByIdAndUpdate(context.player._id, { $addToSet: { friends: addedFriend } }, { new: true }).populate("friends");
@@ -110,7 +134,7 @@ const resolvers = {
         },
 
         // Used to remove a friend from a user and susbequent removal from the recipient end.
-        removeFriend: async (parent, {id}, context) => {
+        removeFriend: async (parent, { id }, context) => {
 
             if (context.player) {
 
@@ -156,7 +180,7 @@ const resolvers = {
                 players.push(context.player._id);
 
                 const newEvent = await (await Event.create({ eventName, location, date, owner, players })).populate("players");
-                console.log(newEvent);
+                // console.log(newEvent);
 
                 // const updatedGroup = await Group.findByIdAndUpdate(groupId, { $addToSet: { events: newEvent } }, { new: true });
                 // console.log(updatedGroup);
@@ -167,7 +191,15 @@ const resolvers = {
         // Used to add a list of games to an existing event
         updateEventGame: async (parent, { eventId, eventGames }, context) => {
             if (context.player) {
-                return await Event.findByIdAndUpdate(eventId, { $addToSet: [eventGames] });
+                // Used to grab all the Game documents by array of IDs sent in.
+                // https://betterprogramming.pub/how-to-use-async-await-with-map-in-js-5059043564e0
+                const games = await Promise.all(eventGames.map(async (gameId) => {
+                    return await Game.findById(gameId)
+                }));
+                // Proof it works and maps an array of game documents
+                console.log(games);
+                // Adding to the event by eventId returns null, for some reason.
+                return await Event.findByIdAndUpdate(eventId, { $addToSet: { eventGames: games } }, { new: true }).populate("eventGames");
             }
             throw new AuthenticationError('Not logged in');
         },
@@ -175,13 +207,13 @@ const resolvers = {
         deleteEvent: async (parent, { eventId, groupId }, context) => {
             if (context.player) {
 
-                await Group.findByIdAndUpdate(groupId, { $pull: { events: eventId } }, { new: true });
+                // await Group.findByIdAndUpdate(groupId, { $pull: { events: eventId } }, { new: true });
 
-                return await Event.findByIdAndDelete(eventId);
+                return await Event.findByIdAndDelete(eventId, { new: true });
             }
             throw new AuthenticationError('Not logged in');
         },
-
+        // Fix this later
         addEventWinner: async (parent, { eventId, winnerId }, context) => {
             if (context.player) {
 
