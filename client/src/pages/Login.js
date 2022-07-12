@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
-
+import '../styles/login.css';
 import Auth from '../utils/auth';
 
 const Login = (props) => {
@@ -47,10 +47,17 @@ const Login = (props) => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
+    <div className="padding-40">
+    <main className="flex-row p-3 mb-4">
+        <div className="padding-40">
+       <h1> Welcome to Get On Board!</h1>
+        <br />
+        <h2>Log in and Get On Board!</h2>
+        </div>
+       <div className='padding-bottom-40'>
+      <div className="col-12 pb-4 col-lg-6">
+        <div className="card  border-none">
+          <h4 className="p-2 text-center">Login</h4>
           <div className="card-body">
             {data ? (
               <p>
@@ -66,7 +73,7 @@ const Login = (props) => {
                   type="email"
                   value={formState.email}
                   onChange={handleChange}
-                />
+                /><br></br>
                 <input
                   className="form-input"
                   placeholder="******"
@@ -76,11 +83,11 @@ const Login = (props) => {
                   onChange={handleChange}
                 />
                 <button
-                  className="btn btn-block btn-primary"
+                  className="btn-green btn-block btn-primary"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
-                  Submit
+                  Login
                 </button>
               </form>
             )}
@@ -93,7 +100,11 @@ const Login = (props) => {
           </div>
         </div>
       </div>
+        <p>Don't Have an account? Click <Link to="/Signup">here</Link> to Sign up</p>
+
+   </div>
     </main>
+   </div>
   );
 };
 
