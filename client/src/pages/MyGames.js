@@ -30,7 +30,7 @@ const MyGames = () => {
           <div className="row">
             {ownedGames.length ? ownedGames.map((game) => {
               return <div className="col" key={game.title}> <GameCard game={game} /></div>
-            }) : <p>No Games to Show! Add a new game by searching for one!</p>}
+            }) : <p>No Games to Show! Add a new game by searching for one above!</p>}
           </div>
           <div className="row">
           </div>
