@@ -1,9 +1,9 @@
-import EventForm from "../components/EventForm";
+// import EventForm from "../components/EventForm";
 
-const MyEvents = () => {
-    return (
-        <EventForm />
-    )
-}
+// const MyEvents = () => {
+//     return (
+//         // <EventForm />
+//     );
+// }
 
-export default MyEvents
+// export default MyEvents

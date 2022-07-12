@@ -64,7 +64,7 @@ function App() {
                     <Route path="/MyFriends" element={<MyFriends />} />
                     {/* <Route path="/myfriends" element={<MyGroups />} /> */}
                     <Route path="/MyGames" element={<MyGames />} />
-                    <Route path="/MyEvents" element={<MyEvents />} />
+                    {/* <Route path="/MyEvents" element={<MyEvents />} /> */}
                     <Route path="/About" element={<About />} />
                   </Routes>
                 </div>
