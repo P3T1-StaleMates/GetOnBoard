@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import {
   ApolloClient,
@@ -9,7 +7,7 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Global/Navbar";
 import Dashboard from "./pages/Dashboard";
 import Footer from "./components/Global/Footer";
@@ -23,6 +21,8 @@ import MyEvents from "./pages/MyEvents"
 // import GroupDashboard from "./pages/GroupDashboard"
 import About from "./pages/About"
 // import Login from "./pages/Login";
+
+import Auth from "./utils/auth"
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -57,21 +57,53 @@ function App() {
               <div className="col-8">
                 <div className="bg-cream">
                   <Routes>
-                    <Route path="/" element={<Landing />} />
-                    <Route path="/Dashboard" element={<Dashboard />} />
-                    <Route path="/Login" element={<Login />} />
-                    <Route path="/Signup" element={<Signup />} />
-                    <Route path="/MyFriends" element={<MyFriends />} />
+                    <Route path="/" element={
+                      Auth.loggedIn() ?
+                      (<Navigate to="/Dashboard" />) :
+                      (<Landing />)
+                    } />
+                    <Route path="/Dashboard" element={
+                      !Auth.loggedIn() ?
+                      (<Navigate to="/" />) :
+                      (<Dashboard />)
+                    } />
+
+                    {/* Do we even need this? */}
+                    <Route path="/Login" element={
+                      Auth.loggedIn() ?
+                      (<Navigate to="/Dashboard" />) :
+                      (<Login />)
+                    } />
+
+
+                    <Route path="/Signup" element={
+                      Auth.loggedIn() ?
+                      (<Navigate to="/Dashboard" />) :
+                      (<Signup />)
+                    } />
+                    <Route path="/MyFriends" element={
+                      !Auth.loggedIn() ?
+                      (<Navigate to="/" />) :
+                      (<MyFriends />)
+                    } />
                     {/* <Route path="/myfriends" element={<MyGroups />} /> */}
-                    <Route path="/MyGames" element={<MyGames />} />
-                    <Route path="/MyEvents" element={<MyEvents />} />
+                    <Route path="/MyGames" element={
+                      !Auth.loggedIn() ?
+                      (<Navigate to="/" />) :
+                      (<MyGames />)
+                    } />
+                    <Route path="/MyEvents" element={
+                      !Auth.loggedIn() ?
+                      (<Navigate to="/" />) :
+                      (<MyEvents />)
+                    } />
                     <Route path="/About" element={<About />} />
                   </Routes>
                 </div>
               </div>
 
               <div className="col-2">
-                <Footer/>
+                <Footer />
               </div>
             </div>
           </div>
