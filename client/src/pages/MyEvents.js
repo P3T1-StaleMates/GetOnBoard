@@ -1,9 +1,25 @@
 import EventForm from "../components/EventForm";
+import { useQuery } from "@apollo/client";
+import { QUERY_MY_EVENTS } from "../utils/queries";
+import EventCard from "../components/Cards/EventCard";
 
 const MyEvents = () => {
-    return (
-        <EventForm />
-    )
-}
+    const { loading, data } = useQuery(QUERY_MY_EVENTS);
 
-export default MyEvents
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+    console.log("data", data);
+    const { myEvents } = data;
+
+    return (
+        <>
+            <EventForm />
+            {myEvents.map(myEvent => 
+                <EventCard myEvent={myEvent} />)
+            }
+        </>
+    );
+};
+
+export default MyEvents;
