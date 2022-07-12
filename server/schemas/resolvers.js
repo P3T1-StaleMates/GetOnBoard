@@ -179,7 +179,7 @@ const resolvers = {
 
                 players.push(context.player._id);
 
-                const newEvent = await (await Event.create({ eventName, location, date, owner, players })).populate("players");
+                const newEvent = await Event.create({ eventName, location, date, owner, players });
                 // console.log(newEvent);
 
                 // const updatedGroup = await Group.findByIdAndUpdate(groupId, { $addToSet: { events: newEvent } }, { new: true });

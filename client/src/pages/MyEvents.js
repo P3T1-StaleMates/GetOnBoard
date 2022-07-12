@@ -16,7 +16,7 @@ const MyEvents = () => {
         <>
             <EventForm />
             {myEvents.map(myEvent => 
-                <EventCard myEvent={myEvent} />)
+                <EventCard key={myEvent.eventName} myEvent={myEvent} />)
             }
         </>
     );
