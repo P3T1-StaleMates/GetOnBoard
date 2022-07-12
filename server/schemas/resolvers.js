@@ -115,6 +115,12 @@ const resolvers = {
             if (password.length < 8) {
                 throw new AuthenticationError('Please use a password that is greater than 8 characters long.');
             }
+
+            if (username != '^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){2,18}[a-zA-Z0-9]$' )
+                {throw new AuthenticationError(`Usernames \n` +
+                `1. May only contains alphanumeric characters or an underscore.
+                2. May not start or end with an underscore, and may not be concurrent.
+                3. Between 2 and 18 characters long.`)}
             const player = await Player.create({ name, username, email, password });
             const token = signToken(player);
             return { token, player };

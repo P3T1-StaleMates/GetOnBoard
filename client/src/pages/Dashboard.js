@@ -6,7 +6,7 @@ import CardContainer from "../components/Cards/CardContainer";
 import AddFriend from "../components/AddFriend";
 
 import { useQuery } from "@apollo/client";
-import { QUERY_ME, QUERY_MY_EVENTS } from "../utils/queries";
+import { QUERY_ME } from "../utils/queries";
 
 const Dashboard = () => {
   const { loading, data } = useQuery(QUERY_ME);
@@ -65,7 +65,7 @@ const Dashboard = () => {
             </div>
           </div>
           </div>
-      
+
       </section>
     </>
   );
