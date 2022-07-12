@@ -6,19 +6,18 @@ import CardContainer from "../components/Cards/CardContainer";
 import AddFriend from "../components/AddFriend";
 
 import { useQuery } from "@apollo/client";
-import { QUERY_ME } from "../utils/queries";
+import { QUERY_ME, QUERY_MY_EVENTS } from "../utils/queries";
 
 const Dashboard = () => {
   const { loading, data } = useQuery(QUERY_ME);
+
   if (loading) {
     return <div>Loading...</div>;
   }
   console.log("loading", loading);
-  console.log("data", data);
 
   const { name, ownedGames /*friends*/ } = data.me;
   console.log("games", ownedGames);
-  // const { game1 } = ownedGames;
 
   return (
     <>
@@ -49,7 +48,7 @@ const Dashboard = () => {
                 );
               })
             ) : (
-              <p>No Games to Show! Add a new game by searching for one!</p>
+              <p>No Games to Show! Add your games by searching for them!</p>
             )}
           </div>
 

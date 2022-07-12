@@ -24,6 +24,7 @@ const typeDefs = gql`
 		date: String
 		eventGames: [Game]
 		winner: [Player]
+		groupGames: [Game]
 	}
 
 	type Game {
@@ -84,7 +85,7 @@ type Mutation {
 	#Player Mutations
 	addPlayer(name: String!, username: String!, email: String!, password: String!): Auth
 	login(email: String!, password: String!): Auth
-	updatePlayer(id: ID! name: String, username: String, email: String, password: String): Player
+	updatePlayer(name: String, username: String, email: String, password: String): Player
 	addFriend(username: String!): Player
 	removeFriend(id: ID!): Player
 	# Game Mutations
@@ -98,7 +99,7 @@ type Mutation {
 		date: String!,
 		players: [ID]!
 		): Event
-	updateEventGame(eventID: ID!, eventGames: [String]): Event
+	updateEventGame(eventID: ID!, eventGames: [ID]!): Event
 	deleteEvent(eventId: ID!, groupId: ID): Event
 	addEventWinner(eventId: ID!, winnerId: ID!): Event
 

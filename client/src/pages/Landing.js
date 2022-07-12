@@ -1,14 +1,9 @@
-import Signup from "./Signup"
+import Login from "./Login"
+// import Signup from "./Signup"
 
 const Landing = () => {
     return <div>
-
-        Welcome to Get On Board!
-        <br />
-
-        Streamline your game nights!
-
-        <Signup />
+        <Login />
     </div>
 }
 

@@ -49,7 +49,19 @@ const eventSchema = new Schema(
         id: false
     }
 );
-
+// Returns an array groupGames of the combined games of all players in the event.
+eventSchema.virtual("groupGames").get(function () {
+    const groupGames = [];
+    this.players.forEach((player, index) => {
+        // console.log(`Player ${index}: `, player);
+        player.ownedGames.forEach((game) => {
+            groupGames.push(game);
+        })
+    });
+    // console.log("Group Games: ", groupGames);
+    return groupGames;
+})
+// This is needed for the virtual above. Otherwise, it breaks the query.
 eventSchema.virtual('groupGames', {
     ref: "Player",
     localField: '_id',

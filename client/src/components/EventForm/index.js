@@ -1,9 +1,6 @@
 import { React, useState } from "react";
 import SlimMultipleSelect from "react-slim-multiple-select";
-import { format } from 'date-fns';
-import { DayPicker } from 'react-day-picker';
-import 'react-day-picker/dist/style.css';
-
+import DateTimePicker from "react-datetime-picker";
 import { useMutation, useQuery } from "@apollo/client";
 import { CREATE_EVENT } from "../../utils/mutations";
 import { QUERY_ME } from "../../utils/queries";
@@ -17,8 +14,8 @@ const EventForm = () => {
         date: "",
         players: [],
     });
-
-    const [selected, setSelected] = useState(new Date());
+    const [date, setDate] = useState(new Date());
+    const [playerList, setPlayers] = useState([])
 
     const handleFormChange = (event) => {
         const { name, value } = event.target;
@@ -28,6 +25,32 @@ const EventForm = () => {
             [name]: value,
         });
     };
+
+    const handleDateChange = (event) => {
+        // console.log(event)
+        setFormState({
+            ...formState,
+            date: event.toString()
+        })
+        setDate(event)
+        console.log(formState)
+    }
+
+    const handlePlayersChange = (array) => {
+        console.log("array", array)
+        const players = []
+        array.forEach(pObj => {
+            console.log("pObj", pObj.id)
+            players.push(pObj.id)
+        });
+        console.log("players", players)
+        setFormState({
+            ...formState,
+            players
+        })
+    }
+
+    
 
     const [createEvent, { error, data }] = useMutation(CREATE_EVENT);
 
@@ -57,19 +80,12 @@ const EventForm = () => {
     if (loading) {
         return <div>Loading...</div>;
     }
-    console.log("myData", myData);
 
     const { friends } = myData.me;
     const options = friends.map((friend) => ({
         id: friend._id,
         name: friend.name,
     }));
-
-    let footer = <p>Please pick a day.</p>;
-    if (selected) {
-        footer = <p>You picked {format(selected, "PP")}.</p>;
-        // setFormState()
-    }
 
     return (
         <main className="flex-row justify-center mb-4">
@@ -97,19 +113,17 @@ const EventForm = () => {
                                 onChange={handleFormChange}
                             />
 
-                            <DayPicker
-                            mode="single"
-                            selected={selected}
-                            onSelect={setSelected}
-                            footer={footer}
+                            <DateTimePicker
+                                onChange={handleDateChange}
+                                value={date}
                             />
 
                             <SlimMultipleSelect
                                 options={options}
-                                value={formState.players}
+                                value={playerList}
                                 optLabel="name"
                                 optKey="id"
-                                onHandleChange={(value) => console.log(value)}
+                                onHandleChange={handlePlayersChange}
                                 placeholder="Add Friends"
                             />
 
