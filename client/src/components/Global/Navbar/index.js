@@ -1,16 +1,26 @@
 // component for navigating the site
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Link } from 'react-router-dom'
 
 import Auth from '../../../utils/auth';
 
 const Navbar = () => {
+
+//   const [loggedIn, setLoggedInState] = useState({
+//     loggedIn: '',
+// });
+
+//   const logCheck = setLoggedInState(Auth.loggedIn())
+//   console.log(logCheck)
+
+
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
     window.location.assign('/');
   };
+
   return (
     <div className="col-2">
 

@@ -8,7 +8,7 @@ import Auth from '../utils/auth';
 const Login = (props) => {
   const navigate = useNavigate();
 
-  const [formState, setFormState] = useState({ name: '', username: '', email: '', password: '' });
+  const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN);
 
   // update state based on form input changes
@@ -24,10 +24,16 @@ const Login = (props) => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
     try {
       const { data } = await login({
         variables: { ...formState },
+      });
+
+      console.log(data)
+
+      setFormState({
+        email: '',
+        password: '',
       });
 
       Auth.login(data.login.token);
@@ -35,15 +41,11 @@ const Login = (props) => {
       console.error(e);
     }
 
-    // clear form values
-    setFormState({
-      name: '',
-      username: '',
-      email: '',
-      password: '',
-    });
 
-    navigate('/dashboard');
+    // navigate('/Dashboard', { replace: true });
+
+    // clear form values
+
   };
 
   return (

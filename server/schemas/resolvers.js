@@ -51,6 +51,7 @@ const resolvers = {
         },
         // Used to find events I belong to
         myEvents: async (parent, args, context) => {
+            console.log(context.player)
             if (context.player._id) {
                 return await Event.find({ players: { _id: context.player._id } }).populate("eventGames").populate("owner").populate("groupGames").populate("winner").populate(
                     {
@@ -91,13 +92,13 @@ const resolvers = {
             const player = await Player.findOne({ email });
 
             if (!player) {
-                throw new AuthenticationError('No user found with this email address');
+                throw new AuthenticationError('No player found with this email address');
             }
 
             const correctPw = await player.isCorrectPassword(password);
 
             if (!correctPw) {
-                throw new AuthenticationError('Incorrect credentials');
+                throw new AuthenticationError('Incorrect password');
             }
 
             const token = signToken(player);
@@ -106,6 +107,14 @@ const resolvers = {
         },
         // Used to create a Player user
         addPlayer: async (parent, { name, username, email, password }) => {
+
+            if (!username || !name || !email || !password) {
+                throw new AuthenticationError('Please fill out all fields.');
+            }
+
+            if (password.length < 8) {
+                throw new AuthenticationError('Please use a password that is greater than 8 characters long.');
+            }
             const player = await Player.create({ name, username, email, password });
             const token = signToken(player);
             return { token, player };
@@ -114,7 +123,7 @@ const resolvers = {
         updatePlayer: async (parent, args, context) => {
 
             if (context.player.username) {
-                return await Player.findByIdAndUpdate(context.player._id, { ...args }, { new: true });
+                return await Player.findByIdAndUpdate(context.player._id, args , { new: true });
             }
 
             throw new AuthenticationError('Not logged in');

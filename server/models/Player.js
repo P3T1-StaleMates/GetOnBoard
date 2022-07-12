@@ -67,12 +67,18 @@ const playerSchema = new Schema({
 
 // Hash user password
 playerSchema.pre('save', async function (next) {
-  if (this.isNew || this.isModified('password')) {
+  if (this.isNew) {
     const saltRounds = 11;
-    this.password = await bcrypt.hash(this.password, saltRounds);
+    const password = await bcrypt.hash(this.password, saltRounds);
+    this.password = password;
   }
-
-  next();
+  else if (this.isModified) {
+    const saltRounds = 11;
+    const password = await bcrypt.hashSync(this.password, saltRounds);
+    this.password = password;
+  }
+  console.log("jesse", this)
+next();
 });
 
 // Compare the incoming password with the hashed password
