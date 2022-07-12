@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
 import { ADD_PLAYER } from '../utils/mutations';
-
+import '../styles/signup.css';
 import Auth from '../utils/auth';
 
 const Signup = () => {
@@ -40,11 +40,17 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
-          <div className="card-body">
+    <div className="padding-40">
+    <main className="flex-row p-3 mb-4">
+    <div className="padding-40">
+       <h1> Welcome to Get On Board!</h1>
+       <p>For all your mystical game night desires! Find and save your favorite owned board games and schedule game night meet ups with friends. </p>
+        <h2>Get on board and Signup to get started!</h2>
+        </div>
+      <div className="col-12 col-lg-6">
+        <div className="card border-none">
+          <h4 className="p-2 text-center">Sign Up</h4>
+          <div className="card-body ">
             {data ? (
               <p>
                 Success! You may now head{' '}
@@ -53,21 +59,21 @@ const Signup = () => {
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <input
+                  className="form-input border-btmgreen"
+                  placeholder="Your username"
+                  name="username"
+                  type="text"
+                  value={formState.username}
+                  onChange={handleChange}
+                /><br></br>
+                <input
                   className="form-input"
                   placeholder="Name"
                   name="name"
                   type="text"
                   value={formState.name}
                   onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="Your username"
-                  name="username"
-                  type="text"
-                  value={formState.username}
-                  onChange={handleChange}
-                />
+                /><br></br>
                 <input
                   className="form-input"
                   placeholder="Your email"
@@ -75,7 +81,7 @@ const Signup = () => {
                   type="email"
                   value={formState.email}
                   onChange={handleChange}
-                />
+                /><br></br>
                 <input
                   className="form-input"
                   placeholder="******"
@@ -83,13 +89,13 @@ const Signup = () => {
                   type="password"
                   value={formState.password}
                   onChange={handleChange}
-                />
+                /><br></br>
                 <button
-                  className="btn btn-block btn-primary"
+                  className="btn-green btn-block btn-primary"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
-                  Submit
+                  Sign Up
                 </button>
               </form>
             )}
@@ -101,9 +107,10 @@ const Signup = () => {
             )}
           </div>
         </div>
-        <p>Already Have an account? Click</p> <Link to="/Login">here</Link> <p>to log in</p>
+       
       </div>
     </main>
+    </div>
   );
 };
 
