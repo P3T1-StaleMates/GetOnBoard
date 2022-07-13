@@ -215,7 +215,7 @@ const resolvers = {
                 let mailOptions = {
                     from: process.env.EMAIL_USERNAME || 'getonboardgames1@gmail.com',
                     to: attendees,
-                    subject: `You've been invited to ${newEvent.owner.name}'s ${newEvent.name} Board Game Night!`,
+                    subject: `You've been invited to ${newEvent.owner.name}'s ${newEvent.eventName} Board Game Night!`,
                     text: `${newEvent.owner.name} has invited you to a board game night. Check out the details at https://p3-getonboard.herokuapp.com/MyEvents`
                 };
 
