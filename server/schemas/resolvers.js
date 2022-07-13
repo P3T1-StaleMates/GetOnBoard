@@ -1,6 +1,15 @@
 const { Player, Event, Game, Group } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
+const nodemailer = require("nodemailer");
+
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: process.env.EMAIL_USERNAME,
+        pass: process.env.EMAIL_PASSWORD,
+    },
+});
 
 const resolvers = {
     Query: {
@@ -51,7 +60,6 @@ const resolvers = {
         },
         // Used to find events I belong to
         myEvents: async (parent, args, context) => {
-            console.log(context.player)
             if (context.player._id) {
                 return await Event.find({ players: { _id: context.player._id } }).populate("eventGames").populate("owner").populate("groupGames").populate("winner").populate(
                     {
@@ -197,7 +205,18 @@ const resolvers = {
 
                 const newEvent = await Event.create({ eventName, location, date, owner, players });
                 // console.log(newEvent);
-
+                let attendees = newEvent.players.map(player => player.email);
+                // Create options for sending email to all invited friends
+                let mailOptions = {
+                    from: process.env.EMAIL_USERNAME,
+                    to: attendees,
+                    subject: `You've been invited to ${newEvent.owner.name}'s ${newEvent.name} Board Game Night!`,
+                    text: `${newEvent.owner.name} has invited you to a board game night. Check out the details at https://p3-getonboard.herokuapp.com/MyEvents`
+                };
+                // Sends mail out to all players.
+                let info = await transporter.sendMail(mailOptions);
+                // Confirmation of email sent
+                console.log("Message sent: %s", info.messageId);
                 // const updatedGroup = await Group.findByIdAndUpdate(groupId, { $addToSet: { events: newEvent } }, { new: true });
                 // console.log(updatedGroup);
                 return newEvent;
