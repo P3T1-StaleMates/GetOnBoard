@@ -3,11 +3,14 @@ const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 const nodemailer = require("nodemailer");
 
+let testEmail = 'getonboardgames1'
+let testPassword = 'StaleMates2022!'
+
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: process.env.EMAIL_USERNAME,
-        pass: process.env.EMAIL_PASSWORD,
+        user: process.env.EMAIL_USERNAME || testEmail,
+        pass: process.env.EMAIL_PASSWORD || testPassword,
     },
 });
 
@@ -115,6 +118,7 @@ const resolvers = {
         },
         // Used to create a Player user
         addPlayer: async (parent, { name, username, email, password }) => {
+            const emailValidation = Player.findOne({ email })
 
             if (!username || !name || !email || !password) {
                 throw new AuthenticationError('Please fill out all fields.');
@@ -124,12 +128,6 @@ const resolvers = {
                 throw new AuthenticationError('Please use a password that is greater than 8 characters long.');
             }
 
-            // if (username !== '^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$') {
-            //     throw new AuthenticationError(`Usernames \n` +
-            //         `1. May only contains alphanumeric characters or an underscore.
-            //     2. May not start or end with an underscore, and may not be concurrent.
-            //     3. Between 2 and 18 characters long.`)
-            // }
             const player = await Player.create({ name, username, email, password });
             const token = signToken(player);
             return { token, player };
@@ -204,15 +202,24 @@ const resolvers = {
                 players.push(context.player._id);
 
                 const newEvent = await Event.create({ eventName, location, date, owner, players });
-                // console.log(newEvent);
-                let attendees = newEvent.players.map(player => player.email);
+                let attendees = [];
+                // console.log(newEvent.players.length);
+                for (let i = 0; i < newEvent.players.length; i++) {
+                    let { email } = await Player.findById(newEvent.players[i])
+                    attendees.push(email)
+
+                }
+                // let attendees = newEvent.players.map(player => player.email);
+
                 // Create options for sending email to all invited friends
                 let mailOptions = {
-                    from: process.env.EMAIL_USERNAME,
+                    from: process.env.EMAIL_USERNAME || 'getonboardgames1@gmail.com',
                     to: attendees,
                     subject: `You've been invited to ${newEvent.owner.name}'s ${newEvent.name} Board Game Night!`,
                     text: `${newEvent.owner.name} has invited you to a board game night. Check out the details at https://p3-getonboard.herokuapp.com/MyEvents`
                 };
+
+                console.log(mailOptions)
                 // Sends mail out to all players.
                 let info = await transporter.sendMail(mailOptions);
                 // Confirmation of email sent

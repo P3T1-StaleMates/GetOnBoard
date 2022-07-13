@@ -77,7 +77,6 @@ playerSchema.pre('save', async function (next) {
     const password = await bcrypt.hashSync(this.password, saltRounds);
     this.password = password;
   }
-  console.log("jesse", this)
 next();
 });
 
