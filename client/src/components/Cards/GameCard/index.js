@@ -1,7 +1,21 @@
 import "./GameCard.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { REMOVE_GAME } from "../../../utils/mutations";
+import { useMutation } from '@apollo/client';
 // card component for games
 
 const GameCard = ({ game }) => {
+    const [removeGame, { error }] = useMutation(REMOVE_GAME);
+
+  const handleRemoveGame = async (gameId) => {
+    try {
+      const { removedGame } = await removeGame({
+        variables: { gameId }
+      })
+    } catch (err) {
+      console.error(err);
+    }
+  }
 let stockImage = "https://image.shutterstock.com/image-photo/letter-tiles-spelling-out-words-260nw-1509215651.jpg"
     return (
         <div className="card game" style={{ width: "15rem" }}>
@@ -9,6 +23,8 @@ let stockImage = "https://image.shutterstock.com/image-photo/letter-tiles-spelli
             <div className="card-body">
                 <h5 className="card-title">Title of game: {game.title}</h5>
                 <p className="card-text">{`#ofplayers: ${`${game.minPlayer} - ${game.maxPlayer}`} Gamelength: ${game.averageTime}`}</p>
+                <button className="btn-danger" onClick={() => handleRemoveGame(game._id)}><FontAwesomeIcon icon="fa-solid fa-trash fa-2xl" /></button>
+            
             </div>
         </div>
     );
