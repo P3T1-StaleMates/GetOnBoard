@@ -1,0 +1,19 @@
+.friendsContainer {
+    background-color:#f855c4;
+    border-radius: 30px;
+    padding-top: 2%;
+    margin: 2%;
+    height: 400px;
+    overflow: scroll;
+
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #a9e800;
+    border-radius: 10px;
+}

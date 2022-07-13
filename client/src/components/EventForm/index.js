@@ -11,7 +11,7 @@ const EventForm = () => {
     const [formState, setFormState] = useState({
         eventName: "",
         location: "",
-        date: "",
+        date: new Date(),
         players: [],
     });
     const [date, setDate] = useState(new Date());
