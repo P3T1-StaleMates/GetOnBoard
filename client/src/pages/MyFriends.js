@@ -1,5 +1,6 @@
 import PlayerCard from "../components/Cards/PlayerCard"
-import AddFriend from "../components/AddFriend"
+import AddFriendSmall from "../components/AddFriendSmall"
+import "./MyFriends.css"
 
 
 import { Redirect, useParams } from 'react-router-dom';
@@ -55,16 +56,16 @@ const Profile = () => {
 					<div>
 						<h5>My Friends</h5>
 						<p>Check out all your friends!</p>
-						<AddFriend />
+						<AddFriendSmall />
 					</div>
 				</div>
 			</section>
 			<div>
-				<div className="flex-row justify-center mb-3">
+				<div className=" friendsContainer flex-row justify-center mb-3">
 
-					{/* <div className="col-12 col-md-10 mb-5"> */}
+					<div className="col-12 col-md-10 mb-5">
 						{friends.map(friend => <PlayerCard key={friend._id} info={friend} />)}
-					{/* </div> */}
+					</div>
 
 				</div>
 			</div>
