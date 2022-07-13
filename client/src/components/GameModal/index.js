@@ -44,7 +44,7 @@ const GameModal = ({ showModal, searchTerm, closeModal }) => {
                 <GameCard game={game} />
                 <button
                   type="button"
-                  className="btn btn-primary"
+                  className="btn btn-danger"
                   onClick={() => handleAddBook(game)}
                 >
                   Save Game
@@ -55,9 +55,9 @@ const GameModal = ({ showModal, searchTerm, closeModal }) => {
         )}
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" onClick={closeModal}>
+        <button className="btn-green" onClick={closeModal}>
           Close
-        </Button>
+        </button>
       </Modal.Footer>
     </Modal>
   );

@@ -41,7 +41,7 @@ const MyGames = () => {
           <div className="row">
             {ownedGames.length ? ownedGames.map((game) => {
               return <div className="col" key={game.title}> <GameCard game={game} />
-                <button className="btn-green" onClick={() => handleRemoveGame(game._id)}>Remove Game</button>
+                <button className="btn btn-danger" onClick={() => handleRemoveGame(game._id)}>Remove Game</button>
               </div>
             }) : <p>No Games to Show! Add a new game by searching for one above!</p>}
           </div>
