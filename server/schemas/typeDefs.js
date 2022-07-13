@@ -99,7 +99,7 @@ type Mutation {
 		date: String!,
 		players: [ID]!
 		): Event
-	updateEventGame(eventID: ID!, eventGames: [ID]!): Event
+	updateEventGame(eventId: ID!, eventGames: [ID]!): Event
 	deleteEvent(eventId: ID!, groupId: ID): Event
 	addEventWinner(eventId: ID!, winnerId: ID!): Event
 

@@ -116,11 +116,12 @@ const resolvers = {
                 throw new AuthenticationError('Please use a password that is greater than 8 characters long.');
             }
 
-            if (username != '^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){2,18}[a-zA-Z0-9]$' )
-                {throw new AuthenticationError(`Usernames \n` +
-                `1. May only contains alphanumeric characters or an underscore.
+            if (username != '^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){2,18}[a-zA-Z0-9]$') {
+                throw new AuthenticationError(`Usernames \n` +
+                    `1. May only contains alphanumeric characters or an underscore.
                 2. May not start or end with an underscore, and may not be concurrent.
-                3. Between 2 and 18 characters long.`)}
+                3. Between 2 and 18 characters long.`)
+            }
             const player = await Player.create({ name, username, email, password });
             const token = signToken(player);
             return { token, player };
@@ -129,7 +130,7 @@ const resolvers = {
         updatePlayer: async (parent, args, context) => {
 
             if (context.player.username) {
-                return await Player.findByIdAndUpdate(context.player._id, args , { new: true });
+                return await Player.findByIdAndUpdate(context.player._id, args, { new: true });
             }
 
             throw new AuthenticationError('Not logged in');
@@ -212,7 +213,7 @@ const resolvers = {
                     return await Game.findById(gameId)
                 }));
                 // Proof it works and maps an array of game documents
-                console.log(games);
+                // console.log(games);
                 // Adding to the event by eventId returns null, for some reason.
                 return await Event.findByIdAndUpdate(eventId, { $addToSet: { eventGames: games } }, { new: true }).populate("eventGames");
             }
