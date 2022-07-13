@@ -48,7 +48,7 @@ const AddFriendSmall = () => {
                     value={formState.username}
                     onChange={handleChange}
                 /><br></br>
-                <button type="button" className="btn btn-primary btn-sm">Small button</button>
+                <button type="button" className="btn btn-primary btn-sm">Search</button>
             </form>
 
             {error && (
