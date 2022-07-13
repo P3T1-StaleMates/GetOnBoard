@@ -7,6 +7,7 @@
 
 }
 .game img{
+    padding-top:10px;
     max-width: 50%;
     min-height: 50%;
     display: block;
@@ -16,6 +17,6 @@
 }
 
 .overflow{
-    height: 560px;
+    height: 630px;
     overflow: scroll;
 }

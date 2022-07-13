@@ -16,15 +16,23 @@ const MyGames = () => {
 
   return (
     <>
-      <section className="padding-40 ">
-        <div className="col"><img className="icon" src="/assets/images/man-icon.jpg" alt="Avatar" />
+    <div class="container">
+  <div class="row">
+    <div class="col padding-40">
+        <div><img className="icon p-2" src="/assets/images/man-icon.jpg" alt="Avatar" />
           <div>
-            <h5>Dashboard My Games Page</h5>
-            <p>Welcome, view all groups</p>
+            <h5>My Games</h5>
+            <p>View all your added games</p>
           </div>
-        </div>
+      
+      </div>
+      </div>
+      <div class="col p-3">
         <Searchbar />
-      </section>
+        </div>
+
+      </div>
+      </div>
 
       <section className="overflow">
         <div className="container ">

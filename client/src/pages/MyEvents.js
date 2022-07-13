@@ -17,6 +17,9 @@ const MyEvents = () => {
     return (
         <>
             <EventForm />
+            <h4 className="pl-2">
+                        Upcoming Events
+                    </h4>
             <div className="eventContainer">
                 {myEvents.map(myEvent => 
                     <EventCard key={myEvent._id} myEvent={myEvent} />)

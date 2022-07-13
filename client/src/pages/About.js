@@ -50,7 +50,7 @@ const About = () => {
             <div className="col-md-6 col-sm-4">
               <div className="team-member">
                 <div className="team-img">
-                  <img src="https://image.freepik.com/free-photo/man-standing-with-a-black-t-shirt_1187-1045.jpg" alt="team member" className="img-responsive"></img>
+                  <img src="/assets/images/Lea.jpg" alt="team member" className="img-responsive"></img>
                 </div>
                 <div className="team-hover">
                   <div className="desk">
