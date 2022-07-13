@@ -10,6 +10,7 @@ import "./About.css"
 const About = () => {
   return (
     <>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"></link>
       {/* <section className="padding-40">
         <div className="col"><img className="icon" src="/assets/images/man-icon.jpg" alt="Avatar" />
           <div>
