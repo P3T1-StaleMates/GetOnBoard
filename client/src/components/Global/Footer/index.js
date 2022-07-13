@@ -1,14 +1,12 @@
 import React from "react";
+import "../Footer/footer.css"
 
 const Footer = () => {
   return (
     <div className="container">
       <div className="row">
-        <section></section>
-      </div>
-      <div className="row">
         <div className="col">
-          <h3 className="padding-top-40">PUT AD HERE</h3>
+          <div className="padding-top-40 nw-img">  <img className="nw-img" src="/assets/images/CodeBootcamp.png" alt="team member"></img></div>
         </div>
       </div>
     </div>

@@ -86,7 +86,7 @@ const Home = () => {
        
           </div>
           <div className="row">
-            <div className="col"><h3 className="padding-top-40">PUT AD HERE</h3>
+            <div className="col">
             
             </div>
           </div>

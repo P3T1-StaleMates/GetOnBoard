@@ -29,10 +29,10 @@ const SearchBar = () => {
         <>
             <form className="m-2 searchbar" onSubmit={handleFormSubmit}>
                 <label>
-                    Add a Game:
+ 
                     <input type="text" name='searchText' placeholder="Boardgame Name" value={searchTerm} onChange={handleChange} />
-                </label>
-                <button type="submit" className=" btn-green " value="Submit">Search</button>
+                </label><br></br>
+                <button type="submit" className=" btn-green " value="Submit">Add Game</button>
             </form>
             {showModal && <GameModal showModal={showModal} searchTerm={searchTerm} closeModal={handleCloseModal} />}
         </>
