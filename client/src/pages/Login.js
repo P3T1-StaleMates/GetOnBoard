@@ -57,8 +57,8 @@ const Login = (props) => {
         <h2>Log in and Get On Board!</h2>
         </div>
        <div className='padding-bottom-40'>
-      <div className="col-12 pb-4 col-lg-6">
-        <div className="card  border-none">
+      <div className="col-8 center pb-4 col-lg-8">
+        <div className="card  height border-none">
           <h4 className="p-2 text-center">Login</h4>
           <div className="card-body">
             {data ? (
@@ -83,7 +83,7 @@ const Login = (props) => {
                   type="password"
                   value={formState.password}
                   onChange={handleChange}
-                />
+                /><br></br>
                 <button
                   className="btn-green btn-block btn-primary"
                   style={{ cursor: 'pointer' }}
@@ -102,9 +102,11 @@ const Login = (props) => {
           </div>
         </div>
       </div>
-        <p>Don't Have an account? Click <Link to="/Signup">here</Link> to Sign up</p>
 
    </div>
+   <div className='col-6 center '>
+        <p>Don't Have an account? Click <Link to="/Signup">here</Link> to Sign up</p>
+        </div>
     </main>
    </div>
   );
