@@ -1,6 +1,3 @@
-import GameCard from "../components/Cards/GameCard";
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
@@ -20,8 +17,7 @@ const About = () => {
         </div>
       </section> */}
 
-      <section className="overflow-auto">
-
+      <section className="overflow-auto ">
         <div className="container ">
           <div className="row">
             <div className="heading-title text-center">
@@ -39,8 +35,8 @@ const About = () => {
                     <p>Full Stack Web Developer</p>
                   </div>
                   <div className="s-link">
-                    <a href="/"><FontAwesomeIcon icon={faGithub} /></a>
-                    <a href="/"><FontAwesomeIcon icon={faLinkedin} /></a>
+                    <a href="https://github.com/freyaliesel" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGithub} /></a>
+                    <a href="/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedin} /></a>
                   </div>
                 </div>
               </div>
@@ -62,8 +58,8 @@ const About = () => {
                     <p>I love to introduce myself as a hardcore Web Designer.</p>
                   </div>
                   <div className="s-link">
-                    <a href="/"><FontAwesomeIcon icon={faGithub} /></a>
-                    <a href="/"><FontAwesomeIcon icon={faLinkedin} /></a>
+                    <a href="https://github.com/lealinnea" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGithub} /></a>
+                    <a href="https://www.linkedin.com/in/lea-guerrero-020516174/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedin} /></a>
                   </div>
                 </div>
               </div>
@@ -75,8 +71,8 @@ const About = () => {
 
             {/* Miguel */}
             <div className="col-md-6 col-sm-4">
-              <div className="team-member">
-                <div className="team-img">
+              <div className="team-member d-flex justify-content-center">
+                <div className="team-img d-flex justify-content-center">
                   <img src="https://image.freepik.com/free-photo/elegant-man-with-thumbs-up_1149-1595.jpg" alt="team member" className="img-responsive"></img>
                 </div>
                 <div className="team-hover">
@@ -85,8 +81,8 @@ const About = () => {
                     <p>I love to introduce myself as a hardcore Web Designer.</p>
                   </div>
                   <div className="s-link">
-                    <a href="/"><FontAwesomeIcon icon={faGithub} /></a>
-                    <a href="/"><FontAwesomeIcon icon={faLinkedin} /></a>
+                    <a href="https://github.com/mae2136" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGithub} /></a>
+                    <a href="https://www.linkedin.com/in/miguel-a-escobar/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedin} /></a>
                   </div>
                 </div>
               </div>
@@ -99,21 +95,21 @@ const About = () => {
             {/* Jesse */}
             <div className="col-md-6 col-sm-4">
               <div className="team-member">
-                <div className="team-img">
+                <div className="team-img d-flex justify-content-center">
                   <img src="/assets/images/Jesse.png" alt="team member" className="img-responsive"></img>
                 </div>
                 <div className="team-hover">
                   <div className="desk">
                     <h4>Hi There !</h4>
-                    <p>I love to introduce myself as a hardcore board gamer.</p>
+                    <p>Board/Video game enthusiast. Impending full stack web developer.</p>
                   </div>
                   <div className="s-link">
-                    <a href="/"><FontAwesomeIcon icon={faGithub} /></a>
-                    <a href="/"><FontAwesomeIcon icon={faLinkedin} /></a>
+                    <a href="https://github.com/JesseComeau" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGithub} /></a>
+                    <a href="https://linkedin.com/in/jessecomeau" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedin} /></a>
                   </div>
                 </div>
               </div>
-              <div className="team-title">
+              <div className="team-title flex-column justify-content-center">
                 <h5>Jesse</h5>
                 <span>Full Stack Web Developer</span>
               </div>
@@ -121,15 +117,6 @@ const About = () => {
 
           </div>
 
-        </div>
-      </section>
-
-      <section>
-        <div className="container">
-          <div className="row">
-          </div>
-          <div className="row">
-          </div>
         </div>
       </section>
     </>
