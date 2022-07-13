@@ -45,11 +45,11 @@ const Signup = () => {
     <div className="padding-40">
        <h1> Welcome to Get On Board!</h1>
        <p>For all your mystical game night desires! Find and save your favorite owned board games and schedule game night meet ups with friends. </p>
-        <h2>Get on board and Signup to get started!</h2>
+        {/* <h2>Get on board and Signup to get started!</h2> */}
         </div>
-      <div className="col-12 col-lg-6">
+      <div className="col-6  center col-lg-6">
         <div className="card border-none">
-          <h4 className="p-2 text-center">Sign Up</h4>
+          <h4 className=" text-center">Sign Up</h4>
           <div className="card-body ">
             {data ? (
               <p>
