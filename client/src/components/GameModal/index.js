@@ -9,7 +9,6 @@ import { Modal, Button } from "react-bootstrap";
 const GameModal = ({ showModal, searchTerm, closeModal }) => {
   console.log("Search Term: ", searchTerm);
   const [gameData, setGameData] = useState([]);
-  // // ADD_GAME mutation goes here
   const [addGame, { error }] = useMutation(ADD_GAME);
 
   const handleAddBook = async (gameToAdd) => {
@@ -23,27 +22,10 @@ const GameModal = ({ showModal, searchTerm, closeModal }) => {
     }
   };
 
-  // This is used for optimization later
-  // Grab game data from our backend using the searchTerm
-  // const { loading, data } = useQuery(QUERY_GAMES, {
-  //   variables: { title: searchTerm },
-  // });
-
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
-
-  // console.log("Backend Data: ", data.games);
-
   useEffect(() => {
     gameSearch(searchTerm, setGameData);
     console.log("API Data: ", gameData);
-    //   if (data.games.length === 0) {
-    //   } else {
-    //     setGameData(data.games);
-    //   }
   }, []);
-  // // If no data was found, run the API call to get data from somewhere.
 
   console.log("State Game Data: ", gameData);
 
@@ -62,7 +44,7 @@ const GameModal = ({ showModal, searchTerm, closeModal }) => {
                 <GameCard game={game} />
                 <button
                   type="button"
-                  className="btn btn-primary"
+                  className="btn btn-danger"
                   onClick={() => handleAddBook(game)}
                 >
                   Save Game
@@ -73,9 +55,9 @@ const GameModal = ({ showModal, searchTerm, closeModal }) => {
         )}
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" onClick={closeModal}>
+        <button className="btn-green" onClick={closeModal}>
           Close
-        </Button>
+        </button>
       </Modal.Footer>
     </Modal>
   );
