@@ -10,6 +10,12 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;
 }
+
+.img-responsive {
+    object-fit: contain;
+    max-height: 235.93px;
+    align-self: center;
+}
 .heading-title {
     margin-bottom: 100px;
 }

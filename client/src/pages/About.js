@@ -1,6 +1,8 @@
 import GameCard from "../components/Cards/GameCard";
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 import "./About.css"
 
@@ -36,15 +38,14 @@ const About = () => {
                     <p>Full Stack Web Developer</p>
                   </div>
                   <div className="s-link">
-                    <a href="/"><i className="fa fa-facebook"></i></a>
-                    <a href="/"><i className="fa fa-twitter"></i></a>
-                    <a href="/"><i className="fa fa-google-plus"></i></a>
+                    <a href="/"><FontAwesomeIcon icon={faGithub} /></a>
+                    <a href="/"><FontAwesomeIcon icon={faLinkedin} /></a>
                   </div>
                 </div>
               </div>
               <div className="team-title">
                 <h5>Kit</h5>
-                <span>founder & ceo</span>
+                <span>Full Stack Web Developer</span>
               </div>
             </div>
 
@@ -60,15 +61,14 @@ const About = () => {
                     <p>I love to introduce myself as a hardcore Web Designer.</p>
                   </div>
                   <div className="s-link">
-                    <a href="/"><i className="fa fa-facebook"></i></a>
-                    <a href="/"><i className="fa fa-twitter"></i></a>
-                    <a href="/"><i className="fa fa-google-plus"></i></a>
+                    <a href="/"><FontAwesomeIcon icon={faGithub} /></a>
+                    <a href="/"><FontAwesomeIcon icon={faLinkedin} /></a>
                   </div>
                 </div>
               </div>
               <div className="team-title">
-                <h5>Martin Smith</h5>
-                <span>founder & ceo</span>
+                <h5>Lea</h5>
+                <span>Full Stack Web Developer</span>
               </div>
             </div>
 
@@ -84,15 +84,14 @@ const About = () => {
                     <p>I love to introduce myself as a hardcore Web Designer.</p>
                   </div>
                   <div className="s-link">
-                    <a href="/"><i className="fa fa-facebook"></i></a>
-                    <a href="/"><i className="fa fa-twitter"></i></a>
-                    <a href="/"><i className="fa fa-google-plus"></i></a>
+                    <a href="/"><FontAwesomeIcon icon={faGithub} /></a>
+                    <a href="/"><FontAwesomeIcon icon={faLinkedin} /></a>
                   </div>
                 </div>
               </div>
               <div className="team-title">
-                <h5>Franklin Harbet</h5>
-                <span>HR Manager</span>
+                <h5>Miguel</h5>
+                <span>Full Stack Web Developer</span>
               </div>
             </div>
 
@@ -100,23 +99,22 @@ const About = () => {
             <div className="col-md-6 col-sm-4">
               <div className="team-member">
                 <div className="team-img">
-                  <img src="https://image.freepik.com/free-photo/man-standing-with-a-black-t-shirt_1187-1045.jpg" alt="team member" className="img-responsive"></img>
+                  <img src="/assets/images/Jesse.png" alt="team member" className="img-responsive"></img>
                 </div>
                 <div className="team-hover">
                   <div className="desk">
                     <h4>Hi There !</h4>
-                    <p>I love to introduce myself as a hardcore Web Designer.</p>
+                    <p>I love to introduce myself as a hardcore board gamer.</p>
                   </div>
                   <div className="s-link">
-                    <a href="/"><i className="fa fa-facebook"></i></a>
-                    <a href="/"><i className="fa fa-twitter"></i></a>
-                    <a href="/"><i className="fa fa-google-plus"></i></a>
+                    <a href="/"><FontAwesomeIcon icon={faGithub} /></a>
+                    <a href="/"><FontAwesomeIcon icon={faLinkedin} /></a>
                   </div>
                 </div>
               </div>
               <div className="team-title">
-                <h5>Martin Smith</h5>
-                <span>founder & ceo</span>
+                <h5>Jesse</h5>
+                <span>Full Stack Web Developer</span>
               </div>
             </div>
 
