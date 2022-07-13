@@ -29,8 +29,8 @@ const SearchBar = () => {
         <>
             <form className="m-2 searchbar" onSubmit={handleFormSubmit}>
                 <label>
-                    Board Game Search:
-                    <input type="text" name='searchText' placeholder="Catan" value={searchTerm} onChange={handleChange} />
+                    Add a Game:
+                    <input type="text" name='searchText' placeholder="Boardgame Name" value={searchTerm} onChange={handleChange} />
                 </label>
                 <button type="submit" className=" btn-green " value="Submit">Search</button>
             </form>

@@ -1,12 +1,11 @@
 // user dashboard - holds other displays inside
 import GameCard from "../components/Cards/GameCard";
 import CardContainer from "../components/Cards/CardContainer";
-// import PlayerCard from "../components/Cards/PlayerCard";
-// import EventCard from "../components/Cards/EventCard";
+import SearchBar from "../components/Searchbar";
 import AddFriend from "../components/AddFriend";
 
 import { useQuery } from "@apollo/client";
-import { QUERY_ME, QUERY_MY_EVENTS } from "../utils/queries";
+import { QUERY_ME } from "../utils/queries";
 
 const Dashboard = () => {
   const { loading, data } = useQuery(QUERY_ME);
@@ -41,14 +40,14 @@ const Dashboard = () => {
             {ownedGames.length ? (
               ownedGames.slice(0, 3).map((game) => {
                 return (
-                  <div className="col" key={game.title}>
+                  <div className="col">
                     {" "}
-                    <GameCard game={game} />
+                    <GameCard key={game._id} game={game} />
                   </div>
                 );
               })
             ) : (
-              <p>No Games to Show! Add your games by searching for them!</p>
+              <SearchBar />
             )}
           </div>
 
@@ -65,7 +64,7 @@ const Dashboard = () => {
             </div>
           </div>
           </div>
-      
+
       </section>
     </>
   );

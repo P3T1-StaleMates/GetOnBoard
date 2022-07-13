@@ -1,9 +1,11 @@
 import EventForm from "../components/EventForm";
+import "./MyEvents.css"
 import { useQuery } from "@apollo/client";
 import { QUERY_MY_EVENTS } from "../utils/queries";
 import EventCard from "../components/Cards/EventCard";
 
 const MyEvents = () => {
+
     const { loading, data } = useQuery(QUERY_MY_EVENTS);
 
     if (loading) {
@@ -15,9 +17,11 @@ const MyEvents = () => {
     return (
         <>
             <EventForm />
-            {myEvents.map(myEvent => 
-                <EventCard key={myEvent.eventName} myEvent={myEvent} />)
-            }
+            <div className="eventContainer">
+                {myEvents.map(myEvent => 
+                    <EventCard key={myEvent._id} myEvent={myEvent} />)
+                }
+            </div>
         </>
     );
 };
