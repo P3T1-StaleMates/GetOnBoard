@@ -33,7 +33,8 @@
   .nav-link:hover {
       color: #a9e800; 
    }
-   
+
+  
   /* ===Margins=== */
   .mrl-20 {
     margin-right: 4%;
@@ -93,7 +94,11 @@
       padding-top: 280px;
   
     }
-  
+    .padding-bottom-10 {
+      padding-bottom: 10px;
+    }
+    
+    
   .padding-bottom-40 {
       padding-bottom: 40px;
     }
