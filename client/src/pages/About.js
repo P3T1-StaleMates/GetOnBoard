@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import { faImagePortrait } from '@fortawesome/free-solid-svg-icons'
 
 import "./About.css"
 
@@ -7,7 +8,7 @@ import "./About.css"
 const About = () => {
   return (
     <>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"></link>
+      <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"></link>
       {/* <section className="padding-40">
         <div className="col"><img className="icon" src="/assets/images/man-icon.jpg" alt="Avatar" />
           <div>
@@ -101,12 +102,16 @@ const About = () => {
                 </div>
                 <div className="team-hover">
                   <div className="desk">
-                    <h4>Hi There !</h4>
-                    <p>Board/Video game enthusiast. Impending full stack web developer.</p>
+                    <h4> Full-Stack Web Developer.</h4>
+                    <p> Board/Video game enthusiast.</p>
+                    <p> Dog father. </p>
+                    <br></br>
+                    <p> Check out my links below!</p>
                   </div>
                   <div className="s-link">
                     <a href="https://github.com/JesseComeau" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGithub} /></a>
                     <a href="https://linkedin.com/in/jessecomeau" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedin} /></a>
+                    <a href="https://j-comeau.com" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faImagePortrait} /></a>
                   </div>
                 </div>
               </div>
