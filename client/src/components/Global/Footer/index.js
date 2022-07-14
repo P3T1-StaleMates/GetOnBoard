@@ -1,18 +1,24 @@
 import React from "react";
+import "../Footer/footer.css";
 
 const Footer = () => {
-  return (
-    <div className="container">
-      <div className="row">
-        <section></section>
-      </div>
-      <div className="row">
-        <div className="col">
-          <h3 className="padding-top-40">PUT AD HERE</h3>
+    return (
+        <div className="container">
+            <div className="row">
+                <div className="col">
+                    <div className="padding-top-40 nw-img">
+                        <a href="https://bootcamp.northwestern.edu/coding/">
+                            <img
+                                className="nw-img"
+                                src="/assets/images/CodeBootcamp.png"
+                                alt="team member"
+                            />
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Footer;

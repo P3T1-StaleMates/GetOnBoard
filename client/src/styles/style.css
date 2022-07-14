@@ -33,7 +33,8 @@
   .nav-link:hover {
       color: #a9e800; 
    }
-   
+
+  
   /* ===Margins=== */
   .mrl-20 {
     margin-right: 4%;
@@ -64,6 +65,9 @@
   .padding-20 {
     padding: 20px;
   }
+  .padding-left20 {
+    padding-left: 20px;
+  }
   .padding-40 {
     padding: 40px;
   }
@@ -90,7 +94,11 @@
       padding-top: 280px;
   
     }
-  
+    .padding-bottom-10 {
+      padding-bottom: 10px;
+    }
+    
+    
   .padding-bottom-40 {
       padding-bottom: 40px;
     }

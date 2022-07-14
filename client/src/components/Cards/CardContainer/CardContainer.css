@@ -2,19 +2,18 @@
     background-color: rgb(255, 255, 255);
     border-radius: 30px;
     padding-top: 2%;
-    margin: 2%;
-    height: 300px;
+    margin: 0% 2% 2% 2%;
+    height:300px;
     overflow: scroll;
- 
+
 }
 
 ::-webkit-scrollbar {
     width: 8px;
   }
-  
+
 
   ::-webkit-scrollbar-thumb {
     background:#a9e800;
     border-radius: 10px;
   }
-  

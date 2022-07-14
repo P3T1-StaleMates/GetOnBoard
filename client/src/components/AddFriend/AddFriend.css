@@ -1,24 +1,27 @@
-form{
-text-align: center;
-/* margin-top: 10rem; */
-
+form {
+  text-align: center;
+  /* margin-top: 10rem; */
 }
-.card-height{
-height: 300px;
+.card-height {
+  height: 300px;
 }
-
 
 .btn-green {
-    text-align: center;
-    background-color: #a9e800;
-    border-radius: 20px;
-    height: 4rem;
-    width: 12rem;
-    border: none;
-    font-weight: bold;
-  }
+  text-align: center;
+  background-color: #a9e800;
+  border-radius: 20px;
+  height: 4rem;
+  width: 12rem;
+  border: none;
+  font-weight: bold;
+}
 
-  .head-img{
-      width: 70%;
-      
-  }
+.head-img {
+  width: 70%;
+  object-fit: contain;
+  max-height: 180px;
+}
+
+img {
+    object-fit: contain;
+}

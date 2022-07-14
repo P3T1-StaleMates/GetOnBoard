@@ -19,8 +19,8 @@ const CardContainer = () => {
             {myEvents.length ? (
                 myEvents.slice(0, 3).map((myEvent) => {
                     return (
-                        <div className="col" key={myEvent._id}>
-                            {" "}
+                        <div className="row" key={myEvent._id}>
+                            {/* {" "} */}
                             <EventCard myEvent={myEvent} />
                         </div>
                     );
