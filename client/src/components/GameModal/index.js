@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import GameCard from "../Cards/GameCard";
+import ModalGameCard from "../Cards/ModalGameCard";
 import { QUERY_GAMES } from "../../utils/queries";
 import gameSearch from "../../utils/gameSearch";
 import { useMutation, useQuery } from "@apollo/client";
@@ -41,7 +41,7 @@ const GameModal = ({ showModal, searchTerm, closeModal }) => {
           gameData.map((game) => {
             return (
               <div key={game.title}>
-                <GameCard game={game} />
+                <ModalGameCard game={game} />
                 <button
                   type="button"
                   className="btn btn-danger"

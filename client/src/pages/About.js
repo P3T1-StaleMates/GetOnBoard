@@ -26,6 +26,7 @@ const About = () => {
             {/* Kit */}
             <div className="col-md-6 col-sm-4">
               <div className="team-member">
+
                 <div className="team-img">
                   <img src="/assets/images/Kit.jpg" alt="team member" className="img-responsive"></img>
                 </div>
@@ -49,7 +50,7 @@ const About = () => {
             {/* Lea */}
             <div className="col-md-6 col-sm-4">
               <div className="team-member">
-                <div className="team-img">
+                <div className="team-img d-flex justify-content-center">
                   <img src="/assets/images/Lea.jpg" alt="team member" className="img-responsive"></img>
                 </div>
                 <div className="team-hover">
@@ -71,7 +72,7 @@ const About = () => {
 
             {/* Miguel */}
             <div className="col-md-6 col-sm-4">
-              <div className="team-member d-flex justify-content-center">
+              <div className="team-member">
                 <div className="team-img d-flex justify-content-center">
                   <img src="https://image.freepik.com/free-photo/elegant-man-with-thumbs-up_1149-1595.jpg" alt="team member" className="img-responsive"></img>
                 </div>

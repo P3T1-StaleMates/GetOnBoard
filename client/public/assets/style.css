@@ -5,7 +5,7 @@
     padding: 0;
     margin: 0;
   }
-  
+
   main {
     background-color: white;
     background-position: center;
@@ -15,7 +15,6 @@
   h1 {
     font-weight: 900;
   }
-  h2,
   h3,
   h4,
   h5 {
@@ -27,43 +26,43 @@
     line-height: 2em;
   }
   .nav-link {
-     color: black; 
+     color: black;
   }
   .nav-link:hover {
-      color: #a9e800; 
+      color: #a9e800;
    }
-   
+
   /* ===Margins=== */
   .mrl-20 {
     margin-right: 4%;
     margin-left: 4%;
   }
- 
+
   /* ====positions=== */
-  
+
   .center {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
   }
-  
+
   /* ===Padding=== */
   .padding-40 {
     padding: 40px;
   }
-  
+
   .padding-top-20 {
       padding-top: 20px;
   }
   .padding-top-40 {
       padding-top: 40px;
   }
-  
+
   .padding-top-60 {
     padding-top: 60px;
   }
-  
+
   .padding-top-280 {
       padding-top: 280px;
     }
@@ -76,7 +75,7 @@
   .logo {
     width: 100%;
   }
-  
+
   .background-img {
     background-image: url("/assets/images/green-hill.jpg");
     height: 900px;
@@ -85,7 +84,7 @@
     background-size: cover;
     position: relative;
   }
-  
+
   /* ====background==== */
   .bg-cream {
     background-color: rgba(232,215,201,0.6);
@@ -94,7 +93,7 @@
     height: 800px;
     margin: 2%;
   }
-  
+
   /* ===buttons=== */
   .btn-green {
     background-color: #a9e800;
@@ -111,4 +110,20 @@
     border-width: 0.25px;
     background-color: transparent;
   }
-  
+
+  .text-purple {
+    color:indigo
+  }
+
+  .text-fuchsia {
+    color: fuchsia
+  }
+
+  .dashGames {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+    border-style: dashed;
+    max-width: 95%;
+  }
