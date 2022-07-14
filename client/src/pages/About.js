@@ -26,8 +26,9 @@ const About = () => {
             {/* Kit */}
             <div className="col-md-6 col-sm-4">
               <div className="team-member">
-                <div className="team-img d-flex justify-content-center">
-                  <img src="https://image.freepik.com/free-photo/man-standing-with-a-black-t-shirt_1187-1045.jpg" alt="team member" className="img-responsive"></img>
+
+                <div className="team-img">
+                  <img src="/assets/images/Kit.jpg" alt="team member" className="img-responsive"></img>
                 </div>
                 <div className="team-hover">
                   <div className="desk">
@@ -36,7 +37,7 @@ const About = () => {
                   </div>
                   <div className="s-link">
                     <a href="https://github.com/freyaliesel" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGithub} /></a>
-                    <a href="/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedin} /></a>
+                    <a href="https://www.linkedin.com/in/kelseaglidden/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedin} /></a>
                   </div>
                 </div>
               </div>

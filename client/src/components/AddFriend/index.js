@@ -3,14 +3,13 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_FRIEND } from '../../utils/mutations'
 import "./AddFriend.css"
-import Auth from '../../utils/auth';
 
 const AddFriend = () => {
     const [formState, setFormState] = useState({
         username: ''
     });
 
-    const [addFriend, { error, data }] = useMutation(ADD_FRIEND);
+    const [addFriend, { error }] = useMutation(ADD_FRIEND);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -25,7 +24,7 @@ const AddFriend = () => {
         event.preventDefault();
 
         try {
-            const { data } = await addFriend({
+            await addFriend({
                 variables: { ...formState }
             })
 
@@ -44,7 +43,7 @@ const AddFriend = () => {
                 alt="Avatar"
             />
             <form onSubmit={handleFormSubmit}>
-                <label >Add a Friend: </label>
+                <label> Add a Friend: </label>
                 <input
                     name="username"
                     type="search"

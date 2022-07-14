@@ -1,29 +1,24 @@
 // card component for players - used in friendslist, groups, dashboards
-
-import { useMutation } from '@apollo/client';
-
-import { REMOVE_FRIEND } from '../../../utils/mutations';
-
-import Auth from '../../../utils/auth'
+import { useMutation } from "@apollo/client";
+import { REMOVE_FRIEND } from "../../../utils/mutations";
 
 const PlayerCard = (props) => {
     // needs to display player information
     const { username } = props.info;
 
-    const [removeFriend, { error  }] = useMutation(REMOVE_FRIEND);
+    const [removeFriend, { error }] = useMutation(REMOVE_FRIEND);
 
-    const removeFriendId = props.info._id
+    const removeFriendId = props.info._id;
 
     const handleFriendDelete = async () => {
         try {
-          const { data } = await removeFriend({
-            variables: { removeFriendId },
-        });
-
+            await removeFriend({
+                variables: { removeFriendId },
+            });
         } catch (e) {
-          console.error(e);
+            console.error(e);
         }
-      };
+    };
 
     return (
         <>
@@ -49,5 +44,4 @@ const PlayerCard = (props) => {
     );
 };
 
-
-export default PlayerCard
+export default PlayerCard;
