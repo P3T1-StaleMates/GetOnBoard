@@ -12,16 +12,7 @@ const EventGameForm = ({ hideEventGameForm, eventId }) => {
         eventGames: [],
     });
     const [gameList, setGameList] = useState([])
-
-    const handleFormChange = (event) => {
-        const { name, value } = event.target;
-
-        setFormState({
-            ...formState,
-            [name]: value,
-        });
-    };
-
+    // Check that you can grab form data
     const handleGamesChange = (array) => {
         console.log("array", array)
         const eventGames = []
@@ -37,7 +28,7 @@ const EventGameForm = ({ hideEventGameForm, eventId }) => {
     }
 
     const [updateEvent, { error, data }] = useMutation(UPDATE_EVENT_GAME);
-
+    // Check that this form is submitting data correctly
     // submit form
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -57,12 +48,14 @@ const EventGameForm = ({ hideEventGameForm, eventId }) => {
             eventGames: [],
         });
     };
-
-    const { loading, eventData } = useQuery(QUERY_EVENT);
+    // Fix this query to pull info correctly.
+    const { loading, eventData } = useQuery(QUERY_EVENT, {
+        variables: { eventId }
+    });
     if (loading) {
         return <div>Loading...</div>;
     }
-
+    console.log(eventData);
     const { groupGames } = eventData.groupGames;
     const options = groupGames.map((game) => ({
         id: game._id,
