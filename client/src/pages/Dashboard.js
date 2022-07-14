@@ -61,9 +61,8 @@ const Dashboard = () => {
           {ownedGames.length ? (
             ownedGames.slice(0, 3).map((game) => {
               return (
-                <div className="col">
-                  {" "}
-                  <GameCard key={game._id} game={game} />
+                <div className="col" key={game._id}>
+                  <GameCard game={game} />
                 </div>
               );
             })
