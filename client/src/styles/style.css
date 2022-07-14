@@ -106,6 +106,10 @@
   .padding-bottom-60 {
       padding-bottom: 60px;
     }
+
+    .padding-top50{
+      padding-top: 50%;
+    }
   /*==== images===== */
   .icon {
     border-radius: 50%;
@@ -158,12 +162,4 @@
     margin: 2%;
   }
   
-.animation{
-  animation-name: bg-color;
-  animation-duration: 30s;
-}
 
-@keyframes bg-color {
-  from {background-color: rgb(167, 167, 167);}
-  to {background-color: rgb(84, 85, 85);}
-}

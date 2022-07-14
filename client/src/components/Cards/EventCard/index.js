@@ -1,6 +1,6 @@
 import React from "react";
 import * as dayjs from 'dayjs'
-
+import "./EventCard.css"
 // card for displaying upcoming events for the user / group
 
 const EventCard = (props) => {
@@ -10,17 +10,17 @@ const EventCard = (props) => {
 
 
     return (
-        <div className="card mb-3">
+        <div className="card animation m-3 mb-3">
             <div className="row g-0">
                 <div className="col-md-2">
-                    <div>
+                    <div >
                         {eventGames.length >= 1 ? (
-                            <img
+                            <img 
                                 src={eventGames[0].imageUrl}
                                 alt={eventGames[0].title}
                             />
                         ) : (
-                            <img
+                            <img className="card-img  pt-5"
                                 src={stockImage}
                                 alt="Scrabble"
                             />
