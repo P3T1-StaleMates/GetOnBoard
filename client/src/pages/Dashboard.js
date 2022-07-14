@@ -1,5 +1,5 @@
 // user dashboard - holds other displays inside
-import GameCard from "../components/Cards/GameCard";
+import ModalGameCard from "../components/Cards/ModalGameCard";
 import CardContainer from "../components/Cards/CardContainer";
 import SearchBar from "../components/Searchbar";
 import AddFriend from "../components/AddFriend";
@@ -20,14 +20,14 @@ const Dashboard = () => {
 
   return (
     <>
-      <section className="padding-40">
+      <section className="padding-welcome">
         <div className="col">
           <img
             className="icon"
             src="/assets/images/man-icon.jpg"
             alt="Avatar"
           />
-          <div>
+          <div className="ps-3">
             <h5>Hello, {name}!</h5>
             <p>Welcome back to Get on Board</p>
           </div>
@@ -41,15 +41,15 @@ const Dashboard = () => {
             <div className="col-8">
               <section>
                 <div className="d-flex justify-content-center">
-                  <h3 className="text-purple">Upcoming Events</h3>
+                  <h3 className="text-blue">Upcoming Events</h3>
                 </div>
                 <CardContainer />
               </section>
             </div>
             <div className="col-4">
               <section>
-                <div className="d-flex justify-content-center pb-2">
-                  <h3 className="text-fuchsia">Quick add a new friend!</h3>
+                <div className="d-flex justify-content-center">
+                  <h3 className="text-pink">Quick add a new friend!</h3>
                 </div>
                 <AddFriend />
               </section>
@@ -57,23 +57,32 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="row pt-4 dashGames">
-          {ownedGames.length ? (
-            ownedGames.slice(0, 3).map((game) => {
-              return (
-                <div className="col" key={game._id}>
-                  <GameCard game={game} />
-                </div>
-              );
-            })
-          ) : (
+        <div className="row dashGames">
+          {ownedGames.slice(0, 3).map((game) => (
+
             <>
-              <div className="d-flex justify-content-center pt-2 pb-2">
-                <h3 className="text-fuchsia h6">Add Some Games!</h3>
+              <div className="col-4">
+
+                <ModalGameCard key={game._id} game={game} />
               </div>
-              <SearchBar />
+
             </>
-          )}
+
+          ))}
+          {ownedGames.length <= 2 &&
+            <div className="col-4 d-flex justify-content-center text-center">
+              <div className="pt-2 pb-2">
+                <div>
+                  <h3 className="text-blue pb-4">Add Some Games!</h3>
+                </div>
+                <div>
+                  <SearchBar />
+                </div>
+              </div>
+            </div>
+
+          }
+
         </div>
       </section>
     </>

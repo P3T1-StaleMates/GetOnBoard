@@ -27,7 +27,7 @@ const About = () => {
             <div className="col-md-6 col-sm-4">
               <div className="team-member">
 
-                <div className="team-img">
+                <div className="team-img d-flex justify-content-center">
                   <img src="/assets/images/Kit.jpg" alt="team member" className="img-responsive"></img>
                 </div>
                 <div className="team-hover">
