@@ -1,4 +1,23 @@
 /* ===components=== */
-.card{
-    border-radius: 30px;
+.card-image{
+    width: 40%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+.zoom {
+    transition: 0.2s;
+  }
+  .zoom:hover {
+    transform: scale(1.05);
+  }
+  .btn-red {
+    background-color: #ff009d;
+    border-radius: 20px;
+    border: none;
+    height: 2em;
+    font-weight: bold;
+    width: 10em;
+    
+  }

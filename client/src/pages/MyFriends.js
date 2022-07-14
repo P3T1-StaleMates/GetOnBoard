@@ -7,78 +7,79 @@ import { useQuery } from "@apollo/client";
 
 import { QUERY_PLAYER, QUERY_ME } from "../utils/queries";
 
-import Auth from "../utils/auth";
+// import Auth from "../utils/auth";
 
 const Profile = () => {
-    const { username: userParam } = useParams();
+  const { username: userParam } = useParams();
 
-    const { loading, data } = useQuery(userParam ? QUERY_PLAYER : QUERY_ME, {
-        variables: { username: userParam },
-    });
+  const { loading, data } = useQuery(userParam ? QUERY_PLAYER : QUERY_ME, {
+    variables: { username: userParam },
+  });
 
-    // console.log(loading)
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+  // console.log(loading)
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-    // console.log("data", data)
-    const { friends } = data.me;
-    // console.log("friends", friends)
+  // console.log("data", data)
+  const { friends } = data.me;
+  // console.log("friends", friends)
 
-    const user = data?.me || data?.user || {};
+  const user = data?.me || data?.user || {};
 
-    // Will use if we get to the point of displaying other users profiles.
+  // Will use if we get to the point of displaying other users profiles.
 
-    // redirect to personal profile page if username is yours
-    //   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    //     return <Redirect to="/me" />;
-    //   }
+  // redirect to personal profile page if username is yours
+  //   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  //     return <Redirect to="/me" />;
+  //   }
 
-    //   if (loading) {
-    //     return <div>Loading...</div>;
-    //   }
+  //   if (loading) {
+  //     return <div>Loading...</div>;
+  //   }
 
-    //   if (!user?.username) {
-    //     return (
-    //       <h4>
-    //         You need to be logged in to see this. Use the navigation links above to
-    //         sign up or log in!
-    //       </h4>
-    //     );
-    //   }
+  //   if (!user?.username) {
+  //     return (
+  //       <h4>
+  //         You need to be logged in to see this. Use the navigation links above to
+  //         sign up or log in!
+  //       </h4>
+  //     );
+  //   }
 
-    return (
-        <>
-            <div className="container">
-                <div className="row">
-                    <div className="col padding-40">
-                        <img
-                            className="icon"
-                            src="/assets/images/man-icon.jpg"
-                            alt="Avatar"
-                        />
-                        <div>
-                            <h5>My Friends</h5>
-                            <p>Check out all your friends!</p>
-                        </div>
-                    </div>
-					<div className="col p-3">
-					<AddFriendSmall />
-					</div>
-                </div>
-            </div>
-
+  return (
+    <>
+      <div className="container">
+        <div className="row">
+          <div className="col padding-40">
+            <img
+              className="icon"
+              src="/assets/images/man-icon.jpg"
+              alt="Avatar"
+            />
             <div>
-                <div className=" friendsContainer flex-row justify-center mb-3">
-                    <div className="col-12 col-md-10 mb-5">
-                        {friends.map((friend) => (
-                            <PlayerCard key={friend._id} info={friend} />
-                        ))}
-                    </div>
-                </div>
+              <h5>My Friends</h5>
+              <p>Check out all your friends!</p>
             </div>
-        </>
-    );
+          </div>
+          <div className="col p-3">
+            <AddFriendSmall />
+          </div>
+        </div>
+      </div>
+      <section className="overflow">
+        <div className="container ">
+          <div className="row">
+            {friends.map((friend) => (
+              <div className="col-4">
+                <PlayerCard key={friend._id} info={friend} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
 };
 
 export default Profile;
