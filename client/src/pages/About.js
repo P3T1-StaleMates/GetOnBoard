@@ -39,6 +39,7 @@ const About = () => {
                   <div className="s-link">
                     <a href="https://github.com/freyaliesel" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGithub} /></a>
                     <a href="https://www.linkedin.com/in/kelseaglidden/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedin} /></a>
+                    <a href="https://freyaliesel.github.io/Portfolio/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faImagePortrait} /></a>
                   </div>
                 </div>
               </div>
@@ -62,6 +63,7 @@ const About = () => {
                   <div className="s-link">
                     <a href="https://github.com/lealinnea" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGithub} /></a>
                     <a href="https://www.linkedin.com/in/lea-guerrero-020516174/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedin} /></a>
+                    <a href="https://lealinnea.github.io/React-Portfolio/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faImagePortrait} /></a>
                   </div>
                 </div>
               </div>
@@ -85,6 +87,7 @@ const About = () => {
                   <div className="s-link">
                     <a href="https://github.com/mae2136" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGithub} /></a>
                     <a href="https://www.linkedin.com/in/miguel-a-escobar/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedin} /></a>
+                    <a href="https://mae2136.github.io/me-react-portfolio/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faImagePortrait} /></a>
                   </div>
                 </div>
               </div>
