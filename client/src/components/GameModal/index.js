@@ -18,6 +18,7 @@ const GameModal = ({ showModal, searchTerm, closeModal }) => {
         variables: { ...gameToAdd },
       });
       console.log("Added Game Data: ", data);
+      closeModal()
     } catch (err) {
       console.error(err);
     }
@@ -31,7 +32,7 @@ const GameModal = ({ showModal, searchTerm, closeModal }) => {
   console.log("State Game Data: ", gameData);
 
   return (
-    <Modal size="xl" className="flex" show={showModal} onHide={closeModal}>
+    <Modal size="xl" className="flex" style={{ top: '-2%', overflow: 'hidden' }}show={showModal} onHide={closeModal}>
       <Modal.Header closeButton>
         <Modal.Title>Game Search Results</Modal.Title>
       </Modal.Header>
@@ -43,7 +44,7 @@ const GameModal = ({ showModal, searchTerm, closeModal }) => {
         ) : (
           gameData.map((game) => {
             return (
-            
+
                     <div className="col modalgamecard" key={game.title}>
                       <div >
                       <ModalGameCard game={game} />
@@ -56,18 +57,18 @@ const GameModal = ({ showModal, searchTerm, closeModal }) => {
                       </button>
                       </div>
                     </div>
-      
+
       );
     })
     )}
     </div>
   </div>
       </Modal.Body>
-      <Modal.Footer>
+      {/* <Modal.Footer>
         <button className="btn-green" onClick={closeModal}>
           Close
         </button>
-      </Modal.Footer>
+      </Modal.Footer> */}
     </Modal>
   );
 };
