@@ -41,7 +41,7 @@ const Dashboard = () => {
             <div className="col-8">
               <section>
                 <div className="d-flex justify-content-center">
-                  <h3 className="text-purple">Upcoming Events</h3>
+                  <h3 className="text-blue">Upcoming Events</h3>
                 </div>
                 <CardContainer />
               </section>
@@ -49,7 +49,7 @@ const Dashboard = () => {
             <div className="col-4">
               <section>
                 <div className="d-flex justify-content-center">
-                  <h3 className="text-fuchsia">Quick add a new friend!</h3>
+                  <h3 className="text-pink">Quick add a new friend!</h3>
                 </div>
                 <AddFriend />
               </section>

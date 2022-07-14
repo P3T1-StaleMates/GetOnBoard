@@ -1,142 +1,160 @@
 /* ====Universal Style==== */
 * {
-    font-family: "Montserrat", sans-serif;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-  }
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 
-  main {
-    background-color: white;
-    background-position: center;
-    border-radius: 30px;
-  }
-  /* =====Fonts and Styles====*/
-  h1 {
-    font-weight: 900;
-  }
-  h3,
-  h4,
-  h5 {
-    color: black;
-    font-weight: bold;
-    font-size: 1.2em;
-  }
-  h6 {
-    line-height: 2em;
-  }
-  .nav-link {
-     color: black;
-  }
-  .nav-link:hover {
-      color: #a9e800;
-   }
+main {
+  background-color: white;
+  background-position: center;
+  border-radius: 30px;
+}
+/* =====Fonts and Styles====*/
+h1 {
+  font-weight: 900;
+}
+h3,
+h4,
+h5 {
+  color: black;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+h6 {
+  line-height: 2em;
+}
+.nav-link {
+  color: black;
+}
+.nav-link:hover {
+  color: #a9e800;
+}
 
-  /* ===Margins=== */
-  .mrl-20 {
-    margin-right: 4%;
-    margin-left: 4%;
-  }
+/* ===Margins=== */
+.mrl-20 {
+  margin-right: 4%;
+  margin-left: 4%;
+}
 
-  /* ====positions=== */
+/* ====positions=== */
 
-  .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-  }
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
 
-  /* ===Padding=== */
-  .padding-40 {
-    padding: 40px;
-  }
+/* ===Padding=== */
+.padding-40 {
+  padding: 40px;
+}
 
-  .padding-welcome {
-    padding: 40px 40px 20px 40px;
-  }
+.padding-welcome {
+  padding: 40px 40px 20px 40px;
+}
 
-  .padding-top-20 {
-      padding-top: 20px;
-  }
-  .padding-top-40 {
-      padding-top: 40px;
-  }
+.padding-top-20 {
+  padding-top: 20px;
+}
+.padding-top-40 {
+  padding-top: 40px;
+}
 
-  .padding-top-60 {
-    padding-top: 60px;
-  }
+.padding-top-60 {
+  padding-top: 60px;
+}
 
-  .padding-top-280 {
-      padding-top: 280px;
-    }
-  /*==== images===== */
-  .icon {
-    border-radius: 50%;
-    width: 80px;
-    float: left;
-  }
-  .logo {
-    width: 100%;
-  }
+.padding-top-280 {
+  padding-top: 280px;
+}
+/*==== images===== */
+.icon {
+  border-radius: 50%;
+  width: 80px;
+  float: left;
+}
+.logo {
+  width: 100%;
+}
 
-  .background-img {
-    background-image: url("/assets/images/green-hill.jpg");
-    height: 900px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-  }
+.background-img {
+  background-image: url("/assets/images/green-hill.jpg");
+  height: 900px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
 
-  /* ====background==== */
-  .bg-cream {
-    background-color: rgba(232,215,201,0.6);
-    background-position: center;
-    border-radius: 30px;
-    height: 800px;
-    margin: 2%;
-  }
+/* ====background==== */
+.bg-cream {
+  background-color: rgba(232, 215, 201, 0.6);
+  background-position: center;
+  border-radius: 30px;
+  height: 800px;
+  margin: 2%;
+}
 
-  /* ===buttons=== */
-  .btn-green {
-    background-color: #a9e800;
-    border-radius: 20px;
-    height: 4em;
-    font-weight: bold;
-  }
-  .btn-clear {
-    padding: 20px;
-    border-radius: 20px;
-    height: 4em;
-    font-weight: 400;
-    border-style: solid;
-    border-width: 0.25px;
-    background-color: transparent;
-  }
+/* ===buttons=== */
+.btn-green {
+  background-color: #a9e800;
+  border-radius: 20px;
+  height: 4em;
+  font-weight: bold;
+}
+.btn-clear {
+  padding: 20px;
+  border-radius: 20px;
+  height: 4em;
+  font-weight: 400;
+  border-style: solid;
+  border-width: 0.25px;
+  background-color: transparent;
+}
 
-  .text-purple {
-    color:indigo
-  }
+.text-green {
+  color: #a9e800;
+}
 
-  .text-fuchsia {
-    color: fuchsia
-  }
+.text-pink {
+  color: #ff009d;
+}
 
-  .text-blue {
-    color:deepskyblue
-  }
+.text-blue {
+  color: #10b5e9;
+}
 
-  .dashGames {
-    /* display: flex; */
-    position: relative;
-    justify-content: center;
-    left: 20px;
-    align-items: center;
-    justify-self: center;
-    border-style: dashed;
-    max-width: 98%;
-    height: 330px;
-    border-image: linear-gradient(to right, fuchsia 25%, indigo 25%, indigo 50%,deepskyblue 50%, deepskyblue 75%, #a9e800 75%) 5;
-    overflow-x: hidden;
-  }
+.dashGames {
+  /* display: flex; */
+  position: relative;
+  justify-content: center;
+  left: 20px;
+  align-items: center;
+  justify-self: center;
+  border-style: dashed;
+  max-width: 98%;
+  height: 330px;
+  border-image: linear-gradient(
+      to right,
+      #a9e800 33%,
+      #ff009d 33%,
+      #ff009d 66%,
+      #10b5e9 66%
+    )
+    5;
+  /* overflow-x: hidden; */
+}
+
+.funborder {
+  border-image: linear-gradient(
+      to right,
+      #a9e800 33%,
+      #ff009d 33%,
+      #ff009d 66%,
+      #10b5e9 66%
+    )
+    5;
+}
