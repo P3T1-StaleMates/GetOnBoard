@@ -74,12 +74,12 @@ const About = () => {
             <div className="col-md-6 col-sm-4">
               <div className="team-member">
                 <div className="team-img d-flex justify-content-center">
-                  <img src="https://image.freepik.com/free-photo/elegant-man-with-thumbs-up_1149-1595.jpg" alt="team member" className="img-responsive"></img>
+                  <img src="/assets/images/miguel.jpg" alt="team member" className="img-responsive"></img>
                 </div>
                 <div className="team-hover">
                   <div className="desk">
-                    <h4>Hello World</h4>
-                    <p>I love to introduce myself as a hardcore Web Designer.</p>
+                    <h4>Med Device Engineer/Web Developer</h4>
+                    <p>Current Med Device Engineer, aspiring Full-Stack Web Developer. Click the links below to learn more about me.</p>
                   </div>
                   <div className="s-link">
                     <a href="https://github.com/mae2136" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGithub} /></a>
