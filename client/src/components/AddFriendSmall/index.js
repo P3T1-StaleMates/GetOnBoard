@@ -36,7 +36,7 @@ const AddFriendSmall = () => {
 
         <>
             <form onSubmit={handleFormSubmit}>
-                <label >Add a Friend: </label>
+                <label>Add a Friend: </label>
                 <input
                     name="username"
                     type="search"
@@ -45,17 +45,17 @@ const AddFriendSmall = () => {
                     aria-label="Search"
                     value={formState.username}
                     onChange={handleChange}
-                /><br></br>
-                <button className='btn-green' variant="outline-success">Add</button>
+                    /><br></br>
+                <button className='btn-green' variant="outline-success" >Add</button>
             </form>
-
             {error && (
-                <div className="my-3 p-3 bg-danger text-white">
-                    Unable to locate a user by this username.
-                </div>
+                <output className=" px-3 bg-danger text-white error-message">
+                    {error.message}
+                </output>
             )}
+
         </>
 
-    )}
+)}
 
 export default AddFriendSmall;

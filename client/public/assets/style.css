@@ -158,3 +158,10 @@ h6 {
     )
     5;
 }
+
+.error-message {
+  position: relative;
+  left: 30px;
+  top: 10px;
+  z-index: 10;
+}
