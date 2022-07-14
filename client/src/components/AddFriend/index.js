@@ -9,7 +9,7 @@ const AddFriend = () => {
         username: ''
     });
 
-    const [addFriend, { error, data }] = useMutation(ADD_FRIEND);
+    const [addFriend, { error }] = useMutation(ADD_FRIEND);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -24,7 +24,7 @@ const AddFriend = () => {
         event.preventDefault();
 
         try {
-            const { data } = await addFriend({
+            await addFriend({
                 variables: { ...formState }
             })
 
