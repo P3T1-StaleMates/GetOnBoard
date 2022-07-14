@@ -1,5 +1,5 @@
 // user dashboard - holds other displays inside
-import ModalGameCard from "../components/Cards/ModalGameCard";
+import GameCard from "../components/Cards/GameCard";
 import CardContainer from "../components/Cards/CardContainer";
 import SearchBar from "../components/Searchbar";
 import AddFriend from "../components/AddFriend";
@@ -62,7 +62,7 @@ const Dashboard = () => {
         <div className="row dashGames">
           {ownedGames.slice(0, 3).map((game) => (
               <div className="col-4">
-                <ModalGameCard key={game._id} game={game} />
+                <GameCard key={game._id} game={game} />
               </div>
             ))
           }
