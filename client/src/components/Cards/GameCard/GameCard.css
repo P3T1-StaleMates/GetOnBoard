@@ -20,3 +20,7 @@
     height: 630px;
     overflow: scroll;
 }
+
+.gameDelete:hover {
+    color: red;
+}

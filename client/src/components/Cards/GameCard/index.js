@@ -2,6 +2,7 @@ import "./GameCard.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { REMOVE_GAME } from "../../../utils/mutations";
 import { useMutation } from '@apollo/client';
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 // card component for games
 
 const GameCard = ({ game }) => {
@@ -24,8 +25,8 @@ let stockImage = "https://image.shutterstock.com/image-photo/letter-tiles-spelli
                 <h5 className="card-title">{game.title}</h5>
                 <p className="card-text">{`Players: ${`${game.minPlayer} - ${game.maxPlayer}`} `}</p>
                 <p>{`Game Length: ${game.averageTime} min`}</p>
-                <button className="btn-danger" onClick={() => handleRemoveGame(game._id)}><FontAwesomeIcon icon="fa-solid fa-trash fa-2xl" /></button>
-            
+                <p className="text-danger:hover gameDelete" onClick={() => handleRemoveGame(game._id)}><FontAwesomeIcon icon={faTrash} /></p>
+
             </div>
         </div>
     );
