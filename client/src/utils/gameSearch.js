@@ -12,6 +12,7 @@ const gameSearch = async (searchTerm, setGameData) => {
       let averageTime = (game.min_playtime + game.max_playtime) / 2;
 
       let newGame = {
+        gameId: game.id,
         title: game.name,
         description: game.description,
         averageTime: averageTime,

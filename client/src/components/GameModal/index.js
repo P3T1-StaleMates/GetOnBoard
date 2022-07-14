@@ -13,11 +13,13 @@ const GameModal = ({ showModal, searchTerm, closeModal }) => {
   const [addGame] = useMutation(ADD_GAME);
 
   const handleAddBook = async (gameToAdd) => {
+    console.log(gameToAdd);
     try {
       const { data } = await addGame({
         variables: { ...gameToAdd },
       });
       console.log("Added Game Data: ", data);
+      closeModal()
     } catch (err) {
       console.error(err);
     }
@@ -41,7 +43,7 @@ const GameModal = ({ showModal, searchTerm, closeModal }) => {
         ) : (
           gameData.map((game) => {
             return (
-              <div key={game.title}>
+              <div key={game.gameId}>
                 <ModalGameCard game={game} />
                 <button
                   type="button"

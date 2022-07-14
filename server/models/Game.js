@@ -1,10 +1,14 @@
 const { Schema, model } = require('mongoose');
 
 const gameSchema = new Schema({
+  gameId: {
+    type: String,
+    required: true,
+  },
   title: {
     type: String,
     required: true,
-    trim: true,
+    // trim: true,
   },
   description: {
     type: String,

@@ -41,8 +41,8 @@ mutation UpdatePlayer($name: String, $username: String, $email: String, $passwor
 `;
 // Works
 export const ADD_GAME = gql`
-    mutation AddGame($title: String!, $minPlayer: Int!, $maxPlayer: Int!, $averageTime: Int!, $description: String, $genre: String, $imageUrl: String) {
-        addGame(title: $title, minPlayer: $minPlayer, maxPlayer: $maxPlayer, averageTime: $averageTime, description: $description, genre: $genre, imageUrl: $imageUrl) {
+    mutation AddGame($gameId: String!, $title: String!, $minPlayer: Int!, $maxPlayer: Int!, $averageTime: Int!, $description: String, $genre: String, $imageUrl: String) {
+        addGame(gameId: $gameId, title: $title, minPlayer: $minPlayer, maxPlayer: $maxPlayer, averageTime: $averageTime, description: $description, genre: $genre, imageUrl: $imageUrl) {
             _id
             name
             username

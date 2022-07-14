@@ -89,12 +89,12 @@ type Mutation {
 	addFriend(username: String!): Player
 	removeFriend(id: ID!): Player
 	# Game Mutations
-	addGame(title: String!, description: String, genre: String, imageUrl: String, minPlayer: Int!, maxPlayer: Int!, averageTime: Int!): Player
+	addGame(gameId: String!, title: String!, description: String, genre: String, imageUrl: String, minPlayer: Int!, maxPlayer: Int!, averageTime: Int!): Player
 	removeGame(gameId: ID!): Player
 
 	#Event Mutations
 	createEvent(
-		eventName: String!, 
+		eventName: String!,
 		location: String!,
 		date: String!,
 		players: [ID]!

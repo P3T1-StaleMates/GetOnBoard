@@ -180,12 +180,13 @@ const resolvers = {
         },
 
         // Used to add a new game to a Player's collection of games
-        addGame: async (parent, { title, description, genre, imageUrl, minPlayer, maxPlayer, averageTime }, context) => {
+        addGame: async (parent, { gameId, title, description, genre, imageUrl, minPlayer, maxPlayer, averageTime }, context) => {
+            console.log(context.player)
 
             if (context.player) {
-                let game = await Game.findOne({ title });
+                let game = await Game.findOne({ gameId });
                 if (!game) {
-                    game = await Game.create({ title, description, genre, imageUrl, minPlayer, maxPlayer, averageTime });
+                    game = await Game.create({ gameId, title, description, genre, imageUrl, minPlayer, maxPlayer, averageTime });
                 }
                 return Player.findByIdAndUpdate(context.player._id, { $addToSet: { ownedGames: game } }, { new: true }).populate("ownedGames");
             }
