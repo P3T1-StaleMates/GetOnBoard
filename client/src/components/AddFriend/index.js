@@ -47,11 +47,6 @@ const AddFriend = () => {
                     {error.message}
                 </output>
             )}
-            {/* {!error && (
-                <output className=" px-3 bg-success text-white error-message">
-                    {formState.username} has been added to your friends list!
-                </output>
-            )} */}
             <form onSubmit={handleFormSubmit} className="pt-2">
                 {/* <label> Add a Friend: </label> */}
                 <input

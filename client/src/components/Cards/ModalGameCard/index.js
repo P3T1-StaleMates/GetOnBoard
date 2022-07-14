@@ -16,6 +16,7 @@ let stockImage = "https://image.shutterstock.com/image-photo/letter-tiles-spelli
                 <p className="card-text">{`Players: ${`${game.minPlayer} - ${game.maxPlayer}`} `}</p>
                 <p>{`Game Length: ${game.averageTime} min`}</p>
 
+
             </div>
         </div>
     );
