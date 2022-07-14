@@ -1,5 +1,5 @@
 import React from "react";
-import EventCardDashboard from "../EventCardDashboard";
+import EventCard from "../EventCard";
 import "./CardContainer.css";
 import { useQuery } from "@apollo/client";
 import { QUERY_MY_EVENTS } from "../../../utils/queries";
@@ -23,7 +23,7 @@ const CardContainer = () => {
                     return (
                         <div className="row" key={myEvent._id}>
                             {/* {" "} */}
-                            <EventCardDashboard myEvent={myEvent} />
+                            <EventCard myEvent={myEvent} />
                         </div>
                     );
                 })

@@ -62,7 +62,7 @@ const Dashboard = () => {
         <div className="row dashGames">
           {ownedGames.slice(0, 3).map((game) => (
               <div className="col-4" key={game._id}>
-                <ModalGameCard game={game} />
+                <GameCard game={game} />
               </div>
             ))
           }
