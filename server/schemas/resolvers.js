@@ -212,18 +212,18 @@ const resolvers = {
                 // let attendees = newEvent.players.map(player => player.email);
 
                 // Create options for sending email to all invited friends
-                let mailOptions = {
-                    from: process.env.EMAIL_USERNAME || 'getonboardgames1@gmail.com',
-                    to: attendees,
-                    subject: `You've been invited to ${newEvent.owner.name}'s ${newEvent.eventName} Board Game Night!`,
-                    text: `${newEvent.owner.name} has invited you to a board game night. Check out the details at https://p3-getonboard.herokuapp.com/MyEvents`
-                };
+                // let mailOptions = {
+                //     from: process.env.EMAIL_USERNAME || 'getonboardgames1@gmail.com',
+                //     to: attendees,
+                //     subject: `You've been invited to ${newEvent.owner.name}'s ${newEvent.eventName} Board Game Night!`,
+                //     text: `${newEvent.owner.name} has invited you to a board game night. Check out the details at https://p3-getonboard.herokuapp.com/MyEvents`
+                // };
 
-                console.log(mailOptions)
+                // console.log(mailOptions)
                 // Sends mail out to all players.
-                let info = await transporter.sendMail(mailOptions);
+                // let info = await transporter.sendMail(mailOptions);
                 // Confirmation of email sent
-                console.log("Message sent: %s", info.messageId);
+                // console.log("Message sent: %s", info.messageId);
                 // const updatedGroup = await Group.findByIdAndUpdate(groupId, { $addToSet: { events: newEvent } }, { new: true });
                 // console.log(updatedGroup);
                 return newEvent;
