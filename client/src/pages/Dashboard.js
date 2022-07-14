@@ -24,8 +24,9 @@ const Dashboard = () => {
         <div className="col">
           <img
             className="icon"
-            src="/assets/images/man-icon.jpg"
+            src="/assets/images/chess/chess-orange.png"
             alt="Avatar"
+            height="80"
           />
           <div className="ps-3">
             <h5>Hello, {name}!</h5>
@@ -65,7 +66,7 @@ const Dashboard = () => {
               </div>
             ))
           }
-          
+
           {ownedGames.length <= 2 &&
             <div className="col-4 d-flex justify-content-center text-center">
               <div className="pt-2 pb-2">
