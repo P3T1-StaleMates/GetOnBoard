@@ -36,35 +36,46 @@ const Dashboard = () => {
 
       <section>
         <div className="container">
-          <div className="row">
-            {ownedGames.length ? (
-              ownedGames.slice(0, 3).map((game) => {
-                return (
-                  <div className="col">
-                    {" "}
-                    <GameCard key={game._id} game={game} />
-                  </div>
-                );
-              })
-            ) : (
-              <SearchBar />
-            )}
-          </div>
 
           <div className="row">
             <div className="col-8">
               <section>
-              <CardContainer />
+                <div className="d-flex justify-content-center">
+                  <h3 className="text-purple">Upcoming Events</h3>
+                </div>
+                <CardContainer />
               </section>
             </div>
-          <div className="col-2">
-            <section>
-            <AddFriend />
-            </section>
+            <div className="col-4">
+              <section>
+                <div className="d-flex justify-content-center pb-2">
+                  <h3 className="text-fuchsia">Quick add a new friend!</h3>
+                </div>
+                <AddFriend />
+              </section>
             </div>
           </div>
-          </div>
+        </div>
 
+        <div className="row pt-4 dashGames">
+          {ownedGames.length ? (
+            ownedGames.slice(0, 3).map((game) => {
+              return (
+                <div className="col">
+                  {" "}
+                  <GameCard key={game._id} game={game} />
+                </div>
+              );
+            })
+          ) : (
+            <>
+              <div className="d-flex justify-content-center pt-2 pb-2">
+                <h3 className="text-fuchsia h6">Add Some Games!</h3>
+              </div>
+              <SearchBar />
+            </>
+          )}
+        </div>
       </section>
     </>
   );
