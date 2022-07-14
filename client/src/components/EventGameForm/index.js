@@ -1,11 +1,9 @@
 import { React, useState } from "react";
 import SlimMultipleSelect from "react-slim-multiple-select";
-import DateTimePicker from "react-datetime-picker";
 import { useMutation, useQuery } from "@apollo/client";
-import { CREATE_EVENT, UPDATE_EVENT_GAME } from "../../utils/mutations";
+import { UPDATE_EVENT_GAME } from "../../utils/mutations";
 import { QUERY_EVENT } from "../../utils/queries";
 
-// small form component to create an event
 
 const EventGameForm = ({ hideEventGameForm, eventId }) => {
     const [formState, setFormState] = useState({
