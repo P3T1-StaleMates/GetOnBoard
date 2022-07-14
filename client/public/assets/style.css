@@ -52,6 +52,10 @@
     padding: 40px;
   }
 
+  .padding-welcome {
+    padding: 40px 40px 20px 40px;
+  }
+
   .padding-top-20 {
       padding-top: 20px;
   }
@@ -119,11 +123,20 @@
     color: fuchsia
   }
 
+  .text-blue {
+    color:deepskyblue
+  }
+
   .dashGames {
-    display: flex;
+    /* display: flex; */
+    position: relative;
     justify-content: center;
+    left: 20px;
     align-items: center;
     justify-self: center;
     border-style: dashed;
-    max-width: 95%;
+    max-width: 98%;
+    height: 330px;
+    border-image: linear-gradient(to right, fuchsia 25%, indigo 25%, indigo 50%,deepskyblue 50%, deepskyblue 75%, #a9e800 75%) 5;
+    overflow-x: hidden;
   }
