@@ -12,7 +12,9 @@ const CardContainer = () => {
     }
 
     const { myEvents } = data;
-    console.log("events", myEvents)
+    // console.log("events", myEvents)
+
+    // myEvents.sort((a, b) => (a.date - b.date))
 
     return (
         <div className="row container-card">
