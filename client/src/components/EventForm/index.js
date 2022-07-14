@@ -70,8 +70,9 @@ const EventForm = ({ showEventGameForm }) => {
         setFormState({
             name: "",
             location: "",
-            date: "",
+            date: new Date(),
         });
+        setPlayers([]);
         // redirect to Edit Event Form here - to add games
     };
 
