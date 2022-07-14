@@ -11,12 +11,12 @@ const EventGameForm = ({ hideEventGameForm, eventId }) => {
     });
     const [gameList, setGameList] = useState([])
     // Check that you can grab form data
-    const handleGamesChange = (array) => {
-        console.log("array", array)
+    const handleGamesChange = (games) => {
+        console.log("games", games)
         const eventGames = []
-        array.forEach(pObj => {
-            console.log("pObj", pObj.id)
-            eventGames.push(pObj.id)
+        games.forEach(game => {
+            console.log("game", game.id)
+            eventGames.push(game.id)
         });
         console.log("eventGames", eventGames)
         setGameList({
