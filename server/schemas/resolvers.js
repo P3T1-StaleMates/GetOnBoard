@@ -218,7 +218,7 @@ const resolvers = {
 
                 players.push(context.player._id);
 
-                const newEvent = await Event.create({ eventName, location, date, owner, players });
+                const newEvent = await Event.create({ eventName, location, date, owner, players, eventGames: [] });
                 let attendees = [];
                 // console.log(newEvent.players.length);
                 for (let i = 0; i < newEvent.players.length; i++) {
@@ -258,7 +258,7 @@ const resolvers = {
                 // Proof it works and maps an array of game documents
                 // console.log(games);
                 // Adding to the event by eventId returns null, for some reason.
-                return await Event.findByIdAndUpdate(eventId, { $addToSet: { eventGames: games } }, { new: true }).populate("eventGames");
+                return await Event.findByIdAndUpdate(eventId, { $addToSet: { eventGames: games } }, { new: true }).populate("groupGames");
             }
             throw new AuthenticationError('Not logged in');
         },
