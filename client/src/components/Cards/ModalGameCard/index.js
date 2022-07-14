@@ -1,4 +1,4 @@
-import "./GameCard.css"
+import "./ModalGameCard.css"
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { REMOVE_GAME } from "../../../utils/mutations";
 // import { useMutation } from '@apollo/client';
