@@ -49,7 +49,7 @@ const AddFriendSmall = () => {
                 <button className='btn-green' variant="outline-success" >Add</button>
             </form>
             {error && (
-                <output className=" px-3 bg-danger text-white error-message">
+                <output className=" px-3 bg-danger text-white error-message-friends">
                     {error.message}
                 </output>
             )}
