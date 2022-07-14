@@ -149,6 +149,7 @@ h6 {
 }
 
 .funborder {
+  border-style: dashed;
   border-image: linear-gradient(
       to right,
       #a9e800 33%,
@@ -159,7 +160,7 @@ h6 {
     5;
 }
 
-.error-message {
+.error-message-friends {
   position: relative;
   left: 30px;
   top: 10px;

@@ -1,5 +1,5 @@
 // user dashboard - holds other displays inside
-import ModalGameCard from "../components/Cards/ModalGameCard";
+import GameCard from "../components/Cards/GameCard";
 import CardContainer from "../components/Cards/CardContainer";
 import SearchBar from "../components/Searchbar";
 import AddFriend from "../components/AddFriend";

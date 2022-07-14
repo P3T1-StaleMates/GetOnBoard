@@ -187,7 +187,12 @@ const resolvers = {
                 if (!game) {
                     game = await Game.create({ title, description, genre, imageUrl, minPlayer, maxPlayer, averageTime });
                 }
-                return Player.findByIdAndUpdate(context.player._id, { $addToSet: { ownedGames: game } }, { new: true }).populate("ownedGames");
+                let updatedPlayer = await Player.updateOne({_id: context.player._id}, { $addToSet: { ownedGames: game } }).populate("ownedGames");
+                console.log(updatedPlayer)
+                if (updatedPlayer.modifiedCount === 0) {
+                    throw new AuthenticationError('You have already added this game to your list!');
+                }
+                return Player.findByIdAndUpdate({_id: context.player._id}, { $addToSet: { ownedGames: game } }).populate("ownedGames");
             }
             throw new AuthenticationError('Not logged in');
         },

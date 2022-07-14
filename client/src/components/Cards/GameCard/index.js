@@ -20,22 +20,27 @@ const GameCard = ({ game }) => {
     let stockImage =
         "https://image.shutterstock.com/image-photo/letter-tiles-spelling-out-words-260nw-1509215651.jpg";
     return (
-        <div className="card game" style={{ width: "15rem" }}>
-            <img
-                src={game.imageUrl || stockImage}
-                className="card-img-top"
-                alt="description"
-            />
-            <div className="card-body">
-                <h5 className="card-title">{game.title}</h5>
-                <p className="card-text">{`Players: ${`${game.minPlayer} - ${game.maxPlayer}`} `}</p>
-                <p>{`Game Length: ${game.averageTime} min`}</p>
-                <p
-                    className="text-danger:hover gameDelete"
-                    onClick={() => handleRemoveGame(game._id)}
-                >
-                    <FontAwesomeIcon icon={faTrash} />
-                </p>
+        <div className="card game col-4" style={{ width: "15rem" }}>
+            <div className="team-member mt-2">
+
+                <div className="team-img d-flex justify-content-center">
+
+                    <img src={game.imageUrl || stockImage} className="card-img-top img-responsive-dash" alt="description"></img>
+                </div>
+                <div className="game-hover">
+                    <div className="desk pt-2">
+                        <h5 className="game-title">{game.title}</h5>
+                        {/* <p className="card-text">{game.description}</p> */}
+                        <p className="card-text">{`Players: ${`${game.minPlayer} - ${game.maxPlayer}`} `}</p>
+                        <p>{`Game Length: ${game.averageTime} min`}</p>
+                        <p className="text-danger:hover gameDelete h3"
+                            onClick={() => handleRemoveGame(game._id)}>
+                            <FontAwesomeIcon icon={faTrash} />
+                        </p>
+                    </div>
+                </div>
+                <h5 className="game-title">{game.title}</h5>
+
             </div>
         </div>
     );

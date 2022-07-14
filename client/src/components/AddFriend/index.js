@@ -42,6 +42,11 @@ const AddFriend = () => {
                 src="/assets/images/chess/chess-blue.png"
                 alt="Avatar"
             />
+            {error && (
+                <output className=" px-3 bg-danger text-white error-message">
+                    {error.message}
+                </output>
+            )}
             <form onSubmit={handleFormSubmit} className="pt-2">
                 {/* <label> Add a Friend: </label> */}
                 <input
@@ -56,13 +61,9 @@ const AddFriend = () => {
                 <button className='btn-green' variant="outline-success">Add</button>
             </form>
 
-            {error && (
-                <div className="my-3 p-3 bg-danger text-white">
-                    Unable to locate a user by this username.
-                </div>
-            )}
         </div>
 
-    )}
+    )
+}
 
 export default AddFriend;
