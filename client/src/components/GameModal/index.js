@@ -5,6 +5,7 @@ import gameSearch from "../../utils/gameSearch";
 import { useMutation, useQuery } from "@apollo/client";
 import { ADD_GAME } from "../../utils/mutations";
 import { Modal, Button } from "react-bootstrap";
+import "./modal.css"
 
 const GameModal = ({ showModal, searchTerm, closeModal }) => {
   console.log("Search Term: ", searchTerm);
@@ -30,7 +31,7 @@ const GameModal = ({ showModal, searchTerm, closeModal }) => {
   console.log("State Game Data: ", gameData);
 
   return (
-    <Modal show={showModal} onHide={closeModal}>
+    <Modal size="xl" className="flex" show={showModal} onHide={closeModal}>
       <Modal.Header closeButton>
         <Modal.Title>Game Search Results</Modal.Title>
       </Modal.Header>
