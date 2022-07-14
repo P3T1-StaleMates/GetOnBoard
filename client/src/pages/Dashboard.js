@@ -13,10 +13,10 @@ const Dashboard = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-  console.log("loading", loading);
+  // console.log("loading", loading);
 
   const { name, ownedGames /*friends*/ } = data.me;
-  console.log("games", ownedGames);
+  // console.log("games", ownedGames);
 
   return (
     <>
@@ -61,8 +61,8 @@ const Dashboard = () => {
 
         <div className="row dashGames">
           {ownedGames.slice(0, 3).map((game) => (
-              <div className="col-4">
-                <ModalGameCard key={game._id} game={game} />
+              <div className="col-4" key={game._id}>
+                <ModalGameCard game={game} />
               </div>
             ))
           }
