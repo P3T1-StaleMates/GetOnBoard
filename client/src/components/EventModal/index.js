@@ -100,6 +100,7 @@ const EventModal = ({ showModal, closeModal }) => {
             <Modal.Body>
                 <div className="container">
                     {!eventGameForm ?
+                    // Bring Back Event Form here, pass is showEventGame, setEventId as props
                         <div className="row center mb-4">
                             <div className="center col-8">
                                 <div className="card">
