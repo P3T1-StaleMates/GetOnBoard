@@ -35,7 +35,7 @@ const GameModal = ({ showModal, searchTerm, closeModal }) => {
       <Modal.Header closeButton>
         <Modal.Title>Game Search Results</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className="modal-color">
               <div className="container">
                 <div className="row">
         {gameData.length === 0 ? (
@@ -44,15 +44,17 @@ const GameModal = ({ showModal, searchTerm, closeModal }) => {
           gameData.map((game) => {
             return (
             
-                    <div className="col" key={game.title}>
+                    <div className="col modalgamecard" key={game.title}>
+                      <div >
                       <ModalGameCard game={game} />
                       <button
                         type="button"
-                        className="btn btn-green"
+                        className="btn center mb-3 btn-green"
                         onClick={() => handleAddBook(game)}
                       >
                         Add Game
                       </button>
+                      </div>
                     </div>
       
       );

@@ -9,7 +9,7 @@ const ModalGameCard = ({ game }) => {
 
 let stockImage = "https://image.shutterstock.com/image-photo/letter-tiles-spelling-out-words-260nw-1509215651.jpg"
     return (
-        <div className="card game" style={{ width: "15rem" }}>
+        <div className="card transparent game" style={{ width: "15rem" }}>
             <img src={game.imageUrl || stockImage} className="card-img-top" alt="description" />
             <div className="card-body">
                 <h5 className="card-title">{game.title}</h5>
