@@ -24,3 +24,12 @@
 .gameDelete:hover {
     color: red;
 }
+
+.card-deco{
+    border-style: solid;
+    border-width: 15px;
+}
+
+.transparent{
+    background-color: transparent;
+}
