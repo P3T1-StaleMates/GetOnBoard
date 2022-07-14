@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_FRIEND } from '../../utils/mutations'
 import "./AddFriend.css"
-import Auth from '../../utils/auth';
 
 const AddFriend = () => {
     const [formState, setFormState] = useState({
@@ -44,7 +43,7 @@ const AddFriend = () => {
                 alt="Avatar"
             />
             <form onSubmit={handleFormSubmit}>
-                <label >Add a Friend: </label>
+                <label> Add a Friend: </label>
                 <input
                     name="username"
                     type="search"

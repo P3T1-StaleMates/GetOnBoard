@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_FRIEND } from '../../utils/mutations'
-import Auth from '../../utils/auth';
 
 const AddFriendSmall = () => {
     const [formState, setFormState] = useState({
@@ -36,7 +35,6 @@ const AddFriendSmall = () => {
     return (
 
         <>
-
             <form onSubmit={handleFormSubmit}>
                 <label >Add a Friend: </label>
                 <input
@@ -48,7 +46,7 @@ const AddFriendSmall = () => {
                     value={formState.username}
                     onChange={handleChange}
                 /><br></br>
-                <button type="button" className="btn btn-primary btn-sm">Search</button>
+                <button className='btn-green' variant="outline-success">Add</button>
             </form>
 
             {error && (
