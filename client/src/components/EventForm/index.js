@@ -7,7 +7,7 @@ import { QUERY_ME } from "../../utils/queries";
 
 // small form component to create an event
 
-const EventForm = () => {
+const EventForm = ({ showEventGameForm }) => {
     const [formState, setFormState] = useState({
         eventName: "",
         location: "",
@@ -50,8 +50,6 @@ const EventForm = () => {
         })
     }
 
-    
-
     const [createEvent, { error, data }] = useMutation(CREATE_EVENT);
 
     // submit form
@@ -62,7 +60,8 @@ const EventForm = () => {
             const { data } = await createEvent({
                 variables: { ...formState },
             });
-            console.log("This is a placeholder for creating the event");
+            console.log("This is a placeholder for creating the event", data.createEvent._id);
+            showEventGameForm();
         } catch (e) {
             console.error(e);
         }
@@ -88,12 +87,9 @@ const EventForm = () => {
     }));
 
     return (
-        <main className="flex-row justify-center mb-4">
-            <div className="col-12 col-lg-10">
+        <div className="row center mb-4">
+            <div className="center col-8">
                 <div className="card">
-                    <h4 className="card-header bg-dark text-light p-2">
-                        Create Event
-                    </h4>
                     <div className="card-body">
                         <form onSubmit={handleFormSubmit}>
                             <input
@@ -103,7 +99,7 @@ const EventForm = () => {
                                 type="eventName"
                                 value={formState.eventName}
                                 onChange={handleFormChange}
-                            />
+                            /><br></br>
                             <input
                                 className="form-input"
                                 placeholder="Location"
@@ -112,10 +108,11 @@ const EventForm = () => {
                                 value={formState.location}
                                 onChange={handleFormChange}
                             />
-
+                            <br></br>
                             <DateTimePicker
                                 onChange={handleDateChange}
                                 value={date}
+                                className="mb-3"
                             />
 
                             <SlimMultipleSelect
@@ -128,7 +125,7 @@ const EventForm = () => {
                             />
 
                             <button
-                                className="btn btn-block btn-primary"
+                                className="btn btn-block btn-green"
                                 style={{ cursor: "pointer" }}
                                 type="submit"
                             >
@@ -144,7 +141,7 @@ const EventForm = () => {
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
     );
 };
 
