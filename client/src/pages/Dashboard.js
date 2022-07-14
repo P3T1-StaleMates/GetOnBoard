@@ -13,10 +13,10 @@ const Dashboard = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-  console.log("loading", loading);
+  // console.log("loading", loading);
 
   const { name, ownedGames /*friends*/ } = data.me;
-  console.log("games", ownedGames);
+  // console.log("games", ownedGames);
 
   return (
     <>
