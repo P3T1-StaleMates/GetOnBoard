@@ -71,7 +71,7 @@ const Dashboard = () => {
             <div className="col-4 d-flex justify-content-center text-center">
               <div className="pt-2 pb-2">
                 <div>
-                  <h3 className="text-blue pb-4">Add Some Games!</h3>
+                  <h3 className="text-blue pb-4">Add Your Games!</h3>
                 </div>
                 <div>
                   <SearchBar />
