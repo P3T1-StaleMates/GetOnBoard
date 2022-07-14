@@ -71,8 +71,8 @@ const Profile = () => {
         <div className="container ">
           <div className="row">
             {friends.map((friend) => (
-              <div className="col-4">
-                <PlayerCard key={friend._id} info={friend} />
+              <div className="col-4" key={friend._id}>
+                <PlayerCard info={friend} />
               </div>
             ))}
           </div>

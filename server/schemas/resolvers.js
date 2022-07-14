@@ -144,14 +144,26 @@ const resolvers = {
         // Used to add a friend to a player, and recipirocating the friend on the recipient end.
         addFriend: async (parent, { username }, context) => {
 
-            if (context.player) {
+            let updatedFriend = '';
 
+            if (context.player) {
 
                 let addedFriend = await Player.findOne({ username });
                 let reciprocatedFriend = await Player.findById(context.player._id)
-                let updatedFriend = await Player.findByIdAndUpdate(addedFriend._id, { $addToSet: { friends: reciprocatedFriend } })
-                return Player.findByIdAndUpdate(context.player._id, { $addToSet: { friends: addedFriend } }, { new: true }).populate("friends");
+                updatedFriend = await Player.updateOne({ _id: addedFriend._id }, { $addToSet: { friends: reciprocatedFriend } })
+                // console.log(updatedFriend);
+                if (updatedFriend.modifiedCount === 0) {
+                    throw new AuthenticationError('The player is already on your friends list!');
+                }
+                let updatedPlayer = await Player.findOneAndUpdate({ _id: context.player._id }, { $addToSet: { friends: addedFriend } }, { new: true }).populate("friends");
+                console.log(updatedPlayer)
+                return updatedPlayer;
+
             }
+
+            // console.log(updatedFriend)
+
+
             throw new AuthenticationError('Not logged in');
         },
 
