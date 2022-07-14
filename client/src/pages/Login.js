@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, /*useNavigate*/ } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
 import '../styles/login.css';
 import Auth from '../utils/auth';
 
 const Login = (props) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN);
