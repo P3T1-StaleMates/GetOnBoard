@@ -1,7 +1,7 @@
 // First check database for game using game query. Call this function otherwise
 const gameSearch = async (searchTerm, setGameData) => {
   // If game does not exist in current database, fetch with the Board Game Atlas API
-  let apiCall = `https://api.boardgameatlas.com/api/search?name=${searchTerm}&limit=5&client_id=${process.env.REACT_APP_API_KEY}`;
+  let apiCall = `https://api.boardgameatlas.com/api/search?name=${searchTerm}&limit=6&client_id=${process.env.REACT_APP_API_KEY}`;
 
   try {
     const response = await fetch(apiCall);
