@@ -6,7 +6,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { ADD_GAME } from "../../utils/mutations";
 import { Modal } from "react-bootstrap";
 
-const GameModal = ({ showModal, searchTerm, closeModal }) => {
+const EventModal = ({ showModal, searchTerm, closeModal }) => {
   console.log("Search Term: ", searchTerm);
   const [gameData, setGameData] = useState([]);
   const [addGame, { error }] = useMutation(ADD_GAME);
@@ -32,7 +32,7 @@ const GameModal = ({ showModal, searchTerm, closeModal }) => {
   return (
     <Modal show={showModal} onHide={closeModal}>
       <Modal.Header closeButton>
-        <Modal.Title>Game Search Results</Modal.Title>
+        <Modal.Title>Let's Plan Your Board Game Night!</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {gameData.length === 0 ? (
@@ -63,4 +63,4 @@ const GameModal = ({ showModal, searchTerm, closeModal }) => {
   );
 };
 
-export default GameModal;
+export default EventModal;
