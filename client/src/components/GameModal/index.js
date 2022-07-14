@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import ModalGameCard from "../Cards/ModalGameCard";
-import { QUERY_GAMES } from "../../utils/queries";
+// import { QUERY_GAMES } from "../../utils/queries";
 import gameSearch from "../../utils/gameSearch";
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { ADD_GAME } from "../../utils/mutations";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+import "./modal.css"
 
 const GameModal = ({ showModal, searchTerm, closeModal }) => {
   console.log("Search Term: ", searchTerm);
   const [gameData, setGameData] = useState([]);
-  const [addGame, { error }] = useMutation(ADD_GAME);
+  const [addGame] = useMutation(ADD_GAME);
 
   const handleAddBook = async (gameToAdd) => {
     try {
@@ -30,7 +31,7 @@ const GameModal = ({ showModal, searchTerm, closeModal }) => {
   console.log("State Game Data: ", gameData);
 
   return (
-    <Modal show={showModal} onHide={closeModal}>
+    <Modal size="xl" className="flex" show={showModal} onHide={closeModal}>
       <Modal.Header closeButton>
         <Modal.Title>Game Search Results</Modal.Title>
       </Modal.Header>

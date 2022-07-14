@@ -57,18 +57,15 @@ const Dashboard = () => {
           </div>
         </div>
 
+
         <div className="row dashGames">
           {ownedGames.slice(0, 3).map((game) => (
-
-            <>
               <div className="col-4">
-
                 <ModalGameCard key={game._id} game={game} />
               </div>
-
-            </>
-
-          ))}
+            ))
+          }
+          
           {ownedGames.length <= 2 &&
             <div className="col-4 d-flex justify-content-center text-center">
               <div className="pt-2 pb-2">
@@ -80,7 +77,6 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-
           }
 
         </div>
