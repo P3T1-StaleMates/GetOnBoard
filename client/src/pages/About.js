@@ -178,7 +178,7 @@ const About = () => {
                                             />
                                         </a>
                                         <a
-                                            href="/"
+                                            href="https://mae2136.github.io/me-react-portfolio/"
                                             target="_blank"
                                             rel="noreferrer"
                                         >
