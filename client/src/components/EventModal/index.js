@@ -156,7 +156,7 @@ const EventModal = ({ showModal, closeModal }) => {
                                 </div>
                             </div>
                         </div>
-                        : <EventGameForm hideEventGameForm={hideEventGameForm} eventId={eventId} />}
+                        : <EventGameForm hideEventGameForm={hideEventGameForm} eventId={eventId} closeModal={closeModal} />}
                 </div>
             </Modal.Body>
             <Modal.Footer>

@@ -4,7 +4,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { UPDATE_EVENT_GAME } from "../../utils/mutations";
 import { QUERY_EVENT } from "../../utils/queries";
 
-const EventGameForm = ({ hideEventGameForm, eventId }) => {
+const EventGameForm = ({ hideEventGameForm, eventId, closeModal }) => {
     const [eventGames, setEventGames] = useState([]);
     const [gameList, setGameList] = useState([]);
 
@@ -44,6 +44,7 @@ const EventGameForm = ({ hideEventGameForm, eventId }) => {
         // clear form values
         setEventGames([]);
         hideEventGameForm();
+        closeModal();
     };
     // Fix this query to pull info correctly.
     const { loading, data } = useQuery(QUERY_EVENT, {
