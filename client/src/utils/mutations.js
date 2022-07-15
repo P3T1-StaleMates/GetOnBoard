@@ -97,7 +97,7 @@ export const CREATE_EVENT = gql`
 // Broken
 export const UPDATE_EVENT_GAME = gql`
 mutation UpdateEventGame($eventId: ID!, $eventGames: [ID]!) {
-  updateEventGame(eventID: $eventId, eventGames: $eventGames) {
+  updateEventGame(eventId: $eventId, eventGames: $eventGames) {
     _id
     eventName
     eventGames {

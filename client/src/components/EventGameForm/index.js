@@ -4,24 +4,25 @@ import { useMutation, useQuery } from "@apollo/client";
 import { UPDATE_EVENT_GAME } from "../../utils/mutations";
 import { QUERY_EVENT } from "../../utils/queries";
 
-const EventGameForm = ({ hideEventGameForm, eventId }) => {
-    const [formState, setFormState] = useState({
-        eventGames: [],
-    });
+const EventGameForm = ({ hideEventGameForm, eventId, closeModal }) => {
+    const [eventGames, setEventGames] = useState([]);
     const [gameList, setGameList] = useState([]);
 
     // Check that you can grab form data
     const handleGamesChange = (games) => {
         console.log("games", games);
-        const eventGames = [];
+        const slimPickerValue = [];
+        const gameIdArray = [];
         games.forEach((game) => {
             console.log("game", game);
             if (game.id) {
-                eventGames.push(game);
+                slimPickerValue.push(game);
+                gameIdArray.push(game.id);
             }
         });
         console.log("eventGames", eventGames);
-        setGameList([...eventGames]);
+        setGameList([...slimPickerValue]);
+        setEventGames([...gameIdArray]);
     };
 
     const [updateEvent, { error }] = useMutation(UPDATE_EVENT_GAME);
@@ -29,10 +30,10 @@ const EventGameForm = ({ hideEventGameForm, eventId }) => {
     // submit form
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState);
+        console.log("Event Games", eventGames);
         try {
             await updateEvent({
-                variables: { eventId, gameList },
+                variables: { eventId: eventId, eventGames: eventGames },
             });
             console.log("This is a placeholder for creating the event");
             hideEventGameForm();
@@ -41,9 +42,9 @@ const EventGameForm = ({ hideEventGameForm, eventId }) => {
         }
 
         // clear form values
-        setFormState({
-            eventGames: [],
-        });
+        setEventGames([]);
+        hideEventGameForm();
+        closeModal();
     };
     // Fix this query to pull info correctly.
     const { loading, data } = useQuery(QUERY_EVENT, {
