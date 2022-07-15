@@ -1,7 +1,7 @@
-import GameCard from "../components/Cards/GameCard";
-import Searchbar from "../components/Searchbar";
+import GameCard from "../../components/Cards/GameCard";
+import Searchbar from "../../components/Searchbar";
 import { useQuery } from "@apollo/client";
-import { QUERY_ME } from "../utils/queries";
+import { QUERY_ME } from "../../utils/queries";
 
 const MyGames = () => {
     const { loading, data } = useQuery(QUERY_ME);

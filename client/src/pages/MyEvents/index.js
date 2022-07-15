@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./MyEvents.css"
 import { useQuery } from "@apollo/client";
-import { QUERY_MY_EVENTS } from "../utils/queries";
-import EventModal from "../components/EventModal";
-import EventCard from "../components/Cards/EventCard"
+import { QUERY_MY_EVENTS } from "../../utils/queries";
+import EventModal from "../../components/EventModal";
+import EventCard from "../../components/Cards/EventCard"
 
 const MyEvents = () => {
 
@@ -39,7 +39,7 @@ const MyEvents = () => {
           </div>
           <div className="col p-3">
                 <div className="container m-3"><button className="btn btn-green center" onClick={handleShowModal}>Create Event</button></div>
-    
+
           </div>
         </div>
       </div>

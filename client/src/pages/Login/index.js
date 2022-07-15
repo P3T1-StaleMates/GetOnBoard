@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link /*useNavigate*/ } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { LOGIN } from "../utils/mutations";
-import "../styles/login.css";
-import Auth from "../utils/auth";
+import { LOGIN } from "../../utils/mutations";
+import "../../styles/login.css";
+import Auth from "../../utils/auth";
 
 const Login = (props) => {
     // const navigate = useNavigate();
@@ -61,8 +61,8 @@ const Login = (props) => {
                             <div className="card-body">
                                 {data ? (
                                     <p>
-                                        Success! You should automatically be redirected to the{" "}
-                                        <Link to="/dashboard">
+                                        Success! You should automatically be redirected to the Dashboard.
+                                        <Link to="/Dashboard">
                                             homepage.
                                         </Link>
                                         If not, click the link to proceed.

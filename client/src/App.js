@@ -1,25 +1,29 @@
 import React from "react";
+
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
 } from "@apollo/client";
+
 import { setContext } from "@apollo/client/link/context";
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import Navbar from "./components/Global/Navbar";
+
 import Dashboard from "./pages/Dashboard";
-import Footer from "./components/Global/Footer";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import MyFriends from "./pages/MyFriends"
 import MyGames from "./pages/MyGames"
 import MyEvents from "./pages/MyEvents"
+
+import About from "./pages/About"
+import Navbar from "./components/Global/Navbar";
+import Footer from "./components/Global/Footer";
 // import MyGroups from "./pages/MyGroups"
 // import GroupDashboard from "./pages/GroupDashboard"
-import About from "./pages/About"
 // import Login from "./pages/Login";
 
 import Auth from "./utils/auth"

@@ -1,11 +1,11 @@
-import PlayerCard from "../components/Cards/PlayerCard";
-import AddFriendSmall from "../components/AddFriendSmall";
+import PlayerCard from "../../components/Cards/PlayerCard";
+import AddFriendSmall from "../../components/AddFriendSmall";
 import "./MyFriends.css";
 
 import { /*Redirect,*/ useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
-import { QUERY_PLAYER, QUERY_ME } from "../utils/queries";
+import { QUERY_PLAYER, QUERY_ME } from "../../utils/queries";
 
 // import Auth from "../utils/auth";
 

@@ -1,4 +1,4 @@
-import GameCard from "../components/Cards/GameCard";
+import GameCard from "../../components/Cards/GameCard";
 
 const MyGroups = () => {
     return (

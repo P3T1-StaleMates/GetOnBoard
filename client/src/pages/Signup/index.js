@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
-import { ADD_PLAYER } from '../utils/mutations';
-import '../styles/signup.css';
-import Auth from '../utils/auth';
+import { ADD_PLAYER } from '../../utils/mutations';
+import '../../styles/signup.css';
+import Auth from '../../utils/auth';
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -53,8 +53,8 @@ const Signup = () => {
           <div className="card-body ">
             {data ? (
               <p>
-                Success! You may now head{' '}
-                <Link to="/dashboard">back to the homepage.</Link>
+                Success! You may now head the dashboard.
+                <Link to="/Dashboard">back to the homepage.</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
@@ -107,7 +107,7 @@ const Signup = () => {
             )}
           </div>
         </div>
-       
+
       </div>
     </main>
     </div>

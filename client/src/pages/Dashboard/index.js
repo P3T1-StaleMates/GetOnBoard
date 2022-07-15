@@ -1,11 +1,11 @@
 // user dashboard - holds other displays inside
-import GameCard from "../components/Cards/GameCard";
-import CardContainer from "../components/Cards/CardContainer";
-import SearchBar from "../components/Searchbar";
-import AddFriend from "../components/AddFriend";
+import GameCard from "../../components/Cards/GameCard";
+import CardContainer from "../../components/Cards/CardContainer";
+import SearchBar from "../../components/Searchbar";
+import AddFriend from "../../components/AddFriend";
 
 import { useQuery } from "@apollo/client";
-import { QUERY_ME } from "../utils/queries";
+import { QUERY_ME } from "../../utils/queries";
 
 const Dashboard = () => {
   const { loading, data } = useQuery(QUERY_ME);
