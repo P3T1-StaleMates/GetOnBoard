@@ -19,9 +19,10 @@ const MyGames = () => {
                     <div className="col padding-40">
                         <div>
                             <img
-                                className="icon p-2"
-                                src="/assets/images/man-icon.jpg"
+                                className="icon"
+                                src="/assets/images/chess/chess-orange.png"
                                 alt="Avatar"
+                                height="80"
                             />
                             <div>
                                 <h5>My Games</h5>
@@ -41,7 +42,7 @@ const MyGames = () => {
                         {ownedGames.length ? (
                             ownedGames.map((game) => {
                                 return (
-                                    <div className="col" key={game.title}>
+                                    <div className="col-4" key={game.title}>
                                         {" "}
                                         <GameCard game={game} />
                                     </div>
