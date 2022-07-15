@@ -54,11 +54,12 @@ const Profile = () => {
       <div className="container">
         <div className="row">
           <div className="col padding-40">
-            <img
-              className="icon"
-              src="/assets/images/man-icon.jpg"
-              alt="Avatar"
-            />
+          <img
+                className="icon"
+                src="/assets/images/chess/chess-orange.png"
+                alt="Avatar"
+                height="80"
+              />
             <div>
               <h5>My Friends</h5>
               <p>Check out all your friends!</p>

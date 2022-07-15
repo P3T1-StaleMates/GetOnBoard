@@ -21,15 +21,33 @@ const MyEvents = () => {
 
     return (
         <>
-            <h2 className="pl-2 text-center mt-3 p-2 pt-4">
-                Upcoming Events
-            </h2>
+            <div className="container">
+        <div className="row">
+          <div className="col padding-40">
+            <div>
+              <img
+                className="icon"
+                src="/assets/images/chess/chess-orange.png"
+                alt="Avatar"
+                height="80"
+              />
+              <div>
+                <h5>My Games</h5>
+                <p>View all your added games</p>
+              </div>
+            </div>
+          </div>
+          <div className="col p-3">
+                <div className="container m-3"><button className="btn btn-green center" onClick={handleShowModal}>Create Event</button></div>
+    
+          </div>
+        </div>
+      </div>
             <div className="eventContainer ">
                 {myEvents.map(myEvent =>
                     <EventCard key={myEvent._id} myEvent={myEvent} />)
                 }
             </div>
-            <div className="container m-3"><button className="btn btn-green center" onClick={handleShowModal}>Create Event</button></div>
             {showEventModal && <EventModal closeModal={handleCloseModal} showModal={showEventModal}/>}
         </>
     );
