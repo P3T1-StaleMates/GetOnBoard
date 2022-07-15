@@ -50,7 +50,7 @@ const Dashboard = () => {
             <div className="col-4">
               <section>
                 <div className="d-flex justify-content-center">
-                  <h3 className="text-pink">Quick add a new friend!</h3>
+                  <h3 className="text-pink">Quick Add a New Friend!</h3>
                 </div>
                 <AddFriend />
               </section>
