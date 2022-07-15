@@ -15,7 +15,7 @@ const EventCard = (props) => {
                 <div className="col-md-2">
                     <div >
                         {eventGames.length >= 1 ? (
-                            <img 
+                            <img className="card-img pt-5"
                                 src={eventGames[0].imageUrl}
                                 alt={eventGames[0].title}
                             />

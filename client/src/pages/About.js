@@ -99,8 +99,7 @@ const About = () => {
                                     <div className="desk">
                                         <h4>Hi There !</h4>
                                         <p>
-                                            I love to introduce myself as a
-                                            hardcore Web Designer.
+                                           I am a graphic designer and an aspiring Full-Stack Web Developer.
                                         </p>
                                     </div>
                                     <div className="s-link">
@@ -121,7 +120,7 @@ const About = () => {
                                             />
                                         </a>
                                         <a
-                                            href="/"
+                                            href="https://lealinnea.github.io/portfolio/"
                                             target="_blank"
                                             rel="noreferrer"
                                         >
@@ -178,7 +177,7 @@ const About = () => {
                                             />
                                         </a>
                                         <a
-                                            href="/"
+                                            href="https://mae2136.github.io/me-react-portfolio/"
                                             target="_blank"
                                             rel="noreferrer"
                                         >
