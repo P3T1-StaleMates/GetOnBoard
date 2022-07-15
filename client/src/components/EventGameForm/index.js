@@ -1,41 +1,38 @@
 import { React, useState } from "react";
 import SlimMultipleSelect from "react-slim-multiple-select";
-import DateTimePicker from "react-datetime-picker";
 import { useMutation, useQuery } from "@apollo/client";
-import { CREATE_EVENT, UPDATE_EVENT_GAME } from "../../utils/mutations";
+import { UPDATE_EVENT_GAME } from "../../utils/mutations";
 import { QUERY_EVENT } from "../../utils/queries";
-
-// small form component to create an event
 
 const EventGameForm = ({ hideEventGameForm, eventId }) => {
     const [formState, setFormState] = useState({
         eventGames: [],
     });
-    const [gameList, setGameList] = useState([])
-    // Check that you can grab form data
-    const handleGamesChange = (array) => {
-        console.log("array", array)
-        const eventGames = []
-        array.forEach(pObj => {
-            console.log("pObj", pObj.id)
-            eventGames.push(pObj.id)
-        });
-        console.log("eventGames", eventGames)
-        setGameList({
-            ...formState,
-            eventGames
-        })
-    }
+    const [gameList, setGameList] = useState([]);
 
-    const [updateEvent, { error, data }] = useMutation(UPDATE_EVENT_GAME);
+    // Check that you can grab form data
+    const handleGamesChange = (games) => {
+        console.log("games", games);
+        const eventGames = [];
+        games.forEach((game) => {
+            console.log("game", game);
+            if (game.id) {
+                eventGames.push(game);
+            }
+        });
+        console.log("eventGames", eventGames);
+        setGameList([...eventGames]);
+    };
+
+    const [updateEvent, { error }] = useMutation(UPDATE_EVENT_GAME);
     // Check that this form is submitting data correctly
     // submit form
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log(formState);
         try {
-            const { data } = await updateEvent({
-                variables: { eventId, ...formState },
+            await updateEvent({
+                variables: { eventId, gameList },
             });
             console.log("This is a placeholder for creating the event");
             hideEventGameForm();
@@ -49,18 +46,22 @@ const EventGameForm = ({ hideEventGameForm, eventId }) => {
         });
     };
     // Fix this query to pull info correctly.
-    const { loading, eventData } = useQuery(QUERY_EVENT, {
-        variables: { eventId }
+    const { loading, data } = useQuery(QUERY_EVENT, {
+        variables: { eventId },
     });
     if (loading) {
         return <div>Loading...</div>;
     }
-    console.log(eventData);
-    const { groupGames } = eventData.groupGames;
+
+    // let groupGames = [];
+    const groupGames = data?.event?.groupGames || [];
+
+    console.log(groupGames);
     const options = groupGames.map((game) => ({
         id: game._id,
         title: game.title,
     }));
+    console.log("options", options);
 
     return (
         <div className="row center mb-4">
@@ -74,7 +75,7 @@ const EventGameForm = ({ hideEventGameForm, eventId }) => {
                             <SlimMultipleSelect
                                 options={options}
                                 value={gameList}
-                                optLabel="name"
+                                optLabel="title"
                                 optKey="id"
                                 onHandleChange={handleGamesChange}
                                 placeholder="Add Games to Your Event"
