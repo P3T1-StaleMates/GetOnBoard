@@ -1,8 +1,8 @@
 import { React, useState } from "react";
 import SlimMultipleSelect from "react-slim-multiple-select";
 import { useMutation, useQuery } from "@apollo/client";
-import { UPDATE_EVENT_GAME } from "../../utils/mutations";
-import { QUERY_EVENT } from "../../utils/queries";
+import { UPDATE_EVENT_GAME } from "../../../../utils/mutations";
+import { QUERY_EVENT } from "../../../../utils/queries";
 
 const EventGameForm = ({ hideEventGameForm, eventId, closeModal }) => {
     const [eventGames, setEventGames] = useState([]);

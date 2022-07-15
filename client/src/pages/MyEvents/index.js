@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./MyEvents.css"
 import { useQuery } from "@apollo/client";
 import { QUERY_MY_EVENTS } from "../../utils/queries";
-import EventModal from "../../components/EventModal";
+import EventModal from "./Components/EventModal";
 import EventCard from "../../components/Cards/EventCard"
 
 const MyEvents = () => {

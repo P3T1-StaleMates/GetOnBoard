@@ -1,7 +1,7 @@
 // friend add component
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { ADD_FRIEND } from '../../utils/mutations'
+import { ADD_FRIEND } from '../../../../utils/mutations'
 
 const AddFriendSmall = () => {
     const [formState, setFormState] = useState({

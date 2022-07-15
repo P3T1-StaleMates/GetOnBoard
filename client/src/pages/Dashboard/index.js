@@ -1,8 +1,8 @@
 // user dashboard - holds other displays inside
 import GameCard from "../../components/Cards/GameCard";
 import EventContainer from "./Components/EventContainer";
-import SearchBar from "../../components/Searchbar";
-import AddFriend from "../../components/AddFriend";
+import SearchBar from "../../components/GameSearch";
+import AddFriend from "./Components/AddFriendSmall";
 
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";

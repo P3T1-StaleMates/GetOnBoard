@@ -1,5 +1,5 @@
 import GameCard from "../../components/Cards/GameCard";
-import Searchbar from "../../components/Searchbar";
+import Searchbar from "../../components/GameSearch";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
 

@@ -1,7 +1,7 @@
 // friend add component
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { ADD_FRIEND } from '../../utils/mutations'
+import { ADD_FRIEND } from '../../../../utils/mutations'
 import "./AddFriend.css"
 
 const AddFriend = () => {

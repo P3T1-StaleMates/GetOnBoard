@@ -1,5 +1,5 @@
 import PlayerCard from "../../components/Cards/PlayerCard";
-import AddFriendSmall from "../../components/AddFriendSmall";
+import AddFriendSmall from "./Components/AddFriend";
 import "./MyFriends.css";
 
 import { /*Redirect,*/ useParams } from "react-router-dom";
