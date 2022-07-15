@@ -1,5 +1,3 @@
-import GameCard from "../../components/Cards/GameCard";
-
 const MyGroups = () => {
     return (
         <>

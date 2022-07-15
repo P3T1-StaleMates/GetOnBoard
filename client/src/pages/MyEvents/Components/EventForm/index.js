@@ -2,8 +2,8 @@ import { React, useState } from "react";
 import SlimMultipleSelect from "react-slim-multiple-select";
 import DateTimePicker from "react-datetime-picker";
 import { useMutation, useQuery } from "@apollo/client";
-import { CREATE_EVENT } from "../../utils/mutations";
-import { QUERY_ME } from "../../utils/queries";
+import { CREATE_EVENT } from "../../../../utils/mutations";
+import { QUERY_ME } from "../../../../utils/queries";
 
 // small form component to create an event
 

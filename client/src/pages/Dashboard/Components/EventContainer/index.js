@@ -1,10 +1,10 @@
 import React from "react";
-import EventCard from "../EventCard";
-import "./CardContainer.css";
+import EventCard from "../../../../components/Cards/EventCard";
+import "./EventContainer.css";
 import { useQuery } from "@apollo/client";
-import { QUERY_MY_EVENTS } from "../../../utils/queries";
+import { QUERY_MY_EVENTS } from "../../../../utils/queries";
 
-const CardContainer = () => {
+const EventContainer = () => {
     const { loading, data } = useQuery(QUERY_MY_EVENTS);
 
     if (loading) {
@@ -36,4 +36,4 @@ const CardContainer = () => {
     );
 };
 
-export default CardContainer;
+export default EventContainer;
