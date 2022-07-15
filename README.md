@@ -23,7 +23,7 @@ I WANT to schedule boardgame meetups with friends.
 
 Screenshots of live application:
 
-Forthcoming
+[Get On Board Site](https://p3-getonboard.herokuapp.com/)
 
 ## Contact
 
