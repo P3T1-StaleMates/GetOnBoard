@@ -120,6 +120,15 @@ const About = () => {
                                                 icon={faLinkedin}
                                             />
                                         </a>
+                                        <a
+                                            href="/"
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                            <FontAwesomeIcon
+                                                icon={faImagePortrait}
+                                            />
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -166,6 +175,15 @@ const About = () => {
                                         >
                                             <FontAwesomeIcon
                                                 icon={faLinkedin}
+                                            />
+                                        </a>
+                                        <a
+                                            href="/"
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                            <FontAwesomeIcon
+                                                icon={faImagePortrait}
                                             />
                                         </a>
                                     </div>
