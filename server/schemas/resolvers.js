@@ -144,14 +144,26 @@ const resolvers = {
         // Used to add a friend to a player, and recipirocating the friend on the recipient end.
         addFriend: async (parent, { username }, context) => {
 
-            if (context.player) {
+            let updatedFriend = '';
 
+            if (context.player) {
 
                 let addedFriend = await Player.findOne({ username });
                 let reciprocatedFriend = await Player.findById(context.player._id)
-                let updatedFriend = await Player.findByIdAndUpdate(addedFriend._id, { $addToSet: { friends: reciprocatedFriend } })
-                return Player.findByIdAndUpdate(context.player._id, { $addToSet: { friends: addedFriend } }, { new: true }).populate("friends");
+                updatedFriend = await Player.updateOne({ _id: addedFriend._id }, { $addToSet: { friends: reciprocatedFriend } })
+                // console.log(updatedFriend);
+                if (updatedFriend.modifiedCount === 0) {
+                    throw new AuthenticationError('The player is already on your friends list!');
+                }
+                let updatedPlayer = await Player.findOneAndUpdate({ _id: context.player._id }, { $addToSet: { friends: addedFriend } }, { new: true }).populate("friends");
+                console.log(updatedPlayer)
+                return updatedPlayer;
+
             }
+
+            // console.log(updatedFriend)
+
+
             throw new AuthenticationError('Not logged in');
         },
 
@@ -175,7 +187,12 @@ const resolvers = {
                 if (!game) {
                     game = await Game.create({ title, description, genre, imageUrl, minPlayer, maxPlayer, averageTime });
                 }
-                return Player.findByIdAndUpdate(context.player._id, { $addToSet: { ownedGames: game } }, { new: true }).populate("ownedGames");
+                let updatedPlayer = await Player.updateOne({_id: context.player._id}, { $addToSet: { ownedGames: game } }).populate("ownedGames");
+                console.log(updatedPlayer)
+                if (updatedPlayer.modifiedCount === 0) {
+                    throw new AuthenticationError('You have already added this game to your list!');
+                }
+                return Player.findByIdAndUpdate({_id: context.player._id}, { $addToSet: { ownedGames: game } }).populate("ownedGames");
             }
             throw new AuthenticationError('Not logged in');
         },
@@ -201,7 +218,7 @@ const resolvers = {
 
                 players.push(context.player._id);
 
-                const newEvent = await Event.create({ eventName, location, date, owner, players });
+                const newEvent = await Event.create({ eventName, location, date, owner, players, eventGames: [] });
                 let attendees = [];
                 // console.log(newEvent.players.length);
                 for (let i = 0; i < newEvent.players.length; i++) {
@@ -241,7 +258,7 @@ const resolvers = {
                 // Proof it works and maps an array of game documents
                 // console.log(games);
                 // Adding to the event by eventId returns null, for some reason.
-                return await Event.findByIdAndUpdate(eventId, { $addToSet: { eventGames: games } }, { new: true }).populate("eventGames");
+                return await Event.findByIdAndUpdate(eventId, { $addToSet: { eventGames: games } }, { new: true }).populate("groupGames");
             }
             throw new AuthenticationError('Not logged in');
         },

@@ -1,5 +1,5 @@
 // user dashboard - holds other displays inside
-import ModalGameCard from "../components/Cards/ModalGameCard";
+import GameCard from "../components/Cards/GameCard";
 import CardContainer from "../components/Cards/CardContainer";
 import SearchBar from "../components/Searchbar";
 import AddFriend from "../components/AddFriend";
@@ -13,10 +13,10 @@ const Dashboard = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-  console.log("loading", loading);
+  // console.log("loading", loading);
 
   const { name, ownedGames /*friends*/ } = data.me;
-  console.log("games", ownedGames);
+  // console.log("games", ownedGames);
 
   return (
     <>
@@ -61,8 +61,8 @@ const Dashboard = () => {
 
         <div className="row dashGames">
           {ownedGames.slice(0, 3).map((game) => (
-              <div className="col-4">
-                <ModalGameCard key={game._id} game={game} />
+              <div className="col-4" key={game._id}>
+                <GameCard game={game} />
               </div>
             ))
           }
@@ -71,7 +71,7 @@ const Dashboard = () => {
             <div className="col-4 d-flex justify-content-center text-center">
               <div className="pt-2 pb-2">
                 <div>
-                  <h3 className="text-blue pb-4">Add Some Games!</h3>
+                  <h3 className="text-blue pb-4">Add Your Games!</h3>
                 </div>
                 <div>
                   <SearchBar />

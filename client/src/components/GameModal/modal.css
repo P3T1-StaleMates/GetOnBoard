@@ -1,0 +1,13 @@
+
+.modal-color {
+    background-color: rgb(232, 228, 228);
+}
+
+.modalgamecard{
+    border-radius: 30px;
+    border: none;
+    margin: 1%;
+    width: 230px;
+    background-color: white;
+
+}

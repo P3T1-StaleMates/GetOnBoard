@@ -2,7 +2,7 @@ import PlayerCard from "../components/Cards/PlayerCard";
 import AddFriendSmall from "../components/AddFriendSmall";
 import "./MyFriends.css";
 
-import { Redirect, useParams } from "react-router-dom";
+import { /*Redirect,*/ useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import { QUERY_PLAYER, QUERY_ME } from "../utils/queries";
@@ -25,9 +25,11 @@ const Profile = () => {
   const { friends } = data.me;
   // console.log("friends", friends)
 
-  const user = data?.me || data?.user || {};
+
 
   // Will use if we get to the point of displaying other users profiles.
+
+  // const user = data?.me || data?.user || {};
 
   // redirect to personal profile page if username is yours
   //   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
@@ -71,8 +73,8 @@ const Profile = () => {
         <div className="container ">
           <div className="row">
             {friends.map((friend) => (
-              <div className="col-4">
-                <PlayerCard key={friend._id} info={friend} />
+              <div className="col-4" key={friend._id}>
+                <PlayerCard info={friend} />
               </div>
             ))}
           </div>

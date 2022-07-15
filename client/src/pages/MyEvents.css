@@ -1,5 +1,5 @@
 .eventContainer {
-    background-color:dodgerblue;
+    background-color:rgb(255, 255, 255);
     border-radius: 30px;
     padding-top: 2%;
     margin: 2%;
@@ -7,6 +7,24 @@
     overflow: scroll;
 
 }
+
+.animation{
+    border-width: 2px;
+     animation-name: bg-color;
+     animation-duration: 30s;
+     animation: bg-color 5s infinite;
+     transition-timing-function: linear;
+   }
+   
+   @keyframes bg-color {
+   
+        0% {border-color: rgb(237, 30, 185); }
+        25% { border-color: orange; }
+        50% { border-color: yellow; }
+        75% { border-color: rgb(164, 240, 0); }
+        100% { border-color: rgb(121, 212, 248); }
+        }
+   
 
 ::-webkit-scrollbar {
     width: 8px;

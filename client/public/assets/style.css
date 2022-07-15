@@ -135,13 +135,14 @@ h6 {
   align-items: center;
   justify-self: center;
   border-style: dashed;
+  border-radius: 30px;
   max-width: 98%;
   height: 330px;
   border-image: linear-gradient(
       to right,
       #a9e800 33%,
       #ff009d 33%,
-      #ff009d 66%,
+      #ff9900 66%,
       #10b5e9 66%
     )
     5;
@@ -149,6 +150,7 @@ h6 {
 }
 
 .funborder {
+  border-style: dashed;
   border-image: linear-gradient(
       to right,
       #a9e800 33%,
@@ -157,4 +159,12 @@ h6 {
       #10b5e9 66%
     )
     5;
+    
+}
+
+.error-message-friends {
+  position: relative;
+  left: 30px;
+  top: 10px;
+  z-index: 10;
 }

@@ -14,6 +14,9 @@ const CardContainer = () => {
     const { myEvents } = data;
     console.log("events", myEvents)
 
+
+    // myEvents.sort((a, b) => (a.date > b.date) ? 1 : -1)
+
     return (
         <div className="row container-card">
             {myEvents.length ? (

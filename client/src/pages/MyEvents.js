@@ -24,7 +24,7 @@ const MyEvents = () => {
             <h2 className="pl-2 text-center mt-3 p-2 pt-4">
                 Upcoming Events
             </h2>
-            <div className="eventContainer">
+            <div className="eventContainer ">
                 {myEvents.map(myEvent =>
                     <EventCard key={myEvent._id} myEvent={myEvent} />)
                 }

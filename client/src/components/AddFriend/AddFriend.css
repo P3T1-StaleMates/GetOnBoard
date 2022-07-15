@@ -20,8 +20,16 @@ form {
   width: 70%;
   object-fit: contain;
   max-height: 180px;
+  z-index: 1;
 }
 
 img {
     object-fit: contain;
+}
+
+.error-message {
+  position: absolute;
+  left: 0px;
+  top: 140px;
+  z-index: 10;
 }
